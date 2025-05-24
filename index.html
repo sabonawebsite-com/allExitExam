@@ -195,661 +195,7 @@
     <script>
 
         const quizQuestions = [
-            {
-                question: "Which phase of the software development life cycle is responsible for gathering and analyzing user requirements?",
-                options: ["Analysis", "Design", "Development", "Testing"],
-                answer: 0
-            },
-            {
-                question: "Which design principle suggests that software components should have a single, well-defined responsibility?",
-                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
-                answer: 1
-            },
-            {
-                question: "Which of the following is an agile development methodology?",
-                options: ["Waterfall model", "Scrum", "V-model", "Spiral model"],
-                answer: 1
-            },
-            {
-                question: "Which software development approach involves breaking down a project into small, deliverable increments?",
-                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
-                answer: 1
-            },
-            {
-                question: "Which software testing technique focuses on finding defects by executing the software without knowledge of its internal structure?",
-                options: ["White-box testing", "Black-box testing", "Integration testing", "System testing"],
-                answer: 1
-            },
-            {
-                question: "Which diagramming technique is used to visualize the behavior of a software system over time?",
-                options: ["Use case diagrams", "Class diagrams", "Sequence diagrams", "State machine diagrams"],
-                answer: 2
-            },
-            {
-                question: "Which software development methodology promotes adaptive planning, evolutionary development, and continuous improvement?",
-                options: ["Waterfall model", "Agile methodology", "V-model", "Spiral model"],
-                answer: 1
-            },
-            {
-                question: "Which technique is used to represent the flow of activities and decisions in a software system?",
-                options: ["Use case modeling", "Activity diagrams", "State machine diagrams", "Component diagrams"],
-                answer: 1
-            },
-            {
-                question: "Which software development approach involves building a working version of the software system early in the development process?",
-                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
-                answer: 2
-            },
-            {
-                question: "Which testing technique focuses on testing the interaction between different components or modules of a software system?",
-                options: ["Unit testing", "Integration testing", "System testing", "Regression testing"],
-                answer: 1
-            },
-            {
-                question: "Which design principle suggests that software entities should depend on abstractions, not on concrete implementations?",
-                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
-                answer: 1
-            },
-            {
-                question: "Which software development approach follows a linear, sequential flow from requirements gathering to testing and maintenance?",
-                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
-                answer: 0
-            },
-            {
-                question: "Which technique is used to estimate the size and complexity of a software project?",
-                options: ["Use case modeling", "Storyboarding", "Function point analysis", "Pair programming"],
-                answer: 2
-            },
-            {
-                question: "Which tool is used to track and manage software issues, bugs, and tasks throughout the development process?",
-                options: ["Git", "Jira", "Jenkins", "Docker"],
-                answer: 1
-            },
-            {
-                question: "Which design principle suggests that software entities should be open for extension but closed for modification?",
-                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
-                answer: 1
-            },
-            {
-                question: "Which technique is used to represent the static structure of a software system, including classes, relationships, and attributes?",
-                options: ["Use case diagrams", "Class diagrams", "Sequence diagrams", "State machine diagrams"],
-                answer: 1
-            },
-            {
-                question: "Which software development methodology involves regular and frequent communication between developers and stakeholders?",
-                options: ["Waterfall model", "Agile methodology", "V-model", "Spiral model"],
-                answer: 1
-            },
-            {
-                question: "Which technique is used to capture and document user requirements in a structured manner?",
-                options: ["Use case modeling", "Storyboarding", "Wireframing", "Pair programming"],
-                answer: 0
-            },
-            {
-                question: "Which testing technique focuses on retesting modified or affected parts of the software to ensure that changes do not introduce new defects?",
-                options: ["Unit testing", "Integration testing", "Regression testing", "System testing"],
-                answer: 2
-            },
-            {
-                question: "Which tool is used to package an application and its dependencies into a container for easy deployment and scalability?",
-                options: ["Git", "Jira", "Jenkins", "Docker"],
-                answer: 3
-            },
-            {
-                question: "Which phase of the software development life cycle (SDLC) focuses on gathering and understanding user requirements?",
-                options: ["Analysis", "Design", "Implementation", "Testing"],
-                answer: 0
-            },
-            {
-                question: "What is the primary goal of software design?",
-                options: ["To create a visually appealing user interface", "To optimize the performance of the software system", "To translate user requirements into a detailed plan", "To develop and test individual software components"],
-                answer: 2
-            },
-            {
-                question: "Which software development approach emphasizes frequent iterations, collaboration, and responsiveness to change?",
-                options: ["Waterfall methodology", "Agile methodology", "Spiral model", "V-model"],
-                answer: 1
-            },
-            {
-                question: "What is the purpose of modularization in software design?",
-                options: ["To improve the readability of the code", "To ensure efficient memory management", "To facilitate code reuse and maintenance", "To minimize the number of software defects"],
-                answer: 2
-            },
-            {
-                question: "Which type of testing aims to uncover defects in the interaction between different components of a software system?",
-                options: ["Unit testing", "Integration testing", "System testing", "Acceptance testing"],
-                answer: 1
-            },
-            {
-                question: "Which programming paradigm is based on the concept of objects and their interactions?",
-                options: ["Functional programming", "Procedural programming", "Object-oriented programming", "Event-driven programming"],
-                answer: 2
-            },
-            {
-                question: "What is the purpose of version control systems in software development?",
-                options: ["To manage project schedules and milestones", "To facilitate collaboration among team members", "To track and control changes to source code and files", "To automate the testing and deployment processes"],
-                answer: 2
-            },
-            {
-                question: "Which software development methodology follows a sequential flow, with each phase being completed before moving to the next?",
-                options: ["Waterfall model", "Agile methodology", "Scrum", "Kanban"],
-                answer: 0
-            },
-            {
-                question: "What is the primary purpose of software documentation?",
-                options: ["To serve as a record of code authorship", "To provide instructions for end-users", "To assist in software maintenance and understanding", "To ensure compliance with coding standards"],
-                answer: 2
-            },
-            {
-                question: "Which software development approach involves building small, incremental releases of the software system?",
-                options: ["Waterfall model", "Agile methodology", "Big Bang model", "Code-and-Fix model"],
-                answer: 1
-            },
-            {
-                question: "Which design principle advocates for designing software components that have a single responsibility?",
-                options: ["Open/Closed Principle", "Single Responsibility Principle", "Liskov Substitution Principle", "Dependency Inversion Principle"],
-                answer: 1
-            },
-            {
-                question: "Which design pattern is used to ensure that only one instance of a class is created throughout the system?",
-                options: ["Singleton pattern", "Factory pattern", "Observer pattern", "Decorator pattern"],
-                answer: 0
-            },
-            {
-                question: "Which type of testing focuses on evaluating the behavior of a software system under normal operating conditions?",
-                options: ["Stress testing", "Performance testing", "Functional testing", "Usability testing"],
-                answer: 2
-            },
-            {
-                question: "Which programming paradigm promotes the use of data and avoids side effects?",
-                options: ["Functional programming", "Procedural programming", "Object-oriented programming", "Event-driven programming"],
-                answer: 0
-            },
-            {
-                question: "Which type of software maintenance involves making changes to a software system to adapt it to new environments or technologies?",
-                options: ["Corrective maintenance", "Adaptive maintenance", "Perfective maintenance", "Preventive maintenance"],
-                answer: 1
-            },
-            {
-                question: "What is the purpose of usability testing in software development?",
-                options: ["To evaluate the performance of the software system under stress conditions", "To assess the user-friendliness and ease of use of the software system", "To verify the compliance of the software system with specified requirements", "To identify and fix defects or issues in the software system"],
-                answer: 1
-            },
-            {
-                question: "Which software development methodology involves iterative development cycles called sprints?",
-                options: ["Waterfall model", "Agile methodology", "Spiral model", "V-Model"],
-                answer: 1
-            },
-            {
-                question: "What is the primary purpose of code refactoring?",
-                options: ["To add new features to the software system", "To optimize the performance of the software system", "To improve the readability and maintainability of the code", "To fix defects or issues in the software system"],
-                answer: 2
-            },
-            {
-                question: "Which software development approach focuses on involving end-users in the development process through continuous feedback and collaboration?",
-                options: ["Waterfall model", "Agile methodology", "Big Bang model", "Code-and-Fix model"],
-                answer: 1
-            },
-            {
-                question: "Which type of testing involves running the entire software system in an environment that closely resembles the production environment?",
-                options: ["Unit testing", "Integration testing", "System testing", "Acceptance testing"],
-                answer: 2
-            },
-            {
-                question: "What is a use case in use case modeling?",
-                options: ["A description of a specific user interface design", "A step-by-step procedure for software installation", "A sequence of activities performed by a user or system", "A diagram that represents the relationships between software components"],
-                answer: 2
-            },
-            {
-                question: "What is an actor in use case modeling?",
-                options: ["A component that performs specific actions in a software system", "A person or another system that interacts with the software system", "A diagram that represents the flow of activities in a use case", "A description of a specific user role in the software system"],
-                answer: 1
-            },
-            {
-                question: "What is the purpose of an include relationship between use cases?",
-                options: ["To represent the reuse of common steps between use cases", "To represent optional steps within a use case", "To represent the extension of a use case with additional steps", "To represent the relationship between actors and use cases"],
-                answer: 0
-            },
-            {
-                question: "What is the purpose of an extend relationship between use cases?",
-                options: ["To represent the reuse of common steps between use cases", "To represent optional steps within a use case", "To represent the extension of a use case with additional steps", "To represent the relationship between actors and use cases"],
-                answer: 2
-            },
-            {
-                question: "Which diagram is commonly used to visualize the relationships between actors and use cases in use case modeling?",
-                options: ["Class diagram", "Use case diagram", "Activity diagram", "Sequence diagram"],
-                answer: 1
-            },
-            {
-                question: "What is the purpose of an abstract use case?",
-                options: ["To represent a use case that is not yet fully defined", "To represent a use case that is optional in the system", "To represent a use case that cannot be accessed directly by an actor", "To represent a use case that is reused by other use cases"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of an exception flow in a use case?",
-                options: ["To represent an error or exceptional situation in the use case", "To represent an alternative path within the use case", "To represent the termination of the use case", "To represent the relationship between primary and secondary actors"],
-                answer: 0
-            },
-            {
-                question: "What is the primary goal of use case modeling?",
-                options: ["To define the software architecture of the system", "To identify and document user requirements", "To design the user interface of the system", "To implement the functionality of the system"],
-                answer: 1
-            },
-            {
-                question: "What is an alternative flow in a use case?",
-                options: ["A flowchart representation of the use case steps", "A flow of activities that occurs in parallel with the main flow", "A different sequence of steps based on specific conditions", "A representation of the relationship between use cases"],
-                answer: 2
-            },
-            {
-                question: "What is the purpose of a use case diagram?",
-                options: ["To describe the behavior of a use case in detail", "To represent the internal structure of a use case", "To visualize the relationships between actors and use cases", "To represent the flow of activities within a use case"],
-                answer: 2
-            },
-            {
-                question: "What is the primary markup language used for structuring content on the web?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 0
-            },
-            {
-                question: "What is the purpose of CSS in web development?",
-                options: ["To define the structure and layout of web pages", "To add interactivity and dynamic behavior to web pages", "To control the visual appearance of web pages", "To handle server-side processing and database interactions"],
-                answer: 2
-            },
-            {
-                question: "Which programming language is primarily used for client-side scripting in web development?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "Which protocol is used for transferring data over the web?",
-                options: ["HTTP", "FTP", "TCP/IP", "SMTP"],
-                answer: 0
-            },
-            {
-                question: "What is the purpose of a web server in web development?",
-                options: ["To store and manage website files", "To handle client-side scripting", "To control the visual appearance of web pages", "To ensure secure data transmission over the web"],
-                answer: 0
-            },
-            {
-                question: "Which of the following is a popular open-source database management system used in web development?",
-                options: ["MySQL", "Oracle", "SQL Server", "MongoDB"],
-                answer: 0
-            },
-            {
-                question: "What is the purpose of a cookie in web development?",
-                options: ["To store and retrieve user preferences and session information", "To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web"],
-                answer: 0
-            },
-            {
-                question: "Which programming language is used for server-side scripting in web development?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of a framework in web development?",
-                options: ["To ensure secure data transmission over the web", "To control the visual appearance of web pages", "To provide a foundation and structure for developing web applications", "To handle client-side scripting"],
-                answer: 2
-            },
-            {
-                question: "Which programming language is often used for building scalable and high-performance web applications?",
-                options: ["HTML", "CSS", "JavaScript", "Node.js"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of AJAX in web development?",
-                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To enable asynchronous communication between the client and server"],
-                answer: 3
-            },
-            {
-                question: "Which format is commonly used for data interchange between a web server and a web application?",
-                options: ["HTML", "CSS", "JSON", "XML"],
-                answer: 2
-            },
-            {
-                question: "What is the purpose of a content management system (CMS) in web development?",
-                options: ["To store and manage website files", "To control the visual appearance of web pages", "To handle client-side scripting", "To provide a user-friendly interface for managing website content"],
-                answer: 3
-            },
-            {
-                question: "Which technique is used to improve the performance of web applications by caching frequently accessed data or resources?",
-                options: ["Compression", "Minification", "Caching", "Encryption"],
-                answer: 2
-            },
-            {
-                question: "Which protocol is used for secure communication over the web?",
-                options: ["HTTP", "FTP", "TCP/IP", "HTTPS"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of a RESTful API in web development?",
-                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To provide a standardized interface for accessing and manipulating web resources"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of responsive web design?",
-                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To create websites that adapt and display correctly on different devices and screen sizes"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of version control systems (VCS) in web development?",
-                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To track changes to source code and collaborate on web development projects"],
-                answer: 3
-            },
-            {
-                question: "Which web development concept refers to the practice of optimizing a website to rank higher in search engine results?",
-                options: ["Accessibility", "Usability", "SEO (Search Engine Optimization)", "Performance optimization"],
-                answer: 2
-            },
-            {
-                question: "Which technique is used to protect web applications against common security vulnerabilities, such as cross-site scripting (XSS) and SQL injection?",
-                options: ["Encryption", "Authentication", "Authorization", "Web application security testing"],
-                answer: 3
-            },
-            {
-                question: "Which server-side scripting language is commonly used for web development?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 3
-            },
-            {
-                question: "Which server-side scripting language is often used for building scalable and high-performance web applications?",
-                options: ["HTML", "CSS", "JavaScript", "Node.js"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of server-side scripting languages in web development?",
-                options: ["To control the visual appearance of web pages", "To handle client-side interactivity", "To generate dynamic content and interact with databases", "To ensure secure data transmission over the web"],
-                answer: 2
-            },
-            {
-                question: "Which of the following is a server-side scripting language for Microsoft's ASP.NET framework?",
-                options: ["Python", "Ruby", "C#", "Java"],
-                answer: 2
-            },
-            {
-                question: "Which client-side scripting language is supported by all modern web browsers?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "What is the purpose of client-side scripting languages in web development?",
-                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To generate dynamic content and interact with databases", "To add interactivity and dynamic behavior to web pages"],
-                answer: 3
-            },
-            {
-                question: "Which client-side scripting language is primarily used for manipulating the Document Object Model (DOM) of a web page?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "Which client-side scripting language is often used for validating form inputs on web pages?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "Which client-side scripting technique allows for loading new content into a web page without a full page reload?",
-                options: ["AJAX", "JSON", "XML", "Bootstrap"],
-                answer: 0
-            },
-            {
-                question: "Which client-side framework/library is commonly used for building responsive and interactive user interfaces?",
-                options: ["jQuery", "React", "Angular", "Vue.js"],
-                answer: 1
-            },
-            {
-                question: "Which technique is used to handle communication between a web browser and a server without interrupting the user's interaction with the web page?",
-                options: ["AJAX", "JSON", "Websockets", "RESTful API"],
-                answer: 2
-            },
-            {
-                question: "Which client-side technique is used to store data locally in a user's browser?",
-                options: ["Cookies", "Local storage", "Session storage", "IndexedDB"],
-                answer: 1
-            },
-            {
-                question: "Which technique is used to optimize web page loading speed by combining and minifying multiple CSS or JavaScript files?",
-                options: ["Compression", "Caching", "Minification", "Encryption"],
-                answer: 2
-            },
-            {
-                question: "Which client-side technique is used to handle and process user interactions, such as mouse clicks or keyboard inputs?",
-                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
-                answer: 0
-            },
-            {
-                question: "Which client-side technique is used to ensure that a web page displays correctly across different devices and screen sizes?",
-                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
-                answer: 2
-            },
-            {
-                question: "Which client-side technique is used to send and receive data between a web browser and a server in JSON format?",
-                options: ["AJAX", "Websockets", "RESTful API", "Bootstrap"],
-                answer: 0
-            },
-            {
-                question: "Which client-side technique is used to enhance the user interface by providing interactive tooltips, modals, and other components?",
-                options: ["jQuery", "React", "Angular", "Vue.js"],
-                answer: 0
-            },
-            {
-                question: "Which client-side technique is used to create visually appealing and responsive layouts for web pages?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 1
-            },
-            {
-                question: "Which client-side technique is used to optimize web page loading speed by preloading resources in advance?",
-                options: ["Compression", "Minification", "Caching", "Preloading"],
-                answer: 3
-            },
-            {
-                question: "Which client-side technique is used to ensure that a web page displays correctly in different web browsers?",
-                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of HTML in web programming?",
-                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To specify the structure and content of web pages", "To add interactivity and dynamic behavior to web pages"],
-                answer: 2
-            },
-            {
-                question: "Which HTML element is used to create a heading in a web page?",
-                options: ["<p>", "<div>", "<h1>", "<a>"],
-                answer: 2
-            },
-            {
-                question: "Which HTML element is used to create a paragraph in a web page?",
-                options: ["<h1>", "<div>", "<p>", "<a>"],
-                answer: 2
-            },
-            {
-                question: "Which HTML element is used to create an unordered list in a web page?",
-                options: ["<ul>", "<li>", "<ol>", "<a>"],
-                answer: 0
-            },
-            {
-                question: "Which HTML element is used to create a link in a web page?",
-                options: ["<h1>", "<div>", "<p>", "<a>"],
-                answer: 3
-            },
-            {
-                question: "Which CSS property is used to control the spacing between elements in a web page?",
-                options: ["color", "font-size", "margin", "padding"],
-                answer: 2
-            },
-            {
-                question: "Which CSS property is used to change the color of text in a web page?",
-                options: ["color", "font-size", "margin", "padding"],
-                answer: 0
-            },
-            {
-                question: "Which CSS property is used to change the size of text in a web page?",
-                options: ["color", "font-size", "margin", "padding"],
-                answer: 1
-            },
-            {
-                question: "Which CSS property is used to align content vertically within its container?",
-                options: ["text-align", "vertical-align", "align-content", "justify-content"],
-                answer: 1
-            },
-            {
-                question: "Which CSS property is used to create a border around an element in a web page?",
-                options: ["color", "font-size", "border", "padding"],
-                answer: 2
-            },
-            {
-                question: "Which CSS property is used to control the space inside the border of an element in a web page?",
-                options: ["color", "font-size", "margin", "padding"],
-                answer: 3
-            },
-            {
-                question: "Which web technology is commonly used for managing the content of information-rich websites?",
-                options: ["HTML", "CSS", "JavaScript", "Content Management System (CMS)"],
-                answer: 3
-            },
-            {
-                question: "What is the purpose of a database in web programming?",
-                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To specify the structure and content of web pages", "To add interactivity and dynamic behavior to web pages"],
-                answer: 1
-            },
-            {
-                question: "Which SQL statement is used to retrieve data from a database?",
-                options: ["INSERT INTO", "UPDATE", "DELETE FROM", "SELECT"],
-                answer: 3
-            },
-            {
-                question: "Which programming language is commonly used for server-side scripting in web programming?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 3
-            },
-            {
-                question: "Which HTML form element is used to create a text input field?",
-                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
-                answer: 0
-            },
-            {
-                question: "Which HTML form element is used to create a checkbox?",
-                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
-                answer: 1
-            },
-            {
-                question: "Which HTML form element is used to create a radio button?",
-                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
-                answer: 2
-            },
-            {
-                question: "Which HTML form element is used to create a button that submits a form?",
-                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
-                answer: 3
-            },
-            {
-                question: "Which client-side technique is commonly used to validate form input before submitting it to the server?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "What is a client-server system in web programming?",
-                options: ["A system where the client and server are the same machine", "A system where the client and server are different machines and communicate over a network", "A system where the client and server are different browsers running on the same machine", "A system where the client and server are different web pages on the same website"],
-                answer: 1
-            },
-            {
-                question: "Which protocol is commonly used for communication between a web client and server?",
-                options: ["HTTP", "FTP", "TCP/IP", "SMTP"],
-                answer: 0
-            },
-            {
-                question: "Which method in HTTP is used to retrieve a resource from a server?",
-                options: ["GET", "POST", "PUT", "DELETE"],
-                answer: 0
-            },
-            {
-                question: "Which method in HTTP is used to send data to a server for processing?",
-                options: ["GET", "POST", "PUT", "DELETE"],
-                answer: 1
-            },
-            {
-                question: "Which HTTP status code indicates a successful request?",
-                options: ["200", "300", "400", "500"],
-                answer: 0
-            },
-            {
-                question: "Which HTTP status code indicates that the requested resource is not found on the server?",
-                options: ["200", "300", "400", "404"],
-                answer: 3
-            },
-            {
-                question: "What is concurrency in the context of client-server systems?",
-                options: ["The ability of the server to handle multiple clients simultaneously", "The ability of the client to handle multiple servers simultaneously", "The ability of the server to handle multiple requests from a single client", "The ability of the client to handle multiple requests to a single server"],
-                answer: 0
-            },
-            {
-                question: "What is a race condition in the context of concurrency?",
-                options: ["A condition where two or more clients compete to establish a connection with the server", "A condition where two or more servers compete to respond to a client request", "A condition where multiple threads or processes access shared resources in an unpredictable manner", "A condition where multiple clients send duplicate requests to the server"],
-                answer: 2
-            },
-            {
-                question: "Which synchronization technique is commonly used to prevent race conditions in client-server systems?",
-                options: ["Mutex locks", "Spinlocks", "Semaphores", "Message queues"],
-                answer: 0
-            },
-            {
-                question: "What is a callback function in the context of client-server systems?",
-                options: ["A function that is called by the server to notify the client about a completed operation", "A function that is called by the client to request a specific operation from the server", "A function that is called by the server to handle concurrent client requests", "A function that is called by the client to synchronize with the server"],
-                answer: 0
-            },
-            {
-                question: "Which protocol is commonly used for asynchronous communication between a client and server?",
-                options: ["HTTP", "FTP", "TCP/IP", "WebSocket"],
-                answer: 3
-            },
-            {
-                question: "What is long polling in client-server communication?",
-                options: ["A technique where the server continuously sends updates to the client", "A technique where the client continuously sends requests to the server for updates", "A technique where the server holds a request from the client until new data is available", "A technique where the client holds a request from the server until new data is available"],
-                answer: 2
-            },
-            {
-                question: "Which programming language is commonly used for server-side scripting in web programming?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 3
-            },
-            {
-                question: "Which programming language is commonly used for client-side scripting in web programming?",
-                options: ["HTML", "CSS", "JavaScript", "PHP"],
-                answer: 2
-            },
-            {
-                question: "Which protocol is commonly used for secure communication between a client and server?",
-                options: ["HTTP", "FTP", "TCP/IP", "HTTPS"],
-                answer: 3
-            },
-            {
-                question: "What is a load balancer in the context of client-server systems?",
-                options: ["A device that balances the load between multiple clients", "A device that balances the load between multiple servers", "A device that balances the load between the client and server", "A device that balances the load between different network protocols"],
-                answer: 1
-            },
-            {
-                question: "Which mechanism is commonly used for session management in client-server systems?",
-                options: ["Cookies", "HTML forms", "URL parameters", "Server-side caching"],
-                answer: 0
-            },
-            {
-                question: "What is AJAX in web programming?",
-                options: ["A programming language for server-side scripting", "A database management system", "A technique for asynchronous client-server communication", "A web server software"],
-                answer: 2
-            },
-            {
-                question: "What is a RESTful API?",
-                options: ["An API that supports real-time communication between client and server", "An API that uses the REST architectural style for client-server communication", "An API that only supports server-to-server communication", "An API that is used for database management"],
-                answer: 1
-            },
-            {
-                question: "What is server-side caching in client-server systems?",
-                options: ["A technique to store client-side data on the server", "A technique to store server-side data on the client", "A technique to store frequently accessed server-side data in memory for faster retrieval", "A technique to store client and server data in a separate cache server"],
-                answer: 2
-            },
-            {
-                question: "What is the purpose of normalization in database design?",
-                options: ["To increase data redundancy", "To decrease data integrity", "To eliminate data duplication", "To simplify data retrieval"],
-                answer: 2
-            },
+          
             {
                 question: "Which of the following is a primary key in a relational database?",
                 options: ["A unique identifier for a row in a table", "A foreign key from another table", "A non-unique attribute in a table", "A combination of attributes in a table"],
@@ -4344,7 +3690,662 @@
                 question: "Which of the following is an example of a type coercion or type conversion?",
                 options: ["Assigning a floating-point value to an integer variable.", "Assigning a value to an uninitialized variable.", "Declaring a variable without specifying its type.", "Using an undeclared variable in the program."],
                 answer: 0
-            }
+            },
+              {
+                question: "Which phase of the software development life cycle is responsible for gathering and analyzing user requirements?",
+                options: ["Analysis", "Design", "Development", "Testing"],
+                answer: 0
+            },
+            {
+                question: "Which design principle suggests that software components should have a single, well-defined responsibility?",
+                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
+                answer: 1
+            },
+            {
+                question: "Which of the following is an agile development methodology?",
+                options: ["Waterfall model", "Scrum", "V-model", "Spiral model"],
+                answer: 1
+            },
+            {
+                question: "Which software development approach involves breaking down a project into small, deliverable increments?",
+                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
+                answer: 1
+            },
+            {
+                question: "Which software testing technique focuses on finding defects by executing the software without knowledge of its internal structure?",
+                options: ["White-box testing", "Black-box testing", "Integration testing", "System testing"],
+                answer: 1
+            },
+            {
+                question: "Which diagramming technique is used to visualize the behavior of a software system over time?",
+                options: ["Use case diagrams", "Class diagrams", "Sequence diagrams", "State machine diagrams"],
+                answer: 2
+            },
+            {
+                question: "Which software development methodology promotes adaptive planning, evolutionary development, and continuous improvement?",
+                options: ["Waterfall model", "Agile methodology", "V-model", "Spiral model"],
+                answer: 1
+            },
+            {
+                question: "Which technique is used to represent the flow of activities and decisions in a software system?",
+                options: ["Use case modeling", "Activity diagrams", "State machine diagrams", "Component diagrams"],
+                answer: 1
+            },
+            {
+                question: "Which software development approach involves building a working version of the software system early in the development process?",
+                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
+                answer: 2
+            },
+            {
+                question: "Which testing technique focuses on testing the interaction between different components or modules of a software system?",
+                options: ["Unit testing", "Integration testing", "System testing", "Regression testing"],
+                answer: 1
+            },
+            {
+                question: "Which design principle suggests that software entities should depend on abstractions, not on concrete implementations?",
+                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
+                answer: 1
+            },
+            {
+                question: "Which software development approach follows a linear, sequential flow from requirements gathering to testing and maintenance?",
+                options: ["Waterfall model", "Agile methodology", "Prototype model", "Spiral model"],
+                answer: 0
+            },
+            {
+                question: "Which technique is used to estimate the size and complexity of a software project?",
+                options: ["Use case modeling", "Storyboarding", "Function point analysis", "Pair programming"],
+                answer: 2
+            },
+            {
+                question: "Which tool is used to track and manage software issues, bugs, and tasks throughout the development process?",
+                options: ["Git", "Jira", "Jenkins", "Docker"],
+                answer: 1
+            },
+            {
+                question: "Which design principle suggests that software entities should be open for extension but closed for modification?",
+                options: ["DRY (Don't Repeat Yourself) principle", "SOLID principle", "KISS (Keep It Simple, Stupid) principle", "YAGNI (You Ain't Gonna Need It) principle"],
+                answer: 1
+            },
+            {
+                question: "Which technique is used to represent the static structure of a software system, including classes, relationships, and attributes?",
+                options: ["Use case diagrams", "Class diagrams", "Sequence diagrams", "State machine diagrams"],
+                answer: 1
+            },
+            {
+                question: "Which software development methodology involves regular and frequent communication between developers and stakeholders?",
+                options: ["Waterfall model", "Agile methodology", "V-model", "Spiral model"],
+                answer: 1
+            },
+            {
+                question: "Which technique is used to capture and document user requirements in a structured manner?",
+                options: ["Use case modeling", "Storyboarding", "Wireframing", "Pair programming"],
+                answer: 0
+            },
+            {
+                question: "Which testing technique focuses on retesting modified or affected parts of the software to ensure that changes do not introduce new defects?",
+                options: ["Unit testing", "Integration testing", "Regression testing", "System testing"],
+                answer: 2
+            },
+            {
+                question: "Which tool is used to package an application and its dependencies into a container for easy deployment and scalability?",
+                options: ["Git", "Jira", "Jenkins", "Docker"],
+                answer: 3
+            },
+            {
+                question: "Which phase of the software development life cycle (SDLC) focuses on gathering and understanding user requirements?",
+                options: ["Analysis", "Design", "Implementation", "Testing"],
+                answer: 0
+            },
+            {
+                question: "What is the primary goal of software design?",
+                options: ["To create a visually appealing user interface", "To optimize the performance of the software system", "To translate user requirements into a detailed plan", "To develop and test individual software components"],
+                answer: 2
+            },
+            {
+                question: "Which software development approach emphasizes frequent iterations, collaboration, and responsiveness to change?",
+                options: ["Waterfall methodology", "Agile methodology", "Spiral model", "V-model"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of modularization in software design?",
+                options: ["To improve the readability of the code", "To ensure efficient memory management", "To facilitate code reuse and maintenance", "To minimize the number of software defects"],
+                answer: 2
+            },
+            {
+                question: "Which type of testing aims to uncover defects in the interaction between different components of a software system?",
+                options: ["Unit testing", "Integration testing", "System testing", "Acceptance testing"],
+                answer: 1
+            },
+            {
+                question: "Which programming paradigm is based on the concept of objects and their interactions?",
+                options: ["Functional programming", "Procedural programming", "Object-oriented programming", "Event-driven programming"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of version control systems in software development?",
+                options: ["To manage project schedules and milestones", "To facilitate collaboration among team members", "To track and control changes to source code and files", "To automate the testing and deployment processes"],
+                answer: 2
+            },
+            {
+                question: "Which software development methodology follows a sequential flow, with each phase being completed before moving to the next?",
+                options: ["Waterfall model", "Agile methodology", "Scrum", "Kanban"],
+                answer: 0
+            },
+            {
+                question: "What is the primary purpose of software documentation?",
+                options: ["To serve as a record of code authorship", "To provide instructions for end-users", "To assist in software maintenance and understanding", "To ensure compliance with coding standards"],
+                answer: 2
+            },
+            {
+                question: "Which software development approach involves building small, incremental releases of the software system?",
+                options: ["Waterfall model", "Agile methodology", "Big Bang model", "Code-and-Fix model"],
+                answer: 1
+            },
+            {
+                question: "Which design principle advocates for designing software components that have a single responsibility?",
+                options: ["Open/Closed Principle", "Single Responsibility Principle", "Liskov Substitution Principle", "Dependency Inversion Principle"],
+                answer: 1
+            },
+            {
+                question: "Which design pattern is used to ensure that only one instance of a class is created throughout the system?",
+                options: ["Singleton pattern", "Factory pattern", "Observer pattern", "Decorator pattern"],
+                answer: 0
+            },
+            {
+                question: "Which type of testing focuses on evaluating the behavior of a software system under normal operating conditions?",
+                options: ["Stress testing", "Performance testing", "Functional testing", "Usability testing"],
+                answer: 2
+            },
+            {
+                question: "Which programming paradigm promotes the use of data and avoids side effects?",
+                options: ["Functional programming", "Procedural programming", "Object-oriented programming", "Event-driven programming"],
+                answer: 0
+            },
+            {
+                question: "Which type of software maintenance involves making changes to a software system to adapt it to new environments or technologies?",
+                options: ["Corrective maintenance", "Adaptive maintenance", "Perfective maintenance", "Preventive maintenance"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of usability testing in software development?",
+                options: ["To evaluate the performance of the software system under stress conditions", "To assess the user-friendliness and ease of use of the software system", "To verify the compliance of the software system with specified requirements", "To identify and fix defects or issues in the software system"],
+                answer: 1
+            },
+            {
+                question: "Which software development methodology involves iterative development cycles called sprints?",
+                options: ["Waterfall model", "Agile methodology", "Spiral model", "V-Model"],
+                answer: 1
+            },
+            {
+                question: "What is the primary purpose of code refactoring?",
+                options: ["To add new features to the software system", "To optimize the performance of the software system", "To improve the readability and maintainability of the code", "To fix defects or issues in the software system"],
+                answer: 2
+            },
+            {
+                question: "Which software development approach focuses on involving end-users in the development process through continuous feedback and collaboration?",
+                options: ["Waterfall model", "Agile methodology", "Big Bang model", "Code-and-Fix model"],
+                answer: 1
+            },
+            {
+                question: "Which type of testing involves running the entire software system in an environment that closely resembles the production environment?",
+                options: ["Unit testing", "Integration testing", "System testing", "Acceptance testing"],
+                answer: 2
+            },
+            {
+                question: "What is a use case in use case modeling?",
+                options: ["A description of a specific user interface design", "A step-by-step procedure for software installation", "A sequence of activities performed by a user or system", "A diagram that represents the relationships between software components"],
+                answer: 2
+            },
+            {
+                question: "What is an actor in use case modeling?",
+                options: ["A component that performs specific actions in a software system", "A person or another system that interacts with the software system", "A diagram that represents the flow of activities in a use case", "A description of a specific user role in the software system"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of an include relationship between use cases?",
+                options: ["To represent the reuse of common steps between use cases", "To represent optional steps within a use case", "To represent the extension of a use case with additional steps", "To represent the relationship between actors and use cases"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of an extend relationship between use cases?",
+                options: ["To represent the reuse of common steps between use cases", "To represent optional steps within a use case", "To represent the extension of a use case with additional steps", "To represent the relationship between actors and use cases"],
+                answer: 2
+            },
+            {
+                question: "Which diagram is commonly used to visualize the relationships between actors and use cases in use case modeling?",
+                options: ["Class diagram", "Use case diagram", "Activity diagram", "Sequence diagram"],
+                answer: 1
+            },
+            {
+                question: "What is the purpose of an abstract use case?",
+                options: ["To represent a use case that is not yet fully defined", "To represent a use case that is optional in the system", "To represent a use case that cannot be accessed directly by an actor", "To represent a use case that is reused by other use cases"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of an exception flow in a use case?",
+                options: ["To represent an error or exceptional situation in the use case", "To represent an alternative path within the use case", "To represent the termination of the use case", "To represent the relationship between primary and secondary actors"],
+                answer: 0
+            },
+            {
+                question: "What is the primary goal of use case modeling?",
+                options: ["To define the software architecture of the system", "To identify and document user requirements", "To design the user interface of the system", "To implement the functionality of the system"],
+                answer: 1
+            },
+            {
+                question: "What is an alternative flow in a use case?",
+                options: ["A flowchart representation of the use case steps", "A flow of activities that occurs in parallel with the main flow", "A different sequence of steps based on specific conditions", "A representation of the relationship between use cases"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of a use case diagram?",
+                options: ["To describe the behavior of a use case in detail", "To represent the internal structure of a use case", "To visualize the relationships between actors and use cases", "To represent the flow of activities within a use case"],
+                answer: 2
+            },
+            {
+                question: "What is the primary markup language used for structuring content on the web?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of CSS in web development?",
+                options: ["To define the structure and layout of web pages", "To add interactivity and dynamic behavior to web pages", "To control the visual appearance of web pages", "To handle server-side processing and database interactions"],
+                answer: 2
+            },
+            {
+                question: "Which programming language is primarily used for client-side scripting in web development?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "Which protocol is used for transferring data over the web?",
+                options: ["HTTP", "FTP", "TCP/IP", "SMTP"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of a web server in web development?",
+                options: ["To store and manage website files", "To handle client-side scripting", "To control the visual appearance of web pages", "To ensure secure data transmission over the web"],
+                answer: 0
+            },
+            {
+                question: "Which of the following is a popular open-source database management system used in web development?",
+                options: ["MySQL", "Oracle", "SQL Server", "MongoDB"],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of a cookie in web development?",
+                options: ["To store and retrieve user preferences and session information", "To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web"],
+                answer: 0
+            },
+            {
+                question: "Which programming language is used for server-side scripting in web development?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of a framework in web development?",
+                options: ["To ensure secure data transmission over the web", "To control the visual appearance of web pages", "To provide a foundation and structure for developing web applications", "To handle client-side scripting"],
+                answer: 2
+            },
+            {
+                question: "Which programming language is often used for building scalable and high-performance web applications?",
+                options: ["HTML", "CSS", "JavaScript", "Node.js"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of AJAX in web development?",
+                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To enable asynchronous communication between the client and server"],
+                answer: 3
+            },
+            {
+                question: "Which format is commonly used for data interchange between a web server and a web application?",
+                options: ["HTML", "CSS", "JSON", "XML"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of a content management system (CMS) in web development?",
+                options: ["To store and manage website files", "To control the visual appearance of web pages", "To handle client-side scripting", "To provide a user-friendly interface for managing website content"],
+                answer: 3
+            },
+            {
+                question: "Which technique is used to improve the performance of web applications by caching frequently accessed data or resources?",
+                options: ["Compression", "Minification", "Caching", "Encryption"],
+                answer: 2
+            },
+            {
+                question: "Which protocol is used for secure communication over the web?",
+                options: ["HTTP", "FTP", "TCP/IP", "HTTPS"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of a RESTful API in web development?",
+                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To provide a standardized interface for accessing and manipulating web resources"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of responsive web design?",
+                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To create websites that adapt and display correctly on different devices and screen sizes"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of version control systems (VCS) in web development?",
+                options: ["To control the visual appearance of web pages", "To handle client-side scripting", "To ensure secure data transmission over the web", "To track changes to source code and collaborate on web development projects"],
+                answer: 3
+            },
+            {
+                question: "Which web development concept refers to the practice of optimizing a website to rank higher in search engine results?",
+                options: ["Accessibility", "Usability", "SEO (Search Engine Optimization)", "Performance optimization"],
+                answer: 2
+            },
+            {
+                question: "Which technique is used to protect web applications against common security vulnerabilities, such as cross-site scripting (XSS) and SQL injection?",
+                options: ["Encryption", "Authentication", "Authorization", "Web application security testing"],
+                answer: 3
+            },
+            {
+                question: "Which server-side scripting language is commonly used for web development?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 3
+            },
+            {
+                question: "Which server-side scripting language is often used for building scalable and high-performance web applications?",
+                options: ["HTML", "CSS", "JavaScript", "Node.js"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of server-side scripting languages in web development?",
+                options: ["To control the visual appearance of web pages", "To handle client-side interactivity", "To generate dynamic content and interact with databases", "To ensure secure data transmission over the web"],
+                answer: 2
+            },
+            {
+                question: "Which of the following is a server-side scripting language for Microsoft's ASP.NET framework?",
+                options: ["Python", "Ruby", "C#", "Java"],
+                answer: 2
+            },
+            {
+                question: "Which client-side scripting language is supported by all modern web browsers?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of client-side scripting languages in web development?",
+                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To generate dynamic content and interact with databases", "To add interactivity and dynamic behavior to web pages"],
+                answer: 3
+            },
+            {
+                question: "Which client-side scripting language is primarily used for manipulating the Document Object Model (DOM) of a web page?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "Which client-side scripting language is often used for validating form inputs on web pages?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "Which client-side scripting technique allows for loading new content into a web page without a full page reload?",
+                options: ["AJAX", "JSON", "XML", "Bootstrap"],
+                answer: 0
+            },
+            {
+                question: "Which client-side framework/library is commonly used for building responsive and interactive user interfaces?",
+                options: ["jQuery", "React", "Angular", "Vue.js"],
+                answer: 1
+            },
+            {
+                question: "Which technique is used to handle communication between a web browser and a server without interrupting the user's interaction with the web page?",
+                options: ["AJAX", "JSON", "Websockets", "RESTful API"],
+                answer: 2
+            },
+            {
+                question: "Which client-side technique is used to store data locally in a user's browser?",
+                options: ["Cookies", "Local storage", "Session storage", "IndexedDB"],
+                answer: 1
+            },
+            {
+                question: "Which technique is used to optimize web page loading speed by combining and minifying multiple CSS or JavaScript files?",
+                options: ["Compression", "Caching", "Minification", "Encryption"],
+                answer: 2
+            },
+            {
+                question: "Which client-side technique is used to handle and process user interactions, such as mouse clicks or keyboard inputs?",
+                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
+                answer: 0
+            },
+            {
+                question: "Which client-side technique is used to ensure that a web page displays correctly across different devices and screen sizes?",
+                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
+                answer: 2
+            },
+            {
+                question: "Which client-side technique is used to send and receive data between a web browser and a server in JSON format?",
+                options: ["AJAX", "Websockets", "RESTful API", "Bootstrap"],
+                answer: 0
+            },
+            {
+                question: "Which client-side technique is used to enhance the user interface by providing interactive tooltips, modals, and other components?",
+                options: ["jQuery", "React", "Angular", "Vue.js"],
+                answer: 0
+            },
+            {
+                question: "Which client-side technique is used to create visually appealing and responsive layouts for web pages?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 1
+            },
+            {
+                question: "Which client-side technique is used to optimize web page loading speed by preloading resources in advance?",
+                options: ["Compression", "Minification", "Caching", "Preloading"],
+                answer: 3
+            },
+            {
+                question: "Which client-side technique is used to ensure that a web page displays correctly in different web browsers?",
+                options: ["Event handling", "Form validation", "Responsive design", "Browser compatibility"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of HTML in web programming?",
+                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To specify the structure and content of web pages", "To add interactivity and dynamic behavior to web pages"],
+                answer: 2
+            },
+            {
+                question: "Which HTML element is used to create a heading in a web page?",
+                options: ["<p>", "<div>", "<h1>", "<a>"],
+                answer: 2
+            },
+            {
+                question: "Which HTML element is used to create a paragraph in a web page?",
+                options: ["<h1>", "<div>", "<p>", "<a>"],
+                answer: 2
+            },
+            {
+                question: "Which HTML element is used to create an unordered list in a web page?",
+                options: ["<ul>", "<li>", "<ol>", "<a>"],
+                answer: 0
+            },
+            {
+                question: "Which HTML element is used to create a link in a web page?",
+                options: ["<h1>", "<div>", "<p>", "<a>"],
+                answer: 3
+            },
+            {
+                question: "Which CSS property is used to control the spacing between elements in a web page?",
+                options: ["color", "font-size", "margin", "padding"],
+                answer: 2
+            },
+            {
+                question: "Which CSS property is used to change the color of text in a web page?",
+                options: ["color", "font-size", "margin", "padding"],
+                answer: 0
+            },
+            {
+                question: "Which CSS property is used to change the size of text in a web page?",
+                options: ["color", "font-size", "margin", "padding"],
+                answer: 1
+            },
+            {
+                question: "Which CSS property is used to align content vertically within its container?",
+                options: ["text-align", "vertical-align", "align-content", "justify-content"],
+                answer: 1
+            },
+            {
+                question: "Which CSS property is used to create a border around an element in a web page?",
+                options: ["color", "font-size", "border", "padding"],
+                answer: 2
+            },
+            {
+                question: "Which CSS property is used to control the space inside the border of an element in a web page?",
+                options: ["color", "font-size", "margin", "padding"],
+                answer: 3
+            },
+            {
+                question: "Which web technology is commonly used for managing the content of information-rich websites?",
+                options: ["HTML", "CSS", "JavaScript", "Content Management System (CMS)"],
+                answer: 3
+            },
+            {
+                question: "What is the purpose of a database in web programming?",
+                options: ["To control the visual appearance of web pages", "To handle server-side processing and database interactions", "To specify the structure and content of web pages", "To add interactivity and dynamic behavior to web pages"],
+                answer: 1
+            },
+            {
+                question: "Which SQL statement is used to retrieve data from a database?",
+                options: ["INSERT INTO", "UPDATE", "DELETE FROM", "SELECT"],
+                answer: 3
+            },
+            {
+                question: "Which programming language is commonly used for server-side scripting in web programming?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 3
+            },
+            {
+                question: "Which HTML form element is used to create a text input field?",
+                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
+                answer: 0
+            },
+            {
+                question: "Which HTML form element is used to create a checkbox?",
+                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
+                answer: 1
+            },
+            {
+                question: "Which HTML form element is used to create a radio button?",
+                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
+                answer: 2
+            },
+            {
+                question: "Which HTML form element is used to create a button that submits a form?",
+                options: ["<input type=\"text\">", "<input type=\"checkbox\">", "<input type=\"radio\">", "<input type=\"submit\">"],
+                answer: 3
+            },
+            {
+                question: "Which client-side technique is commonly used to validate form input before submitting it to the server?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "What is a client-server system in web programming?",
+                options: ["A system where the client and server are the same machine", "A system where the client and server are different machines and communicate over a network", "A system where the client and server are different browsers running on the same machine", "A system where the client and server are different web pages on the same website"],
+                answer: 1
+            },
+            {
+                question: "Which protocol is commonly used for communication between a web client and server?",
+                options: ["HTTP", "FTP", "TCP/IP", "SMTP"],
+                answer: 0
+            },
+            {
+                question: "Which method in HTTP is used to retrieve a resource from a server?",
+                options: ["GET", "POST", "PUT", "DELETE"],
+                answer: 0
+            },
+            {
+                question: "Which method in HTTP is used to send data to a server for processing?",
+                options: ["GET", "POST", "PUT", "DELETE"],
+                answer: 1
+            },
+            {
+                question: "Which HTTP status code indicates a successful request?",
+                options: ["200", "300", "400", "500"],
+                answer: 0
+            },
+            {
+                question: "Which HTTP status code indicates that the requested resource is not found on the server?",
+                options: ["200", "300", "400", "404"],
+                answer: 3
+            },
+            {
+                question: "What is concurrency in the context of client-server systems?",
+                options: ["The ability of the server to handle multiple clients simultaneously", "The ability of the client to handle multiple servers simultaneously", "The ability of the server to handle multiple requests from a single client", "The ability of the client to handle multiple requests to a single server"],
+                answer: 0
+            },
+            {
+                question: "What is a race condition in the context of concurrency?",
+                options: ["A condition where two or more clients compete to establish a connection with the server", "A condition where two or more servers compete to respond to a client request", "A condition where multiple threads or processes access shared resources in an unpredictable manner", "A condition where multiple clients send duplicate requests to the server"],
+                answer: 2
+            },
+            {
+                question: "Which synchronization technique is commonly used to prevent race conditions in client-server systems?",
+                options: ["Mutex locks", "Spinlocks", "Semaphores", "Message queues"],
+                answer: 0
+            },
+            {
+                question: "What is a callback function in the context of client-server systems?",
+                options: ["A function that is called by the server to notify the client about a completed operation", "A function that is called by the client to request a specific operation from the server", "A function that is called by the server to handle concurrent client requests", "A function that is called by the client to synchronize with the server"],
+                answer: 0
+            },
+            {
+                question: "Which protocol is commonly used for asynchronous communication between a client and server?",
+                options: ["HTTP", "FTP", "TCP/IP", "WebSocket"],
+                answer: 3
+            },
+            {
+                question: "What is long polling in client-server communication?",
+                options: ["A technique where the server continuously sends updates to the client", "A technique where the client continuously sends requests to the server for updates", "A technique where the server holds a request from the client until new data is available", "A technique where the client holds a request from the server until new data is available"],
+                answer: 2
+            },
+            {
+                question: "Which programming language is commonly used for server-side scripting in web programming?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 3
+            },
+            {
+                question: "Which programming language is commonly used for client-side scripting in web programming?",
+                options: ["HTML", "CSS", "JavaScript", "PHP"],
+                answer: 2
+            },
+            {
+                question: "Which protocol is commonly used for secure communication between a client and server?",
+                options: ["HTTP", "FTP", "TCP/IP", "HTTPS"],
+                answer: 3
+            },
+            {
+                question: "What is a load balancer in the context of client-server systems?",
+                options: ["A device that balances the load between multiple clients", "A device that balances the load between multiple servers", "A device that balances the load between the client and server", "A device that balances the load between different network protocols"],
+                answer: 1
+            },
+            {
+                question: "Which mechanism is commonly used for session management in client-server systems?",
+                options: ["Cookies", "HTML forms", "URL parameters", "Server-side caching"],
+                answer: 0
+            },
+            {
+                question: "What is AJAX in web programming?",
+                options: ["A programming language for server-side scripting", "A database management system", "A technique for asynchronous client-server communication", "A web server software"],
+                answer: 2
+            },
+            {
+                question: "What is a RESTful API?",
+                options: ["An API that supports real-time communication between client and server", "An API that uses the REST architectural style for client-server communication", "An API that only supports server-to-server communication", "An API that is used for database management"],
+                answer: 1
+            },
+            {
+                question: "What is server-side caching in client-server systems?",
+                options: ["A technique to store client-side data on the server", "A technique to store server-side data on the client", "A technique to store frequently accessed server-side data in memory for faster retrieval", "A technique to store client and server data in a separate cache server"],
+                answer: 2
+            },
+            {
+                question: "What is the purpose of normalization in database design?",
+                options: ["To increase data redundancy", "To decrease data integrity", "To eliminate data duplication", "To simplify data retrieval"],
+                answer: 2
+            },
         ];
 
         let currentQuestionIndex = 0;
