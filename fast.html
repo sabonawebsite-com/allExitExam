@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Quiz</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+            border-color: var(--primary-color);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option.correct {
+            background-color: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .option.incorrect {
+            background-color: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #ddd;
+        }
+
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .results-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Computer Science Quiz</h1>
+            <p>Test your knowledge of networking, algorithms, and OOP concepts</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="quiz-info">
+            <div class="question-count" id="question-count">Question 1 of 30</div>
+            <div class="score-display" id="score-display">Score: 0</div>
+        </div>
+
+        <div class="quiz-content" id="quiz-content">
+            <!-- Question and options will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button class="btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn-primary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data from the provided file
+        const quizData = [
+            {
+                "question": "Which OSI layer is responsible for logical addressing (IP addresses) and routing data packets across different networks?",
+                "options": [
+                    "a) Transport Layer",
+                    "b) Data Link Layer",
+                    "c) Network Layer",
+                    "d) Application Layer"
+                ],
+                "answer": "c) Network Layer"
+            },
+            {
+                "question": "What is the primary function of the Transport Layer (OSI Layer 4)?",
+                "options": [
+                    "a) Converting bits into electrical signals.",
+                    "b) Managing communication sessions between applications.",
+                    "c) Providing reliable (or unreliable) end-to-end data transfer between applications.",
+                    "d) Handling physical addressing (MAC addresses)."
+                ],
+                "answer": "c) Providing reliable (or unreliable) end-to-end data transfer between applications."
+            },
+            {
+                "question": "Which protocol operates at the Transport Layer and provides connection-oriented, reliable, and ordered delivery of data?",
+                "options": [
+                    "a) UDP",
+                    "b) IP",
+                    "c) HTTP",
+                    "d) TCP"
+                ],
+                "answer": "d) TCP"
+            },
+            {
+                "question": "In the TCP/IP model, which layer combines the functionalities of the OSI model's Session, Presentation, and Application layers?",
+                "options": [
+                    "a) Transport Layer",
+                    "b) Internet Layer",
+                    "c) Network Access Layer",
+                    "d) Application Layer"
+                ],
+                "answer": "d) Application Layer"
+            },
+            {
+                "question": "What is the main role of the Physical Layer (OSI Layer 1)?",
+                "options": [
+                    "a) Establishing communication sessions.",
+                    "b) Defining data formats and encryption.",
+                    "c) Transmitting raw bit streams over the physical medium.",
+                    "d) Handling logical addressing."
+                ],
+                "answer": "c) Transmitting raw bit streams over the physical medium."
+            },
+            {
+                "question": "Which protocol is primarily used for web Browse and is part of the Application Layer?",
+                "options": [
+                    "a) FTP",
+                    "b) SMTP",
+                    "c) HTTP",
+                    "d) ICMP"
+                ],
+                "answer": "c) HTTP"
+            },
+            {
+                "question": "The Data Link Layer (OSI Layer 2) is responsible for:",
+                "options": [
+                    "a) Determining the best path for data across multiple networks.",
+                    "b) Providing network services directly to end-user applications.",
+                    "c) Handling physical addressing (MAC addresses) and framing within a local network segment.",
+                    "d) Managing flow control and congestion control across the internet."
+                ],
+                "answer": "c) Handling physical addressing (MAC addresses) and framing within a local network segment."
+            },
+            {
+                "question": "When UDP is used for communication, what characteristic does it offer compared to TCP?",
+                "options": [
+                    "a) Guaranteed delivery of packets.",
+                    "b) Connection-oriented communication.",
+                    "c) Faster but unreliable data transfer.",
+                    "d) Automatic retransmission of lost data."
+                ],
+                "answer": "c) Faster but unreliable data transfer."
+            },
+            {
+                "question": "Which layer of the OSI model deals with the syntax and semantics of data, often including encryption and compression?",
+                "options": [
+                    "a) Application Layer",
+                    "b) Presentation Layer",
+                    "c) Session Layer",
+                    "d) Physical Layer"
+                ],
+                "answer": "b) Presentation Layer"
+            },
+            {
+                "question": "What defines the rules and standards for how data is formatted, transmitted, and received in a network?",
+                "options": [
+                    "a) Hardware",
+                    "b) Operating System",
+                    "c) Protocols",
+                    "d) Cables"
+                ],
+                "answer": "c) Protocols"
+            },
+            {
+                "question": "What is the defining characteristic of a Local Area Network (LAN)?",
+                "options": [
+                    "a) It spans across continents.",
+                    "b) It interconnects devices within a limited geographic area.",
+                    "c) It uses satellite communication exclusively.",
+                    "d) It is always publicly owned."
+                ],
+                "answer": "b) It interconnects devices within a limited geographic area."
+            },
+            {
+                "question": "In a modern Ethernet LAN, what device intelligently forwards data frames to the intended destination port based on MAC addresses, creating separate collision domains for each port?",
+                "options": [
+                    "a) Hub",
+                    "b) Router",
+                    "c) Switch",
+                    "d) Modem"
+                ],
+                "answer": "c) Switch"
+            },
+            {
+                "question": "What is the 48-bit unique hardware address used to identify devices within a LAN segment at the Data Link Layer?",
+                "options": [
+                    "a) IP address",
+                    "b) Port number",
+                    "c) MAC address",
+                    "d) SSID"
+                ],
+                "answer": "c) MAC address"
+            },
+            {
+                "question": "What is the primary method used by Wi-Fi (IEEE 802.11) to manage access to the wireless medium and avoid collisions?",
+                "options": [
+                    "a) CSMA/CD",
+                    "b) Token Ring",
+                    "c) Full Duplex",
+                    "d) CSMA/CA"
+                ],
+                "answer": "d) CSMA/CA"
+            },
+            {
+                "question": "An Access Point (AP) in a Wi-Fi network primarily functions at which OSI layer to bridge wireless devices to a wired network?",
+                "options": [
+                    "a) Physical Layer (Layer 1)",
+                    "b) Data Link Layer (Layer 2)",
+                    "c) Network Layer (Layer 3)",
+                    "d) Application Layer (Layer 7)"
+                ],
+                "answer": "b) Data Link Layer (Layer 2)"
+            },
+            {
+                "question": "What is the primary disadvantage of using an old Ethernet Hub instead of a Switch?",
+                "options": [
+                    "a) It requires more power.",
+                    "b) It cannot connect to the internet.",
+                    "c) It creates a single, larger collision domain.",
+                    "d) It only supports wireless connections."
+                ],
+                "answer": "c) It creates a single, larger collision domain."
+            },
+            {
+                "question": "Which device is responsible for connecting different networks (e.g., your LAN to the internet) and forwarding data packets between them based on IP addresses?",
+                "options": [
+                    "a) Network Interface Card (NIC)",
+                    "b) Switch",
+                    "c) Router",
+                    "d) Hub"
+                ],
+                "answer": "c) Router"
+            },
+            {
+                "question": "What is the name of a Wi-Fi network that devices connect to?",
+                "options": [
+                    "a) IP Address",
+                    "b) MAC Address",
+                    "c) SSID",
+                    "d) Gateway"
+                ],
+                "answer": "c) SSID"
+            },
+            {
+                "question": "In the context of LANs, what does \"Full Duplex\" communication mean?",
+                "options": [
+                    "a) Data can only be sent in one direction at a time.",
+                    "b) Data can be sent and received simultaneously.",
+                    "c) Data can only be sent to one device at a time.",
+                    "d) Data is encrypted before transmission."
+                ],
+                "answer": "b) Data can be sent and received simultaneously."
+            },
+            {
+                "question": "What is the role of an NIC (Network Interface Card) in a device?",
+                "options": [
+                    "a) To route packets between different networks.",
+                    "b) To manage the entire network's services.",
+                    "c) To physically connect the device to the network and transmit/receive data.",
+                    "d) To define the rules for data communication."
+                ],
+                "answer": "c) To physically connect the device to the network and transmit/receive data."
+            },
+            {
+                "question": "Which of the following is the primary goal of Algorithm Analysis?",
+                "options": [
+                    "a) To write code that runs on all operating systems.",
+                    "b) To prove that an algorithm is perfectly bug-free.",
+                    "c) To evaluate an algorithm's performance (time and space) as input size grows.",
+                    "d) To generate random outputs for testing purposes."
+                ],
+                "answer": "c) To evaluate an algorithm's performance (time and space) as input size grows."
+            },
+            {
+                "question": "What does Big O Notation primarily describe?",
+                "options": [
+                    "a) The exact running time of an algorithm in milliseconds.",
+                    "b) The maximum memory an algorithm will ever consume.",
+                    "c) The asymptotic upper bound of an algorithm's growth rate.",
+                    "d) The number of lines of code in an algorithm."
+                ],
+                "answer": "c) The asymptotic upper bound of an algorithm's growth rate."
+            },
+            {
+                "question": "An algorithm with a time complexity of O(N^2) would typically involve:",
+                "options": [
+                    "a) A single loop iterating through the input once.",
+                    "b) A process that halves the input size at each step.",
+                    "c) Nested loops where each iterates up to N times.",
+                    "d) A constant number of operations regardless of input size."
+                ],
+                "answer": "c) Nested loops where each iterates up to N times."
+            },
+            {
+                "question": "Which algorithm design paradigm involves breaking a problem into smaller subproblems of the same type, solving them independently, and combining their solutions?",
+                "options": [
+                    "a) Greedy",
+                    "b) Dynamic Programming",
+                    "c) Backtracking",
+                    "d) Divide and Conquer"
+                ],
+                "answer": "d) Divide and Conquer"
+            },
+            {
+                "question": "Dynamic Programming is typically used when:",
+                "options": [
+                    "a) The problem has no clear structure.",
+                    "b) A recursive solution has overlapping subproblems.",
+                    "c) Only the locally optimal choice is needed.",
+                    "d) Random decisions are made during execution."
+                ],
+                "answer": "b) A recursive solution has overlapping subproblems."
+            },
+            {
+                "question": "Which data structure is best suited for implementing a Last-In, First-Out (LIFO) behavior?",
+                "options": [
+                    "a) Queue",
+                    "b) Linked List",
+                    "c) Stack",
+                    "d) Hash Table"
+                ],
+                "answer": "c) Stack"
+            },
+            {
+                "question": "The Master Theorem is primarily used to:",
+                "options": [
+                    "a) Prove the correctness of iterative algorithms.",
+                    "b) Solve recurrence relations for the time complexity of recursive algorithms.",
+                    "c) Determine the optimal choice in a greedy algorithm.",
+                    "d) Analyze the space complexity of graph algorithms."
+                ],
+                "answer": "b) Solve recurrence relations for the time complexity of recursive algorithms."
+            },
+            {
+                "question": "What is a Loop Invariant used for in algorithm analysis?",
+                "options": [
+                    "a) To determine the average case time complexity.",
+                    "b) To prove the correctness of an iterative algorithm.",
+                    "c) To analyze the best case scenario for a recursive function.",
+                    "d) To ensure that all variables remain constant throughout a loop."
+                ],
+                "answer": "b) To prove the correctness of an iterative algorithm."
+            },
+            {
+                "question": "Which of the following algorithms is an example of a Greedy Algorithm?",
+                "options": [
+                    "a) Merge Sort",
+                    "b) Dijkstra's Algorithm (for shortest path on non-negative weights)",
+                    "c) Fibonacci sequence calculation (using recursion without memoization)",
+                    "d) N-Queens Problem"
+                ],
+                "answer": "b) Dijkstra's Algorithm (for shortest path on non-negative weights)"
+            },
+            {
+                "question": "If an algorithm takes O(logN) time, it means its execution time:",
+                "options": [
+                    "a) Grows linearly with the input size.",
+                    "b) Grows exponentially with the input size.",
+                    "c) Is constant regardless of input size.",
+                    "d) Reduces significantly as the input size increases (logarithmic growth)."
+                ],
+                "answer": "d) Reduces significantly as the input size increases (logarithmic growth)."
+            },
+            {
+                "question": "What is a Class in OOP?",
+                "options": [
+                    "a) An instance of an object.",
+                    "b) A set of data without any associated behavior.",
+                    "c) A blueprint or template for creating objects.",
+                    "d) A function that operates on global variables."
+                ],
+                "answer": "c) A blueprint or template for creating objects."
+            },
+            {
+                "question": "The concept of bundling data (attributes) and methods (functions) that operate on that data within a single unit is known as:",
+                "options": [
+                    "a) Inheritance",
+                    "b) Polymorphism",
+                    "c) Abstraction",
+                    "d) Encapsulation"
+                ],
+                "answer": "d) Encapsulation"
+            },
+            {
+                "question": "Which OOP principle describes the ability of a new class to inherit properties and behaviors from an existing class, establishing an \"is-a\" relationship?",
+                "options": [
+                    "a) Encapsulation",
+                    "b) Polymorphism",
+                    "c) Inheritance",
+                    "d) Abstraction"
+                ],
+                "answer": "c) Inheritance"
+            },
+            {
+                "question": "What is an Object in OOP?",
+                "options": [
+                    "a) A concept or idea that defines a type.",
+                    "b) A concrete instance of a class.",
+                    "c) A method defined within a class.",
+                    "d) A global variable accessible by all classes."
+                ],
+                "answer": "b) A concrete instance of a class."
+            },
+            {
+                "question": "Polymorphism (specifically method overriding) allows:",
+                "options": [
+                    "a) A class to have multiple constructors.",
+                    "b) An object to have multiple different data types simultaneously.",
+                    "c) Different classes to respond to the same method call in their own specific way.",
+                    "d) Methods to access private attributes of other objects."
+                ],
+                "answer": "c) Different classes to respond to the same method call in their own specific way."
+            },
+            {
+                "question": "If Dog inherits from Animal, and Animal has a make_sound() method, which Dog provides its own implementation for, this is an example of:",
+                "options": [
+                    "a) Encapsulation",
+                    "b) Method Overloading",
+                    "c) Method Overriding",
+                    "d) Data Hiding"
+                ],
+                "answer": "c) Method Overriding"
+            },
+            {
+                "question": "Which of the following is NOT a primary benefit of using Object-Oriented Programming?",
+                "options": [
+                    "a) Code Reusability",
+                    "b) Modularity",
+                    "c) Global Variable Simplicity",
+                    "d) Easier Maintenance and Extension"
+                ],
+                "answer": "c) Global Variable Simplicity"
+            },
+            {
+                "question": "You are designing a system for different types of vehicles: Car, Bicycle, Motorcycle. All vehicles have a speed and can move(). Which OOP principle would you primarily use to model this shared behavior and specific differences?",
+                "options": [
+                    "a) Encapsulation",
+                    "b) Polymorphism and Inheritance",
+                    "c) Only Encapsulation",
+                    "d) Pure Brute Force (no OOP)"
+                ],
+                "answer": "b) Polymorphism and Inheritance"
+            },
+            {
+                "question": "In OOP, when you make attributes of a class private (or use conventions like __ in Python to indicate \"private\"), you are primarily applying the principle of:",
+                "options": [
+                    "a) Polymorphism",
+                    "b) Inheritance",
+                    "c) Data Hiding (part of Encapsulation)",
+                    "d) Abstraction"
+                ],
+                "answer": "c) Data Hiding (part of Encapsulation)"
+            },
+            {
+                "question": "What is the relationship between a Class and an Object?",
+                "options": [
+                    "a) An object is a blueprint for a class.",
+                    "b) A class is an instance of an object.",
+                    "c) A class is a template, and an object is an instance created from that template.",
+                    "d) They are interchangeable terms meaning the same thing."
+                ],
+                "answer": "c) A class is a template, and an object is an instance created from that template."
+            }
+        ];
+
+        // Quiz state variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const questionCount = document.getElementById('question-count');
+        const scoreDisplay = document.getElementById('score-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Update question count
+            questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            
+            // Create question HTML
+            let html = `
+                <div class="question-container">
+                    <div class="question">${currentQuestion.question}</div>
+                    <div class="options">
+            `;
+            
+            // Add options
+            currentQuestion.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionClass += ' selected';
+                }
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (option === currentQuestion.answer) {
+                        optionClass += ' correct';
+                    } else if (userAnswers[currentQuestionIndex] === index && option !== currentQuestion.answer) {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                html += `<div class="${optionClass}" data-index="${index}">${option}</div>`;
+            });
+            
+            html += `</div></div>`;
+            quizContent.innerHTML = html;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+            });
+        }
+
+        // Handle option selection
+        function selectOption(optionElement) {
+            // If already answered, don't allow changes
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store user's answer
+            const selectedIndex = parseInt(optionElement.getAttribute('data-index'));
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            // Check if answer is correct
+            const currentQuestion = quizData[currentQuestionIndex];
+            if (currentQuestion.options[selectedIndex] === currentQuestion.answer) {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                optionElement.classList.add('correct');
+            } else {
+                optionElement.classList.add('incorrect');
+                // Also show the correct answer
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.textContent === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === quizData.length - 1 ? 'Finish' : 'Next';
+            
+            // Disable next button if current question isn't answered (except for the last question)
+            if (currentQuestionIndex < quizData.length - 1) {
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContent.innerHTML = `
+                <div class="results-container">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score">Your Score: ${score} / ${quizData.length}</div>
+                    <p>${getResultMessage(score, quizData.length)}</p>
+                    <button class="btn-primary restart-btn" id="restart-btn">Restart Quiz</button>
+                </div>
+            `;
+            
+            document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+        }
+
+        // Get a result message based on the score
+        function getResultMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) {
+                return "Excellent! You have a deep understanding of computer science concepts.";
+            } else if (percentage >= 70) {
+                return "Great job! You have a solid grasp of these topics.";
+            } else if (percentage >= 50) {
+                return "Good effort! Consider reviewing some of the concepts you missed.";
+            } else {
+                return "Keep learning! Review the material and try again.";
+            }
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            scoreDisplay.textContent = `Score: ${score}`;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            } else {
+                showResults();
+            }
+        });
+
+        // Start the quiz
+        initQuiz();
+    </script>
+</body>
+</html>
