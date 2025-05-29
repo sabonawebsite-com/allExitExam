@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .question-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options-container {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .progress {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Computer Science Quiz</h1>
+        <div class="progress">Question <span id="current-question">1</span> of <span id="total-questions">0</span></div>
+        <div id="question-container"></div>
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+        <div id="result-container" class="result-container" style="display: none;"></div>
+        <div id="score-container" style="text-align: center; margin-top: 20px; font-size: 18px;"></div>
+    </div>
+
+    <script>
+      const quizQuestions = [
+  {
+    question: "In C++ programming, a variable which stores a reference to another variable is called a____",
+    options: ["Constructor", "Structure", "Pointer", "Asterisks"],
+    answer: "Pointer"
+  },
+  {
+    question: "A program that translates a high-level language like C++ to a machine language is called a____",
+    options: ["Compiler", "Disassembler", "Coder", "Assembler"],
+    answer: "Compiler"
+  },
+  {
+    question: "In C++ programming, assume that the value of the variable A is 0 and the value of the variable B is 10. Which one of the following alternatives is false?",
+    options: ["(A > 20) || (B > 5)", "(A > 10) && (x < y)", "(B == 10) || (x < y)", "(A == 0) && (B < 20)"],
+    answer: "(A > 10) && (x < y)"
+  },
+  {
+    question: "Which one of the following format is write about functions in structural Programming:",
+    options: [
+      "Type name (parameter1, parameter2, ...) (statement)",
+      "Name type (parameter1, parameter2, ...) (statement)",
+      "Type name (parameter1, parameter2, ...) (statement)",
+      "Name type (parameter1, parameter2, ...) (statement)"
+    ],
+    answer: "Type name (parameter1, parameter2, ...) (statement)"
+  },
+  {
+    question: "Which of the following is a valid function call (assuming the function add exists & have two parameters)?",
+    options: ["add(a,b);", "add;", "add a,b;", "add(int a, int b);"],
+    answer: "add(a,b);"
+  },
+  {
+    question: "A function is said to be recursive function______?",
+    options: [
+      "If the main function calls many functions",
+      "If the main function calls another one function",
+      "If the function calls another function2 & Function3",
+      "If the function calls itself"
+    ],
+    answer: "If the function calls itself"
+  },
+  {
+    question: "What will be the return type of a function, if the function does not have a return value?",
+    options: ["int", "Float", "Double", "Void"],
+    answer: "Void"
+  },
+  {
+    question: "___is a header file which permits writing of data to a file.",
+    options: ["ofstream", "ifstream", "istream", "fstream"],
+    answer: "ofstream"
+  },
+  {
+    question: "Which one of the following statements are true.",
+    options: [
+      "Structure is collection of homogenous members",
+      "Individual values of the Structure are called members",
+      "It is possible to initialize the Structure up on its defining",
+      "All are correct"
+    ],
+    answer: "All are correct"
+  },
+  {
+    question: "a Variable that is available anywhere within your program.",
+    options: ["Global Variable", "Local Variable", "Partial Variable", "Limited Variables"],
+    answer: "Global Variable"
+  },
+  {
+    question: "If a class is named Student, the class constructor name is______.",
+    options: [
+      "Any legal java identifier starting with s",
+      "Any legal java identifier",
+      "Student",
+      "Student constructor"
+    ],
+    answer: "Student"
+  },
+  {
+    question: "A visibility modifier that makes methods and data fields accessible only from within its own class.",
+    options: ["protected", "Default", "public", "private"],
+    answer: "private"
+  },
+  {
+    question: "The keyword used to create subclass/derived class in inheritance is ______",
+    options: ["implement", "Implements", "extends", "extend"],
+    answer: "extends"
+  },
+  {
+    question: "Which of the following is not valid variable in java?",
+    options: ["A@2$", "By2", "A$_2", "Java"],
+    answer: "A@2$"
+  },
+  {
+    question: "a blue print of an object is called ______.",
+    options: ["operation", "Attribute", "method", "class"],
+    answer: "class"
+  },
+  {
+    question: "It defines how and where data are organized in physical data storage",
+    options: [
+      "Internal Schema",
+      "External Schema",
+      "Conceptual Schema",
+      "External and Conceptual Schema"
+    ],
+    answer: "Internal Schema"
+  },
+  {
+    question: "During modeling your data, Entity Relationship is applied at",
+    options: [
+      "Applications and security",
+      "Schema refinement",
+      "Physical refinement",
+      "Conceptual database"
+    ],
+    answer: "Conceptual database"
+  },
+  {
+    question: "Criteria that should not be considered when evaluating or assessing requirement analysis?",
+    options: ["Correctness", "Consistency", "Need assessment", "Speed"],
+    answer: "Speed"
+  },
+  {
+    question: "The SQL command that you use to define the primary key for a existing table called 'Employee' with the primary column to be 'empid'?",
+    options: [
+      "ADD TABLE Employee ADD PRIMARY KEY (empid)",
+      "ATTACH TABLE Employee ADD PRIMARY KEY (empid)",
+      "ADD TABLE Employee ATTACH PRIMARY KEY (empid)",
+      "ALTER TABLE Employee ADD PRIMARY KEY (empid)"
+    ],
+    answer: "ALTER TABLE Employee ADD PRIMARY KEY (empid)"
+  },
+  {
+    question: "While checking normalization process, the problem that doesn't exist on transitive dependency is",
+    options: [
+      "Insertion Anomaly",
+      "Modification Anomaly",
+      "Deletion Anomaly",
+      "Revoke Anomaly"
+    ],
+    answer: "Revoke Anomaly"
+  },
+  {
+    question: "You need to produce a report for mailing labels for customers. The mailing label must have only the customer name and address. The CUSTOMERS table has these columns, ID ,NAME,ADDRESS,PHONE ,the SELECT statement to accomplishes this task?",
+    options: [
+      "SELECT*FROM customers;",
+      "SELECT name, address FROM customers;",
+      "SELECT id, name, address, phone FROM customers;",
+      "SELECT cust_name, cust_address FROM customers;"
+    ],
+    answer: "SELECT name, address FROM customers;"
+  },
+  {
+    question: "If the maximum cardinality is equal to 1 in both directions of a relationship, then it is classified as:",
+    options: ["One-to-one", "Many-to-many", "One-to-many", "Optional"],
+    answer: "One-to-one"
+  },
+  {
+    question: "How do change the PRICE of BOOK whose id =B001 to value of 600",
+    options: [
+      "CHANGE BOOK SET PRICE =600 Where ID ='B001';",
+      "UPDATE BOOK SET PRICE =600 Where ID ='B001';",
+      "UPDATE TO CHANGE BOOK SET PRICE =600 Where ID ='B001';",
+      "GRANT BOOK SET PRICE =600 Where ID ='B001';"
+    ],
+    answer: "UPDATE BOOK SET PRICE =600 Where ID ='B001';"
+  },
+  {
+    question: "While listing limitation of File Processing System identify the wrong statement?",
+    options: [
+      "Data redundancy & inconsistency available.",
+      "Difficult in accessing data",
+      "Data isolation and integrity.",
+      "Concurrent access is possible."
+    ],
+    answer: "Data redundancy & inconsistency available."
+  },
+  {
+    question: "The Entity Relationship (E-R) Model",
+    options: [
+      "Entities are represented by circle",
+      "It represents conceptual view",
+      "It corresponds to row",
+      "Attributes are represented by rectangle"
+    ],
+    answer: "It represents conceptual view"
+  },
+  {
+    question: "Removal of transitivity property should be full filled in",
+    options: [
+      "First Normal form",
+      "Third Normal form",
+      "Second Normal form",
+      "Fourth Normal form"
+    ],
+    answer: "Third Normal form"
+  },
+  {
+    question: "If relation R has 5 tuples and relation S has also 7 tuples, then Cartesian product of R and S will have",
+    options: ["5+7 tuples", "7-5 tuples", "5X7 tuples", "5/7 tuples"],
+    answer: "5X7 tuples"
+  },
+  {
+    question: "How do you prevent system privileges deletion and updating authority on PRICE and YEAR column of the CATALOGUE table from user Mohammed",
+    options: [
+      "GRANT DELETE, UPDATE (price,year) ON catalogue From Mohammed",
+      "ALLOW DELETE, UPDATE (price,year) ON catalogue From Mohammed",
+      "REVOKE DELETE, UPDATE (price,year) ON catalogue From Mohammed",
+      "DENY DELETE, UPDATE (price,year) ON catalogue From Mohammed"
+    ],
+    answer: "REVOKE DELETE, UPDATE (price,year) ON catalogue From Mohammed"
+  },
+  {
+    question: "The language associated with a database management system that is employed by end users and programmers to alter data values in the database is the:",
+    options: [
+      "Data manipulation language.",
+      "Data presentation language.",
+      "Data translation language.",
+      "Data definition language."
+    ],
+    answer: "Data manipulation language."
+  },
+  {
+    question: "Which of the following is a type of computer architecture?",
+    options: [
+      "Microarchitecture",
+      "Harvard Architecture",
+      "Von-Neumann Architecture",
+      "All of the mentioned"
+    ],
+    answer: "All of the mentioned"
+  },
+  {
+    question: "Which one is not a combinational circuit?",
+    options: ["Encoder", "Register", "Decoder", "De-multiplexer", "Multiplexer"],
+    answer: "Register"
+  },
+  {
+    question: "In a ______ cache organization, cache permits data to be stored in any cache block.",
+    options: ["Direct Mapped", "Set Associativity", "Fully Associative", "All"],
+    answer: "Fully Associative"
+  },
+  {
+    question: "Which one used to translate virtual addresses into physical addresses when we are implementing the concept of Virtual memory?",
+    options: ["LRU", "FIFO", "Memory Management Unit", "All"],
+    answer: "Memory Management Unit"
+  },
+  {
+    question: "In a ______ bus, flow is only one-way from the CPU to memory.",
+    options: ["Address Bus", "Data Bus", "Control Bus", "Address Bus & Control Bus"],
+    answer: "Address Bus"
+  },
+  {
+    question: "In memory hierarchy, faster access then______.",
+    options: [
+      "Greater cost per bit",
+      "Greater capacity",
+      "Smaller cost per bit",
+      "All"
+    ],
+    answer: "Greater cost per bit"
+  },
+  {
+    question: "Which Shift register type used to act as a delay element?",
+    options: [
+      "Serial-In Serial-Out",
+      "Parallel-In Serial-Out",
+      "Serial-In Parallel-Out",
+      "All"
+    ],
+    answer: "Serial-In Serial-Out"
+  },
+  {
+    question: "Which one allows the memory to be divided into fixed sized block in virtual memory concept?",
+    options: ["Paging", "Segmentation", "A&B", "All"],
+    answer: "Paging"
+  },
+  {
+    question: "Which one of them is a Universal Logic Gates",
+    options: ["NAND", "Ex-OR", "AND", "NOT"],
+    answer: "NAND"
+  },
+  {
+    question: "Which of the following is a type of architecture used in the computers nowadays?",
+    options: [
+      "System Design",
+      "Microarchitecture",
+      "Harvard Architecture",
+      "Von-Neumann Architecture"
+    ],
+    answer: "Von-Neumann Architecture"
+  },
+  {
+    question: "Which one of the following is not component of data communication?",
+    options: ["Sender", "Message", "Medium", "Protocol"],
+    answer: "Protocol"
+  },
+  {
+    question: "There are two types of network topologies from these topologies which one of the following defines how hosts access the media to send data Star Topology",
+    options: [
+      "Star Topology",
+      "Logical Topology",
+      "Bus Topology",
+      "Physical Topology",
+      "Logical Topology and Physical Topology"
+    ],
+    answer: "Logical Topology"
+  },
+  {
+    question: "Segmentation of a data stream happens at which layer of the OSI model?",
+    options: ["Physical", "Network", "Transport", "Data Link"],
+    answer: "Transport"
+  },
+  {
+    question: "When data is encapsulated, which is the correct order?",
+    options: [
+      "Data, frame, packet, segment, bit",
+      "Data, segment, packet, frame, bit",
+      "Data, segment, frame, packet, bit",
+      "Segment, data, packet, frame, bit"
+    ],
+    answer: "Data, segment, packet, frame, bit"
+  },
+  {
+    question: "You want to implement a network medium that is not susceptible to EMI. Which type of cabling should you use?",
+    options: ["Category 6 UTP", "Coaxial", "Fiber-optic", "Microwave"],
+    answer: "Fiber-optic"
+  },
+  {
+    question: "From the following lists which one is not the responsibility (service) of data link layer",
+    options: [
+      "Hardware Addressing",
+      "logical link control",
+      "media access control",
+      "Network Addressing"
+    ],
+    answer: "Network Addressing"
+  },
+  {
+    question: "Which class of IP address provides a maximum of only 254 host addresses per network ID?",
+    options: ["Class B", "Class D", "Class C", "Class A"],
+    answer: "Class C"
+  },
+  {
+    question: "Which one of the following list is not component of an analogue signals",
+    options: ["Discrete pulse", "phase", "Wavelength", "Amplitude"],
+    answer: "Discrete pulse"
+  },
+  {
+    question: "Communication between a radio station and its listeners involves ______ transmission.",
+    options: ["Half-duplex", "Automatic", "Simplex", "full-duplex"],
+    answer: "Simplex"
+  },
+  {
+    question: "Which of the following does not describe router functions",
+    options: [
+      "Packet switching",
+      "Packet filtering",
+      "Broadcast forwarding",
+      "Internetwork communication"
+    ],
+    answer: "Broadcast forwarding"
+  },
+  {
+    question: "Acknowledgments, sequencing, and flow control are characteristics of which OSI layer?",
+    options: ["Layer 3", "Layer 4", "Layer 7", "Layer 2"],
+    answer: "Layer 4"
+  },
+  {
+    question: "The technique of allowing multiple signals to be transmitted at the same time over the same cable is called ______.",
+    options: ["Broadcast", "Multicast", "Multiplexing", "demultiplexing"],
+    answer: "Multiplexing"
+  },
+  {
+    question: "Which one is true about binary search tree?",
+    options: [
+      "Every node can only have two children",
+      "All of the above",
+      "Every node should have unique value.",
+      "None of the above",
+      "The value on left sub tree of the binary search tree can be equal to the root node value."
+    ],
+    answer: "Every node should have unique value."
+  },
+  {
+    question: "The operation for adding an item to a stack is named to be___.",
+    options: ["Push", "Insert", "Add", "enqueue", "none of the above"],
+    answer: "Push"
+  },
+  {
+    question: "______ Which operation in stack could result underflow?",
+    options: ["Push();", "Is_empty();", "Pop();", "B and C", "none of the above"],
+    answer: "Pop();"
+  },
+  {
+    question: "While searching from binary tree, how can the index should go?",
+    options: [
+      "If the searched key is less than the root, go to left.",
+      "If the searched key is larger than the root, go to left.",
+      "If the searched key is equal to the root, go to left.",
+      "None"
+    ],
+    answer: "If the searched key is less than the root, go to left."
+  },
+  {
+    question: "Which key word is used to de-allocate the space taken by a node?",
+    options: ["delete", "alloc()", "del()", "delete and alloc()"],
+    answer: "delete"
+  },
+  {
+    question: "Which one is easier to perform?",
+    options: [
+      "Deleting a leaf node",
+      "Deleting internal node",
+      "deleting root node",
+      "Deleting a leaf node and Deleting internal node"
+    ],
+    answer: "Deleting a leaf node"
+  },
+  {
+    question: "Algorithms must terminate after a finite number of steps; What is this characteristics called__",
+    options: ["Unambiguous", "Feasibility", "Finiteness", "Independent"],
+    answer: "Finiteness"
+  },
+  {
+    question: "______ of an algorithm refers to defining the mathematical bound/framing of its run-time performance?",
+    options: [
+      "Space complexity",
+      "Asymptotic analysis",
+      "Time complexity",
+      "none of the above"
+    ],
+    answer: "Asymptotic analysis"
+  },
+  {
+    question: "Which one of the following algorithms is based on dynamic Programming approach?",
+    options: [
+      "Merge sort",
+      "Single source Shortest Path",
+      "Multistage Graph",
+      "Chess playing algorithm"
+    ],
+    answer: "Multistage Graph"
+  },
+  {
+    question: "Optimal merge pattern is an example of ______ Algorithm design Approach",
+    options: [
+      "Greedy",
+      "Dynamic Programming",
+      "Back tracking",
+      "Divide and Conquered"
+    ],
+    answer: "Greedy"
+  },
+  {
+    question: "______algorithm traverses a graph in a Breadth-ward motion and uses a queue to remember to get the next vertex to start a search, when a dead end occurs in any iteration.",
+    options: [
+      "Breadth first search",
+      "Binary search",
+      "Depth first search",
+      "Breadth first search & Depth first search"
+    ],
+    answer: "Breadth first search"
+  },
+  {
+    question: "The attribute used in the body tag to change the default font color for the page is ______.",
+    options: [
+      "Bicolor attribute",
+      "text attribute",
+      "color attribute",
+      "link tag"
+    ],
+    answer: "text attribute"
+  },
+  {
+    question: "Which one of the following is true about static website?",
+    options: [
+      ". Its content will not be changed unless the actual webpage file is edited",
+      "It is also referred as flat pages or stationary pages.",
+      "It will be delivered to the users as exactly stored in the files.",
+      "Its content remains the same for all viewers of the website.",
+      "All of the above."
+    ],
+    answer: "All of the above."
+  },
+  {
+    question: "Which one of the following is a server side scripting language?",
+    options: ["PHP", "ASP", "Python", "All of the above"],
+    answer: "All of the above"
+  },
+  {
+    question: "A pop up box used to display information to user in JavaScript is called ______.",
+    options: ["Prompt", "Alert", "Confirm", "All of the above"],
+    answer: "Alert"
+  },
+  {
+    question: 'What does these code possibly refers to<link rel="stylesheet" href="styles.css"> ?',
+    options: [
+      "Defines a new CSS by the name styles",
+      "Calls an internal style sheet called styles",
+      "Calls an external style sheet called styles",
+      ". Defines an inline CSS by the name styles"
+    ],
+    answer: "Calls an external style sheet called styles"
+  },
+  {
+    question: "What is the preferred way for adding a background color in HTML?",
+    options: [
+      '<body background="yellow">',
+      "<background>yellow</background>",
+      '< body style="background-color: yellow">',
+      '<background color="yellow"><text<background>'
+    ],
+    answer: '< body style="background-color: yellow">'
+  },
+  {
+    question: "What is the method used to get the result from the form data sent with both GET and POST?",
+    options: ["$_POST", "$_REQUEST", "a & b", "$_GET"],
+    answer: "$_REQUEST"
+  },
+  {
+    question: "Which of the following is an optional parameter one while using mysqli_connect() method?",
+    options: ["Database", "Password", "Username", "Localhost"],
+    answer: "Localhost"
+  },
+  {
+    question: "Choose the most appropriate update statement",
+    options: [
+      'UPDATE student SET ID="123";',
+      'UPDATE student SET name="abel" where ID="123";',
+      'UPDATE student SET name = "abel"',
+      'UPDATE student ID="123";'
+    ],
+    answer: 'UPDATE student SET name="abel" where ID="123";'
+  },
+  {
+    question: "When does page fault occur?",
+    options: [
+      "The deadlock occurs.",
+      "The buffering occurs",
+      "The page does not present in memory.",
+      "The page is present in memory."
+    ],
+    answer: "The page does not present in memory."
+  },
+  {
+    question: "Which of the following is a condition that causes deadlock?",
+    options: [
+      "Mutual exclusion",
+      "Hold and wait",
+      "Circular wait",
+      "No preemption",
+      "All of these"
+    ],
+    answer: "All of these"
+  },
+  {
+    question: "What is an operating system?",
+    options: [
+      "System service provider to the application programs",
+      "Collection of programs that manages hardware resources",
+      "Interface between the hardware and application programs",
+      "All of above"
+    ],
+    answer: "All of above"
+  },
+  {
+    question: "Which one of the following Scheduling algorithm allocates the CPU first to the process that requests the CPU first?",
+    options: [
+      "Priority scheduling",
+      "Shortest job scheduling",
+      "First-come, first-served scheduling",
+      "None of above"
+    ],
+    answer: "First-come, first-served scheduling"
+  },
+  {
+    question: "What is the ready state of a process?",
+    options: [
+      "When process is unable to run until some task has been completed",
+      "When process is scheduled to run after some execution",
+      "When process is using the CPU",
+      "None of the mentioned"
+    ],
+    answer: "When process is scheduled to run after some execution"
+  },
+  {
+    question: "A set of processes is deadlock if ______",
+    options: [
+      "Each process is terminated",
+      "All processes are trying to kill each other",
+      "Each process is blocked and will remain so forever",
+      "None of the mentioned"
+    ],
+    answer: "Each process is blocked and will remain so forever"
+  },
+  {
+    question: "In Operating Systems, which of the following is/are CPU scheduling algorithms?",
+    options: ["Priority", "Round Robin", "Shortest Job First", "All of the mentioned"],
+    answer: "All of the mentioned"
+  },
+  {
+    question: "In which of the storage placement strategies a program is placed in the largest available hole in the main memory?",
+    options: ["First fit", "Worst fit", "Best fit", "Buddy"],
+    answer: "Worst fit"
+  },
+  {
+    question: "A measurement that defines the level of inter-dependability among modules of a program is___.",
+    options: ["Cohesive", "Testing", "Coupling", "Design"],
+    answer: "Coupling"
+  },
+  {
+    question: "Which of the following are Advantages of modularization in software design",
+    options: [
+      "Program can be divided based on functional aspects",
+      "Desired from security aspect",
+      "Components with high cohesion can be re-used again",
+      "Smaller components are difficult to maintain"
+    ],
+    answer: "Components with high cohesion can be re-used again"
+  },
+  {
+    question: "Which of the following is not element of Requirement Engineering Process",
+    options: [
+      "Feasibility Steady",
+      "Software Requirement Design",
+      "Software Requirement Specification",
+      "Requirement Gathering"
+    ],
+    answer: "Software Requirement Design"
+  },
+  {
+    question: "Which type of test determine if the system meets the entire requirements (functional and nonfunctional)",
+    options: [
+      "Integration test",
+      "System test",
+      "Acceptance test",
+      "Unit Test"
+    ],
+    answer: "Acceptance test"
+  },
+  {
+    question: "How is generalization implemented in Object-Oriented software engineering?",
+    options: [
+      "Abstract Classes",
+      "Inheritance",
+      "Polymorphism",
+      "Encapsulation"
+    ],
+    answer: "Inheritance"
+  },
+  {
+    question: "All of the following are required to develop an effective test except:",
+    options: [
+      "Knowledge of the testing techniques",
+      "Detailed understanding of the system",
+      "Skill to specific programming language",
+      "Application and solution domain knowledge"
+    ],
+    answer: "Skill to specific programming language"
+  },
+  {
+    question: "Use case description commonly contain:",
+    options: [
+      "Trigger, associations, guarantee.",
+      "Precondition, generalizations, main scenario.",
+      "Precondition, main scenario, alternative scenarios",
+      "None of the above"
+    ],
+    answer: "Precondition, main scenario, alternative scenarios"
+  },
+  {
+    question: "Aggregation, composition, generalization. Which document is created by a system analyst after the requirements are collected from different stakeholders?",
+    options: [
+      "Requirement gathering",
+      ". Software Requirement specification",
+      "Software Requirement testing",
+      "Software Requirement validation"
+    ],
+    answer: ". Software Requirement specification"
+  },
+  {
+    question: "Choose the incorrect statement in terms of Objects.",
+    options: [
+      "Objects are abstractions of real-world",
+      "Objects can't manage themselves",
+      "Objects encapsulate state and representation information",
+      "All of the mentioned"
+    ],
+    answer: "Objects can't manage themselves"
+  },
+  {
+    question: "Which of the following is a mechanism that allows several objects in a class hierarchy to have different methods with the same name?",
+    options: ["Aggregation", "Polymorphism", "Inheritance", "All of the mentioned"],
+    answer: "Polymorphism"
+  },
+  {
+    question: "______is a process which translate system specification into a formal or semiformal model.",
+    options: ["Design", "Implementation", "Analysis", "Elicitation"],
+    answer: "Elicitation"
+  },
+  {
+    question: "Which of the following is a disadvantage of OOD ?",
+    options: [
+      "Easier maintenance",
+      "Objects may be understood as stand-alone entities",
+      "Objects are potentially reusable components",
+      "None of the mentioned"
+    ],
+    answer: "None of the mentioned"
+  },
+  {
+    question: "If a grammar produces more than one leftmost derivation for a sentence, it is called as: _____",
+    options: [
+      "Ambiguous grammar",
+      "Associative grammar",
+      "Precedence",
+      "Perfect grammar"
+    ],
+    answer: "Ambiguous grammar"
+  },
+  {
+    question: "The intersection of a context-free language and a regular language is",
+    options: [
+      "context-free",
+      "neither context-free nor regular.",
+      "regular but not context-free",
+      "both regular and context-free."
+    ],
+    answer: "context-free"
+  },
+  {
+    question: "Which one of the following is not part of Turing machine?",
+    options: ["Head", "Input", "Finite control", "Tape"],
+    answer: "Input"
+  },
+  {
+    question: "The output of lexical analyzer is",
+    options: [
+      "Strings of characters",
+      "Syntax tree",
+      "A set of tokens",
+      "set of regular expressions"
+    ],
+    answer: "A set of tokens"
+  },
+  {
+    question: "Which of the following is NOT the primary role of code generator in compiler design?",
+    options: [
+      "Register allocation",
+      "Declaration of variables",
+      "instruction ordering",
+      "instruction selection"
+    ],
+    answer: "Declaration of variables"
+  },
+  {
+    question: "Which one of the following is different from the others?",
+    options: ["indirect triples", "quadruples", "triples", "tree"],
+    answer: "tree"
+  },
+  {
+    question: "When is the type checking usually done?",
+    options: [
+      "During syntax analysis",
+      "During syntax directed translation",
+      "During code optimization",
+      "During lexical analysis"
+    ],
+    answer: "During syntax directed translation"
+  },
+  {
+    question: "Which of the following can NOT represents a target Code?",
+    options: [
+      "Byte Code",
+      "Assembly language",
+      "Three address code",
+      "Absolute machine code"
+    ],
+    answer: "Three address code"
+  },
+  {
+    question: "Which of the following is NOT important property of intermediate code representation?",
+    options: [
+      "Ease of generation",
+      "Register allocation",
+      "Level of abstraction",
+      "Ease of manipulation"
+    ],
+    answer: "Register allocation"
+  }
+];
+        // DOM elements
+        const questionContainer = document.getElementById('question-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultContainer = document.getElementById('result-container');
+        const scoreContainer = document.getElementById('score-container');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let userAnswers = Array(quizQuestions.length).fill(null);
+        let score = 0;
+
+        // Initialize the quiz
+        function initQuiz() {
+            totalQuestionsSpan.textContent = quizQuestions.length;
+            showQuestion();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            currentQuestionSpan.textContent = currentQuestionIndex + 1;
+            const question = quizQuestions[currentQuestionIndex];
+            
+            let optionsHtml = '';
+            question.options.forEach((option, index) => {
+                const isChecked = userAnswers[currentQuestionIndex] === index ? 'checked' : '';
+                optionsHtml += `
+                    <div class="option">
+                        <input type="radio" id="option-${index}" name="options" value="${index}" ${isChecked}>
+                        <label for="option-${index}">${option}</label>
+                    </div>
+                `;
+            });
+
+            questionContainer.innerHTML = `
+                <div class="question-container">
+                    <div class="question-text">${question.question}</div>
+                    <div class="options-container">${optionsHtml}</div>
+                </div>
+            `;
+
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === quizQuestions.length - 1 ? 'Submit' : 'Next';
+            
+            // Hide result container when showing new question
+            resultContainer.style.display = 'none';
+        }
+
+        // Save the user's answer
+        function saveAnswer() {
+            const selectedOption = document.querySelector('input[name="options"]:checked');
+            if (selectedOption) {
+                userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            }
+        }
+
+        // Check the current answer
+        function checkAnswer() {
+            saveAnswer();
+            
+            const question = quizQuestions[currentQuestionIndex];
+            const userAnswerIndex = userAnswers[currentQuestionIndex];
+            
+            if (userAnswerIndex !== null) {
+                const isCorrect = question.options[userAnswerIndex] === question.answer;
+                
+                resultContainer.textContent = isCorrect ? 'Correct!' : 'Incorrect!';
+                resultContainer.className = `result-container ${isCorrect ? 'correct' : 'incorrect'}`;
+                resultContainer.style.display = 'block';
+                
+                if (isCorrect) {
+                    score++;
+                }
+            }
+        }
+
+        // Show the final score
+        function showFinalScore() {
+            questionContainer.style.display = 'none';
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            
+            scoreContainer.innerHTML = `
+                <h2>Quiz Completed!</h2>
+                <p>Your score: ${score} out of ${quizQuestions.length}</p>
+                <p>Percentage: ${Math.round((score / quizQuestions.length) * 100)}%</p>
+            `;
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            saveAnswer();
+            currentQuestionIndex--;
+            showQuestion();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                checkAnswer();
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                checkAnswer();
+                showFinalScore();
+            }
+        });
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>
