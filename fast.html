@@ -298,408 +298,277 @@
         }, 1000); 
         // Quiz data from the provided file
         const quizData = [
-            {
-                "question": "Which OSI layer is responsible for logical addressing (IP addresses) and routing data packets across different networks?",
-                "options": [
-                    "a) Transport Layer",
-                    "b) Data Link Layer",
-                    "c) Network Layer",
-                    "d) Application Layer"
-                ],
-                "answer": "c) Network Layer"
-            },
-            {
-                "question": "What is the primary function of the Transport Layer (OSI Layer 4)?",
-                "options": [
-                    "a) Converting bits into electrical signals.",
-                    "b) Managing communication sessions between applications.",
-                    "c) Providing reliable (or unreliable) end-to-end data transfer between applications.",
-                    "d) Handling physical addressing (MAC addresses)."
-                ],
-                "answer": "c) Providing reliable (or unreliable) end-to-end data transfer between applications."
-            },
-            {
-                "question": "Which protocol operates at the Transport Layer and provides connection-oriented, reliable, and ordered delivery of data?",
-                "options": [
-                    "a) UDP",
-                    "b) IP",
-                    "c) HTTP",
-                    "d) TCP"
-                ],
-                "answer": "d) TCP"
-            },
-            {
-                "question": "In the TCP/IP model, which layer combines the functionalities of the OSI model's Session, Presentation, and Application layers?",
-                "options": [
-                    "a) Transport Layer",
-                    "b) Internet Layer",
-                    "c) Network Access Layer",
-                    "d) Application Layer"
-                ],
-                "answer": "d) Application Layer"
-            },
-            {
-                "question": "What is the main role of the Physical Layer (OSI Layer 1)?",
-                "options": [
-                    "a) Establishing communication sessions.",
-                    "b) Defining data formats and encryption.",
-                    "c) Transmitting raw bit streams over the physical medium.",
-                    "d) Handling logical addressing."
-                ],
-                "answer": "c) Transmitting raw bit streams over the physical medium."
-            },
-            {
-                "question": "Which protocol is primarily used for web Browse and is part of the Application Layer?",
-                "options": [
-                    "a) FTP",
-                    "b) SMTP",
-                    "c) HTTP",
-                    "d) ICMP"
-                ],
-                "answer": "c) HTTP"
-            },
-            {
-                "question": "The Data Link Layer (OSI Layer 2) is responsible for:",
-                "options": [
-                    "a) Determining the best path for data across multiple networks.",
-                    "b) Providing network services directly to end-user applications.",
-                    "c) Handling physical addressing (MAC addresses) and framing within a local network segment.",
-                    "d) Managing flow control and congestion control across the internet."
-                ],
-                "answer": "c) Handling physical addressing (MAC addresses) and framing within a local network segment."
-            },
-            {
-                "question": "When UDP is used for communication, what characteristic does it offer compared to TCP?",
-                "options": [
-                    "a) Guaranteed delivery of packets.",
-                    "b) Connection-oriented communication.",
-                    "c) Faster but unreliable data transfer.",
-                    "d) Automatic retransmission of lost data."
-                ],
-                "answer": "c) Faster but unreliable data transfer."
-            },
-            {
-                "question": "Which layer of the OSI model deals with the syntax and semantics of data, often including encryption and compression?",
-                "options": [
-                    "a) Application Layer",
-                    "b) Presentation Layer",
-                    "c) Session Layer",
-                    "d) Physical Layer"
-                ],
-                "answer": "b) Presentation Layer"
-            },
-            {
-                "question": "What defines the rules and standards for how data is formatted, transmitted, and received in a network?",
-                "options": [
-                    "a) Hardware",
-                    "b) Operating System",
-                    "c) Protocols",
-                    "d) Cables"
-                ],
-                "answer": "c) Protocols"
-            },
-            {
-                "question": "What is the defining characteristic of a Local Area Network (LAN)?",
-                "options": [
-                    "a) It spans across continents.",
-                    "b) It interconnects devices within a limited geographic area.",
-                    "c) It uses satellite communication exclusively.",
-                    "d) It is always publicly owned."
-                ],
-                "answer": "b) It interconnects devices within a limited geographic area."
-            },
-            {
-                "question": "In a modern Ethernet LAN, what device intelligently forwards data frames to the intended destination port based on MAC addresses, creating separate collision domains for each port?",
-                "options": [
-                    "a) Hub",
-                    "b) Router",
-                    "c) Switch",
-                    "d) Modem"
-                ],
-                "answer": "c) Switch"
-            },
-            {
-                "question": "What is the 48-bit unique hardware address used to identify devices within a LAN segment at the Data Link Layer?",
-                "options": [
-                    "a) IP address",
-                    "b) Port number",
-                    "c) MAC address",
-                    "d) SSID"
-                ],
-                "answer": "c) MAC address"
-            },
-            {
-                "question": "What is the primary method used by Wi-Fi (IEEE 802.11) to manage access to the wireless medium and avoid collisions?",
-                "options": [
-                    "a) CSMA/CD",
-                    "b) Token Ring",
-                    "c) Full Duplex",
-                    "d) CSMA/CA"
-                ],
-                "answer": "d) CSMA/CA"
-            },
-            {
-                "question": "An Access Point (AP) in a Wi-Fi network primarily functions at which OSI layer to bridge wireless devices to a wired network?",
-                "options": [
-                    "a) Physical Layer (Layer 1)",
-                    "b) Data Link Layer (Layer 2)",
-                    "c) Network Layer (Layer 3)",
-                    "d) Application Layer (Layer 7)"
-                ],
-                "answer": "b) Data Link Layer (Layer 2)"
-            },
-            {
-                "question": "What is the primary disadvantage of using an old Ethernet Hub instead of a Switch?",
-                "options": [
-                    "a) It requires more power.",
-                    "b) It cannot connect to the internet.",
-                    "c) It creates a single, larger collision domain.",
-                    "d) It only supports wireless connections."
-                ],
-                "answer": "c) It creates a single, larger collision domain."
-            },
-            {
-                "question": "Which device is responsible for connecting different networks (e.g., your LAN to the internet) and forwarding data packets between them based on IP addresses?",
-                "options": [
-                    "a) Network Interface Card (NIC)",
-                    "b) Switch",
-                    "c) Router",
-                    "d) Hub"
-                ],
-                "answer": "c) Router"
-            },
-            {
-                "question": "What is the name of a Wi-Fi network that devices connect to?",
-                "options": [
-                    "a) IP Address",
-                    "b) MAC Address",
-                    "c) SSID",
-                    "d) Gateway"
-                ],
-                "answer": "c) SSID"
-            },
-            {
-                "question": "In the context of LANs, what does \"Full Duplex\" communication mean?",
-                "options": [
-                    "a) Data can only be sent in one direction at a time.",
-                    "b) Data can be sent and received simultaneously.",
-                    "c) Data can only be sent to one device at a time.",
-                    "d) Data is encrypted before transmission."
-                ],
-                "answer": "b) Data can be sent and received simultaneously."
-            },
-            {
-                "question": "What is the role of an NIC (Network Interface Card) in a device?",
-                "options": [
-                    "a) To route packets between different networks.",
-                    "b) To manage the entire network's services.",
-                    "c) To physically connect the device to the network and transmit/receive data.",
-                    "d) To define the rules for data communication."
-                ],
-                "answer": "c) To physically connect the device to the network and transmit/receive data."
-            },
-            {
-                "question": "Which of the following is the primary goal of Algorithm Analysis?",
-                "options": [
-                    "a) To write code that runs on all operating systems.",
-                    "b) To prove that an algorithm is perfectly bug-free.",
-                    "c) To evaluate an algorithm's performance (time and space) as input size grows.",
-                    "d) To generate random outputs for testing purposes."
-                ],
-                "answer": "c) To evaluate an algorithm's performance (time and space) as input size grows."
-            },
-            {
-                "question": "What does Big O Notation primarily describe?",
-                "options": [
-                    "a) The exact running time of an algorithm in milliseconds.",
-                    "b) The maximum memory an algorithm will ever consume.",
-                    "c) The asymptotic upper bound of an algorithm's growth rate.",
-                    "d) The number of lines of code in an algorithm."
-                ],
-                "answer": "c) The asymptotic upper bound of an algorithm's growth rate."
-            },
-            {
-                "question": "An algorithm with a time complexity of O(N^2) would typically involve:",
-                "options": [
-                    "a) A single loop iterating through the input once.",
-                    "b) A process that halves the input size at each step.",
-                    "c) Nested loops where each iterates up to N times.",
-                    "d) A constant number of operations regardless of input size."
-                ],
-                "answer": "c) Nested loops where each iterates up to N times."
-            },
-            {
-                "question": "Which algorithm design paradigm involves breaking a problem into smaller subproblems of the same type, solving them independently, and combining their solutions?",
-                "options": [
-                    "a) Greedy",
-                    "b) Dynamic Programming",
-                    "c) Backtracking",
-                    "d) Divide and Conquer"
-                ],
-                "answer": "d) Divide and Conquer"
-            },
-            {
-                "question": "Dynamic Programming is typically used when:",
-                "options": [
-                    "a) The problem has no clear structure.",
-                    "b) A recursive solution has overlapping subproblems.",
-                    "c) Only the locally optimal choice is needed.",
-                    "d) Random decisions are made during execution."
-                ],
-                "answer": "b) A recursive solution has overlapping subproblems."
-            },
-            {
-                "question": "Which data structure is best suited for implementing a Last-In, First-Out (LIFO) behavior?",
-                "options": [
-                    "a) Queue",
-                    "b) Linked List",
-                    "c) Stack",
-                    "d) Hash Table"
-                ],
-                "answer": "c) Stack"
-            },
-            {
-                "question": "The Master Theorem is primarily used to:",
-                "options": [
-                    "a) Prove the correctness of iterative algorithms.",
-                    "b) Solve recurrence relations for the time complexity of recursive algorithms.",
-                    "c) Determine the optimal choice in a greedy algorithm.",
-                    "d) Analyze the space complexity of graph algorithms."
-                ],
-                "answer": "b) Solve recurrence relations for the time complexity of recursive algorithms."
-            },
-            {
-                "question": "What is a Loop Invariant used for in algorithm analysis?",
-                "options": [
-                    "a) To determine the average case time complexity.",
-                    "b) To prove the correctness of an iterative algorithm.",
-                    "c) To analyze the best case scenario for a recursive function.",
-                    "d) To ensure that all variables remain constant throughout a loop."
-                ],
-                "answer": "b) To prove the correctness of an iterative algorithm."
-            },
-            {
-                "question": "Which of the following algorithms is an example of a Greedy Algorithm?",
-                "options": [
-                    "a) Merge Sort",
-                    "b) Dijkstra's Algorithm (for shortest path on non-negative weights)",
-                    "c) Fibonacci sequence calculation (using recursion without memoization)",
-                    "d) N-Queens Problem"
-                ],
-                "answer": "b) Dijkstra's Algorithm (for shortest path on non-negative weights)"
-            },
-            {
-                "question": "If an algorithm takes O(logN) time, it means its execution time:",
-                "options": [
-                    "a) Grows linearly with the input size.",
-                    "b) Grows exponentially with the input size.",
-                    "c) Is constant regardless of input size.",
-                    "d) Reduces significantly as the input size increases (logarithmic growth)."
-                ],
-                "answer": "d) Reduces significantly as the input size increases (logarithmic growth)."
-            },
-            {
-                "question": "What is a Class in OOP?",
-                "options": [
-                    "a) An instance of an object.",
-                    "b) A set of data without any associated behavior.",
-                    "c) A blueprint or template for creating objects.",
-                    "d) A function that operates on global variables."
-                ],
-                "answer": "c) A blueprint or template for creating objects."
-            },
-            {
-                "question": "The concept of bundling data (attributes) and methods (functions) that operate on that data within a single unit is known as:",
-                "options": [
-                    "a) Inheritance",
-                    "b) Polymorphism",
-                    "c) Abstraction",
-                    "d) Encapsulation"
-                ],
-                "answer": "d) Encapsulation"
-            },
-            {
-                "question": "Which OOP principle describes the ability of a new class to inherit properties and behaviors from an existing class, establishing an \"is-a\" relationship?",
-                "options": [
-                    "a) Encapsulation",
-                    "b) Polymorphism",
-                    "c) Inheritance",
-                    "d) Abstraction"
-                ],
-                "answer": "c) Inheritance"
-            },
-            {
-                "question": "What is an Object in OOP?",
-                "options": [
-                    "a) A concept or idea that defines a type.",
-                    "b) A concrete instance of a class.",
-                    "c) A method defined within a class.",
-                    "d) A global variable accessible by all classes."
-                ],
-                "answer": "b) A concrete instance of a class."
-            },
-            {
-                "question": "Polymorphism (specifically method overriding) allows:",
-                "options": [
-                    "a) A class to have multiple constructors.",
-                    "b) An object to have multiple different data types simultaneously.",
-                    "c) Different classes to respond to the same method call in their own specific way.",
-                    "d) Methods to access private attributes of other objects."
-                ],
-                "answer": "c) Different classes to respond to the same method call in their own specific way."
-            },
-            {
-                "question": "If Dog inherits from Animal, and Animal has a make_sound() method, which Dog provides its own implementation for, this is an example of:",
-                "options": [
-                    "a) Encapsulation",
-                    "b) Method Overloading",
-                    "c) Method Overriding",
-                    "d) Data Hiding"
-                ],
-                "answer": "c) Method Overriding"
-            },
-            {
-                "question": "Which of the following is NOT a primary benefit of using Object-Oriented Programming?",
-                "options": [
-                    "a) Code Reusability",
-                    "b) Modularity",
-                    "c) Global Variable Simplicity",
-                    "d) Easier Maintenance and Extension"
-                ],
-                "answer": "c) Global Variable Simplicity"
-            },
-            {
-                "question": "You are designing a system for different types of vehicles: Car, Bicycle, Motorcycle. All vehicles have a speed and can move(). Which OOP principle would you primarily use to model this shared behavior and specific differences?",
-                "options": [
-                    "a) Encapsulation",
-                    "b) Polymorphism and Inheritance",
-                    "c) Only Encapsulation",
-                    "d) Pure Brute Force (no OOP)"
-                ],
-                "answer": "b) Polymorphism and Inheritance"
-            },
-            {
-                "question": "In OOP, when you make attributes of a class private (or use conventions like __ in Python to indicate \"private\"), you are primarily applying the principle of:",
-                "options": [
-                    "a) Polymorphism",
-                    "b) Inheritance",
-                    "c) Data Hiding (part of Encapsulation)",
-                    "d) Abstraction"
-                ],
-                "answer": "c) Data Hiding (part of Encapsulation)"
-            },
-            {
-                "question": "What is the relationship between a Class and an Object?",
-                "options": [
-                    "a) An object is a blueprint for a class.",
-                    "b) A class is an instance of an object.",
-                    "c) A class is a template, and an object is an instance created from that template.",
-                    "d) They are interchangeable terms meaning the same thing."
-                ],
-                "answer": "c) A class is a template, and an object is an instance created from that template."
-            }
-        ];
-
+  {
+    "question": "In C++ programming, a variable which stores a reference to another variable is called a",
+    "options": [
+      "Constructor",
+      "Structure",
+      "Pointer",
+      "Asterisks"
+    ],
+    "answer": "Pointer"
+  },
+  {
+    "question": "A program that translates a high-level language like C++ to a machine language is called a",
+    "options": [
+      "Compiler",
+      "Disassembler",
+      "Coder",
+      "Assembler"
+    ],
+    "answer": "Compiler"
+  },
+  {
+    "question": "In C++ programming, assume that the value of the variable A is 0 and the value of the variable B is 10. Which one of the following alternatives is false?",
+    "options": [
+      "C. $(A>20)||(B>5)$",
+      "$(A>10)\\&\\&(x<y)$",
+      "$(B==10)||(x<y)$",
+      "$(A==0)\\&8(B<20)$"
+    ],
+    "answer": "C. $(A>20)||(B>5)$"
+  },
+  {
+    "question": "Which one of the following format is write about functions in structural Programming:",
+    "options": [
+      "Type name (parameter1, parameter2, ...) (statement }",
+      "Name type (parameter1, parameter2, ...) { statement }",
+      "Type name { parameter1, parameter2, ...) (statement)",
+      "Name type { parameter1, parameter2, ...) (statement)"
+    ],
+    "answer": "Type name (parameter1, parameter2, ...) (statement }"
+  },
+  {
+    "question": "Which of the following is a valid function call (assuming the function add exists & have two parameters)?",
+    "options": [
+      "add(a,b);",
+      "add;",
+      "add a,b;",
+      "add(int a, int b);"
+    ],
+    "answer": "add(int a, int b);"
+  },
+  {
+    "question": "A function is said to be recursive function?",
+    "options": [
+      "If the main function calls many functions",
+      "If the main function calls another one function",
+      "If the function calls another function2 & Function3",
+      "If the function calls itself"
+    ],
+    "answer": "If the function calls itself"
+  },
+  {
+    "question": "What will be the return type of a function, if the function does not have a return value?",
+    "options": [
+      "Alnt",
+      "Float",
+      "Double",
+      "Void"
+    ],
+    "answer": "Void"
+  },
+  {
+    "question": "___ is a header file which permits writing of data to a file.",
+    "options": [
+      "ofstream",
+      "ifstream",
+      "istream",
+      "fstream"
+    ],
+    "answer": "ofstream"
+  },
+  {
+    "question": "Which one of the following statements are true.",
+    "options": [
+      "Structure is collection of homogenous members",
+      "Individual values of the Structure are called members",
+      "It is possible to initialize the Structure up on its defining",
+      "All are correct"
+    ],
+    "answer": "All are correct"
+  },
+  {
+    "question": "a Variable that is available anywhere within your program.",
+    "options": [
+      "Global Variable",
+      "Local Variable",
+      "Partial Variable",
+      "Limited Variables"
+    ],
+    "answer": "Global Variable"
+  },
+  {
+    "question": "If a class is named Student, the class constructor name is.",
+    "options": [
+      "Any legal java identifier starting with s",
+      "Any legal java identifier",
+      "Student",
+      "Student constructor"
+    ],
+    "answer": "Student"
+  },
+  {
+    "question": "A visibility modifier that makes methods and data fields accessible only from within its own class.",
+    "options": [
+      "protected",
+      "Default",
+      "public",
+      "private"
+    ],
+    "answer": "private"
+  },
+  {
+    "question": "The keyword used to create subclass/derived class in inheritance is",
+    "options": [
+      "implement",
+      "Implements",
+      "extends",
+      "extend"
+    ],
+    "answer": "extends"
+  },
+  {
+    "question": "Which of the following is not valid variable in java?",
+    "options": [
+      "A@2$",
+      "By2",
+      "A$_2",
+      "Java"
+    ],
+    "answer": "A@2$"
+  },
+  {
+    "question": "a blue print of an object is called",
+    "options": [
+      "operation",
+      "Attribute",
+      "method",
+      "class"
+    ],
+    "answer": "class"
+  },
+  {
+    "question": "It defines how and where data are organized in physical data storage",
+    "options": [
+      "Internal Schema",
+      "External Schema",
+      "Conceptual Schema",
+      "External and Conceptual Schema"
+    ],
+    "answer": "Internal Schema"
+  },
+  {
+    "question": "During modeling your data, Entity Relationship is applied at",
+    "options": [
+      "Applications and security",
+      "Schema refinement",
+      "Physical refinement",
+      "Conceptual database"
+    ],
+    "answer": "Conceptual database"
+  },
+  {
+    "question": "Criteria that should not be considered when evaluating or assessing requirement analysis?",
+    "options": [
+      "Correctness",
+      "Consistency",
+      "Need assessment",
+      "Speed"
+    ],
+    "answer": "Speed"
+  },
+  {
+    "question": "The SQL command that you use to define the primary key for a existing table called 'Employee' with the primary column to be 'empid'?",
+    "options": [
+      "ADD TABLE Employee ADD PRIMARY KEY (empid)",
+      "ATTACH TABLE Employee ADD PRIMARY KEY (empid)",
+      "ADD TABLE Employee ATTACH PRIMARY KEY (empid)",
+      "ALTER TABLE Employee ADD PRIMARY KEY (empid)"
+    ],
+    "answer": "ALTER TABLE Employee ADD PRIMARY KEY (empid)"
+  },
+  {
+    "question": "While checking normalization process, the problem that doesn't exist on transitive dependency is",
+    "options": [
+      "Insertion Anomaly",
+      "Modification Anomaly",
+      "Deletion Anomaly",
+      "Revoke Anomaly"
+    ],
+    "answer": "Revoke Anomaly"
+  },
+  {
+    "question": "You need to produce a report for mailing labels for customers. The mailing label must have only the customer name and address. The CUSTOMERS table has these columns, ID, NAME, ADDRESS, PHONE ,the SELECT statement to accomplishes this task?",
+    "options": [
+      "SELECT*FROM customers;",
+      "SELECT name, address FROM customers;",
+      "SELECT id, name, address, phone FROM customers;",
+      "SELECT cust_name, cust_address FROM customers;"
+    ],
+    "answer": "SELECT name, address FROM customers;"
+  },
+  {
+    "question": "If the maximum cardinality is equal to 1 in both directions of a relationship, then it is classified as:",
+    "options": [
+      "One-to-one",
+      "Many-to-many",
+      "One-to-many",
+      "Optional"
+    ],
+    "answer": "Many-to-many"
+  },
+  {
+    "question": "How do change the PRICE of BOOK whose id =B001 to value of 600",
+    "options": [
+      "CHANGE BOOK SET PRICE =600 Where ID ='B001'",
+      "UPDATE BOOK SET PRICE =600 Where ID ='B001';",
+      "UPDATE TO CHANGE BOOK SET PRICE=600 Where ID ='B001';",
+      "GRANT BOOK SET PRICE =600 Where ID ='B001';"
+    ],
+    "answer": "UPDATE BOOK SET PRICE =600 Where ID ='B001';"
+  },
+  {
+    "question": "While listing limitation of File Processing System identify the wrong statement?",
+    "options": [
+      "Data redundancy & inconsistency available.",
+      "Difficult in accessing data",
+      "Data isolation and integrity.",
+      "Concurrent access is possible."
+    ],
+    "answer": "Concurrent access is possible."
+  },
+  {
+    "question": "The Entity Relationship (E-R) Model",
+    "options": [
+      "Entities are represented by circle",
+      "It represents conceptual view",
+      "It corresponds to row",
+      "Attributes are represented by rectangle"
+    ],
+    "answer": "It represents conceptual view"
+  },
+  {
+    "question": "Removal of transitivity property should be full filled in",
+    "options": [
+      "First Normal form",
+      "Third Normal form",
+      "Second Normal form",
+      "Fourth Normal form"
+    ],
+    "answer": "Third Normal form"
+  },
+  {
+    "question": "If relation R has 5 tuples and relation S has also 7 tuples, then Cartesian product of R and S will have",
+    "options": [
+      "5+7 tuples",
+      "7-5 tuples",
+      "5X7 tuples",
+      "5/7 tuples"
+    ],
+    "answer": "5X7 tuples"
+  }
+];
         // Quiz state variables
         let currentQuestionIndex = 0;
         let score = 0;
