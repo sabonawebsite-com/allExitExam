@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Quiz</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+            border-color: var(--primary-color);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option.correct {
+            background-color: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .option.incorrect {
+            background-color: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+  .unselectable {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      
+      
+        }
+        .btn-secondary:hover {
+            background-color: #ddd;
+        }
+#timer{
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    color: red;
+    text-align: center;
+}
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .results-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+              <div class="unselectable">
+ <h1 id="timer"></h1>   
+        <header>
+            <h1>Computer Science Quiz</h1>
+            <p>Test your knowledge of networking, algorithms, and OOP concepts</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="quiz-info">
+            <div class="question-count" id="question-count">Question 1 of 30</div>
+            <div class="score-display" id="score-display">Score: 0</div>
+        </div>
+
+        <div class="quiz-content" id="quiz-content">
+            <!-- Question and options will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button class="btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn-primary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+         document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+        document.addEventListener('copy', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('cut', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('paste', function (e) {
+        e.preventDefault();
+      });
+
+    // Set the date we're counting down to  
+        var countDownDate = new Date("May 29, 2025 00:31:59").getTime();  
+
+        // Update the countdown every 1 second  
+        var x = setInterval(function() {  
+
+            // Get today's date and time  
+            var now = new Date().getTime();  
+
+            // Find the distance between now and the countdown date  
+            var distance = countDownDate - now;  
+
+            // Time calculations for days, hours, minutes, and seconds  
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+
+            // Display the result in the element with id="timer"  
+            document.getElementById("timer").innerHTML = days + "d: " + hours + "h: "  
+            + minutes + "m: " + seconds + "s ";  
+
+            // If the countdown is over, write some text   
+            if (distance < 0) {  
+                clearInterval(x);  
+                document.getElementById("timer").innerHTML = "EXPIRED";  
+                document.getElementById("timer").classList.add("expired");  
+            }  
+        }, 1000); 
+        // Quiz data from the provided file
+        const quizData = [
+    {
+        question: "Which of the following protocols operates at the Transport Layer of the TCP/IP model and provides reliable, connection-oriented communication?",
+        options: ["HTTP", "UDP", "IP", "TCP"],
+        answer: "TCP"
+    },
+    {
+        question: "What is the primary function of a Router in a network?",
+        options: [
+            "To broadcast all incoming data to all connected devices.",
+            "To connect devices within the same local network segment based on MAC addresses.",
+            "To connect different networks and forward data packets based on IP addresses.",
+            "To convert digital signals to analog signals for transmission over telephone lines."
+        ],
+        answer: "To connect different networks and forward data packets based on IP addresses."
+    },
+    {
+        question: "Which protocol is responsible for translating human-readable domain names (like www.example.com) into numerical IP addresses?",
+        options: ["DHCP", "FTP", "DNS", "SMTP"],
+        answer: "DNS"
+    },
+    {
+        question: "A network device that learns MAC addresses and forwards data frames only to the intended destination port, thereby reducing network collisions and improving efficiency, is called a:",
+        options: ["Hub", "Repeater", "Switch", "Modem"],
+        answer: "Switch"
+    },
+    {
+        question: "What is the process called when each layer of the TCP/IP model adds its own header (and sometimes a trailer) to the data it receives from the layer above?",
+        options: ["Decapsulation", "Segmentation", "Encapsulation", "Transcoding"],
+        answer: "Encapsulation"
+    },
+    {
+        question: "Which of the following is an example of a Network Access Layer protocol for wired local area networks?",
+        options: ["HTTP", "IP", "Ethernet", "TCP"],
+        answer: "Ethernet"
+    },
+    {
+        question: "Which protocol is known for being connectionless and unreliable, making it suitable for applications like video streaming and online gaming where speed is prioritized over guaranteed delivery?",
+        options: ["TCP", "FTP", "UDP", "HTTPS"],
+        answer: "UDP"
+    },
+    {
+        question: "What is the unique physical address assigned to a Network Interface Card (NIC) that operates at the Data Link Layer?",
+        options: ["IP Address", "Port Number", "MAC Address", "Subnet Mask"],
+        answer: "MAC Address"
+    },
+    {
+        question: "A device that acts as a security barrier, monitoring and controlling incoming and outgoing network traffic based on predefined rules, is known as a(n):",
+        options: ["Access Point", "Router", "Switch", "Firewall"],
+        answer: "Firewall"
+    },
+    {
+        question: "What is the term for the maximum rate at which data can be transferred over a communication channel, typically measured in bits per second (bps)?",
+        options: ["Throughput", "Latency", "Jitter", "Bandwidth"],
+        answer: "Bandwidth"
+    },
+    {
+        question: "Which layer of the TCP/IP model is responsible for logical addressing (IP addresses) and routing of data packets across different networks?",
+        options: ["Application Layer", "Transport Layer", "Internet Layer", "Network Access Layer"],
+        answer: "Internet Layer"
+    },
+    {
+        question: "A company's network setup includes several computers connected together within a single office building. This type of network is best described as a:",
+        options: ["WAN (Wide Area Network)", "MAN (Metropolitan Area Network)", "LAN (Local Area Network)", "SAN (Storage Area Network)"],
+        answer: "LAN (Local Area Network)"
+    },
+    {
+        question: "What is the primary purpose of DHCP in a network?",
+        options: [
+            "To resolve domain names to IP addresses.",
+            "To securely transfer files between hosts.",
+            "To automatically assign IP addresses and network configurations to devices.",
+            "To send email messages."
+        ],
+        answer: "To automatically assign IP addresses and network configurations to devices."
+    },
+    {
+        question: "Which physical cabling type uses pulses of light to transmit data, offering high bandwidth and long-distance capabilities?",
+        options: ["Coaxial Cable", "Twisted-Pair Cable", "Fiber Optic Cable", "USB Cable"],
+        answer: "Fiber Optic Cable"
+    },
+    {
+        question: "When a TCP segment is encapsulated at the Internet Layer, what is the resulting data unit called?",
+        options: ["Frame", "Datagram", "Packet", "Segment (it remains a segment)"],
+        answer: "Datagram"
+    },
+    {
+        question: "Which protocol is used by the ping and traceroute utilities to diagnose network connectivity issues?",
+        options: ["ARP", "ICMP", "SNMP", "BGP"],
+        answer: "ICMP"
+    },
+    {
+        question: "In a modern wired LAN, what device is primarily responsible for forwarding Ethernet frames to specific destination MAC addresses?",
+        options: ["Hub", "Router", "Modem", "Switch"],
+        answer: "Switch"
+    },
+    {
+        question: "What does 'reliability' in the context of TCP communication primarily refer to?",
+        options: [
+            "The speed of data transfer.",
+            "Guaranteed delivery of data packets in order and without errors.",
+            "The ability to connect to any type of network.",
+            "Its use for real-time applications."
+        ],
+        answer: "Guaranteed delivery of data packets in order and without errors."
+    },
+    {
+        question: "Which of the following is an example of an end device in a network?",
+        options: ["Router", "Switch", "Server", "Wireless Access Point"],
+        answer: "Server"
+    },
+    {
+        question: "What is the role of a Modem in connecting a home network to the internet?",
+        options: [
+            "It directs traffic between different local networks.",
+            "It assigns IP addresses to devices on the local network.",
+            "It converts digital signals from the computer/router to analog signals for the ISP's line, and vice versa.",
+            "It filters network traffic based on security rules."
+        ],
+        answer: "It converts digital signals from the computer/router to analog signals for the ISP's line, and vice versa."
+    },
+    {
+        question: "Which protocol provides a secure, encrypted channel for remote command-line access to servers?",
+        options: ["Telnet", "FTP", "SSH", "HTTP"],
+        answer: "SSH"
+    },
+    {
+        question: "When a device receives an Ethernet frame, what field in the trailer is used for error detection?",
+        options: ["Source MAC Address", "Destination MAC Address", "Frame Check Sequence (FCS)", "IP Header"],
+        answer: "Frame Check Sequence (FCS)"
+    },
+    {
+        question: "What is the term for the variation in delay of received packets, which can negatively impact real-time applications like VoIP?",
+        options: ["Bandwidth", "Latency", "Jitter", "Throughput"],
+        answer: "Jitter"
+    },
+    {
+        question: "What is the function of ARP (Address Resolution Protocol) on a local network?",
+        options: [
+            "To assign dynamic IP addresses.",
+            "To translate domain names to IP addresses.",
+            "To resolve an IP address to a MAC address.",
+            "To encrypt data communications."
+        ],
+        answer: "To resolve an IP address to a MAC address."
+    },
+    {
+        question: "Which of the following protocols is NOT typically found at the Application Layer of the TCP/IP model?",
+        options: ["SMTP", "DNS", "TCP", "HTTP"],
+        answer: "TCP"
+    },
+    {
+        question: "A Firewall primarily operates to enhance network:",
+        options: ["Speed", "Reliability", "Security", "Bandwidth"],
+        answer: "Security"
+    },
+    {
+        question: "What is encapsulation in the context of networking protocols?",
+        options: [
+            "The process of removing headers as data moves up the stack.",
+            "The process of breaking large data into smaller segments.",
+            "The process of adding headers and trailers to data as it moves down the stack.",
+            "The process of retransmitting lost packets."
+        ],
+        answer: "The process of adding headers and trailers to data as it moves down the stack."
+    },
+    {
+        question: "Which network device is responsible for connecting wireless devices to a wired LAN infrastructure?",
+        options: ["Router", "Switch", "Wireless Access Point", "Hub"],
+        answer: "Wireless Access Point"
+    },
+    {
+        question: "What is the main characteristic that distinguishes UDP from TCP?",
+        options: [
+            "UDP is faster and provides guaranteed delivery.",
+            "UDP is connection-oriented and unreliable.",
+            "UDP is connectionless and unreliable.",
+            "UDP is slower but provides more features."
+        ],
+        answer: "UDP is connectionless and unreliable."
+    },
+    {
+        question: "A unique hardware identifier assigned to each Network Interface Card (NIC) is known as the:",
+        options: ["IP Address", "Port Number", "MAC Address", "URL"],
+        answer: "MAC Address"
+    },
+    {
+        question: "What does the term 'latency' refer to in network communication?",
+        options: [
+            "The maximum data transfer rate.",
+            "The actual amount of data transferred per second.",
+            "The time it takes for a data packet to travel from source to destination.",
+            "The number of errors in data transmission."
+        ],
+        answer: "The time it takes for a data packet to travel from source to destination."
+    },
+    {
+        question: "Which of the following is not considered an intermediary network device?",
+        options: ["Server", "Router", "Switch", "Firewall"],
+        answer: "Server"
+    },
+    {
+        question: "If your home network uses a single device to connect to your ISP, distribute IP addresses to your devices, and filter some incoming traffic, that device is most likely a combination of a:",
+        options: [
+            "Hub, Repeater, and Bridge",
+            "Modem, Router, and Firewall",
+            "Switch, Access Point, and Gateway",
+            "Server, Client, and Printer"
+        ],
+        answer: "Modem, Router, and Firewall"
+    },
+    {
+        question: "Which type of network media is most susceptible to electromagnetic interference (EMI)?",
+        options: [
+            "Fiber Optic Cable",
+            "Coaxial Cable",
+            "Twisted-Pair Cable",
+            "All are equally susceptible"
+        ],
+        answer: "Twisted-Pair Cable"
+    },
+    {
+        question: "In the context of TCP, what mechanism is used by the receiver to inform the sender that it has successfully received data segments?",
+        options: [
+            "Retransmission",
+            "Handshake",
+            "Acknowledgement (ACK)",
+            "Flow control"
+        ],
+        answer: "Acknowledgement (ACK)"
+    },
+    {
+        question: "Which layer of the TCP/IP model is primarily concerned with error detection and control within a single network segment, as well as physical addressing (MAC addresses)?",
+        options: [
+            "Application Layer",
+            "Transport Layer",
+            "Internet Layer",
+            "Network Access Layer"
+        ],
+        answer: "Network Access Layer"
+    },
+    {
+        question: "What is a broadcast domain in a LAN environment?",
+        options: [
+            "The range of IP addresses assigned to devices.",
+            "A group of devices that all receive broadcast messages sent by any device within the group.",
+            "A secure segment of the network isolated from others.",
+            "The total number of ports on a switch."
+        ],
+        answer: "A group of devices that all receive broadcast messages sent by any device within the group."
+    },
+    {
+        question: "Which protocol is primarily used for collecting and organizing information about devices on a network and for monitoring network performance?",
+        options: ["DNS", "SNMP", "DHCP", "HTTP"],
+        answer: "SNMP"
+    },
+    {
+        question: "What is the process of removing headers as data moves up the protocol stack at the receiving end called?",
+        options: [
+            "Encapsulation",
+            "Decapsulation",
+            "Multiplexing",
+            "Demultiplexing"
+        ],
+        answer: "Decapsulation"
+    },
+    {
+        question: "Which networking component connects two distinct network segments and filters traffic based on MAC addresses, often used to extend a LAN?",
+        options: ["Repeater", "Hub", "Bridge", "Router"],
+        answer: "Bridge"
+    },
+    {
+        question: "Which of the following best describes the function of a Network Interface Card (NIC)?",
+        options: [
+            "It routes packets between different networks.",
+            "It assigns IP addresses dynamically.",
+            "It provides the physical connection and unique MAC address for a device to join a network.",
+            "It filters network traffic based on security rules."
+        ],
+        answer: "It provides the physical connection and unique MAC address for a device to join a network."
+    },
+    {
+        question: "In a typical home network, what is the role of the device that acts as the 'default gateway' for all local devices wanting to access the internet?",
+        options: ["Switch", "Hub", "Router", "Access Point"],
+        answer: "Router"
+    },
+    {
+        question: "Which of the following is an example of an application that would typically use TCP for its communication due to the need for reliable data transfer?",
+        options: [
+            "Live video streaming",
+            "Online multiplayer gaming (real-time action)",
+            "Web Browse (HTTP)",
+            "Voice over IP (VoIP) calls"
+        ],
+        answer: "Web Browse (HTTP)"
+    },
+    {
+        question: "What is the main benefit of using a managed switch over an unmanaged switch?",
+        options: [
+            "Managed switches are always faster.",
+            "Managed switches can be configured with advanced features like VLANs and QoS.",
+            "Managed switches are significantly cheaper.",
+            "Managed switches require no power source."
+        ],
+        answer: "Managed switches can be configured with advanced features like VLANs and QoS."
+    },
+    {
+        question: "Which protocol is primarily responsible for the secure transmission of web pages over the internet?",
+        options: ["HTTP", "FTP", "SMTP", "HTTPS"],
+        answer: "HTTPS"
+    },
+    {
+        question: "What is the process by which a network device removes a header from a data unit as it passes the data up to the next higher layer in the protocol stack?",
+        options: [
+            "Encapsulation",
+            "Defragmentation",
+            "Decapsulation",
+            "Segmentation"
+        ],
+        answer: "Decapsulation"
+    },
+    {
+        question: "A network where all devices are connected to a central hub or switch is an example of which topology?",
+        options: ["Bus", "Ring", "Star", "Mesh"],
+        answer: "Star"
+    },
+    {
+        question: "Which of the following networking components is designed to regenerate and amplify a weak signal to extend the range of a network segment?",
+        options: ["Switch", "Repeater", "Firewall", "Bridge"],
+        answer: "Repeater"
+    },
+    {
+        question: "What is the purpose of a subnet mask in an IP network configuration?",
+        options: [
+            "To specify the default gateway for a device.",
+            "To identify the network portion and the host portion of an IP address.",
+            "To resolve domain names to IP addresses.",
+            "To assign dynamic IP addresses to devices."
+        ],
+        answer: "To identify the network portion and the host portion of an IP address."
+    },
+    {
+        question: "Which protocol is crucial for automatically configuring an IP address, subnet mask, default gateway, and DNS server addresses for new devices joining a network?",
+        options: ["ARP", "ICMP", "DHCP", "SMTP"],
+        answer: "DHCP"
+    }
+];
+ 
+        // Quiz state variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const questionCount = document.getElementById('question-count');
+        const scoreDisplay = document.getElementById('score-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Update question count
+            questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            
+            // Create question HTML
+            let html = `
+                <div class="question-container">
+                    <div class="question">${currentQuestion.question}</div>
+                    <div class="options">
+            `;
+            
+            // Add options
+            currentQuestion.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionClass += ' selected';
+                }
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (option === currentQuestion.answer) {
+                        optionClass += ' correct';
+                    } else if (userAnswers[currentQuestionIndex] === index && option !== currentQuestion.answer) {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                html += `<div class="${optionClass}" data-index="${index}">${option}</div>`;
+            });
+            
+            html += `</div></div>`;
+            quizContent.innerHTML = html;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+            });
+        }
+
+        // Handle option selection
+        function selectOption(optionElement) {
+            // If already answered, don't allow changes
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store user's answer
+            const selectedIndex = parseInt(optionElement.getAttribute('data-index'));
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            // Check if answer is correct
+            const currentQuestion = quizData[currentQuestionIndex];
+            if (currentQuestion.options[selectedIndex] === currentQuestion.answer) {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                optionElement.classList.add('correct');
+            } else {
+                optionElement.classList.add('incorrect');
+                // Also show the correct answer
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.textContent === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === quizData.length - 1 ? 'Finish' : 'Next';
+            
+            // Disable next button if current question isn't answered (except for the last question)
+            if (currentQuestionIndex < quizData.length - 1) {
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContent.innerHTML = `
+                <div class="results-container">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score">Your Score: ${score} / ${quizData.length}</div>
+                    <p>${getResultMessage(score, quizData.length)}</p>
+                    <button class="btn-primary restart-btn" id="restart-btn">Restart Quiz</button>
+                </div>
+            `;
+            
+            document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+        }
+
+        // Get a result message based on the score
+        function getResultMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) {
+                return "Excellent! You have a deep understanding of computer science concepts.";
+            } else if (percentage >= 70) {
+                return "Great job! You have a solid grasp of these topics.";
+            } else if (percentage >= 50) {
+                return "Good effort! Consider reviewing some of the concepts you missed.";
+            } else {
+                return "Keep learning! Review the material and try again.";
+            }
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            scoreDisplay.textContent = `Score: ${score}`;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            } else {
+                showResults();
+            }
+        });
+
+        // Start the quiz
+        initQuiz();
+    </script>
+</body>
+</html>
