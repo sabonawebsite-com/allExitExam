@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Quiz</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+            border-color: var(--primary-color);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option.correct {
+            background-color: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .option.incorrect {
+            background-color: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+img{
+    border-radius: 50%; 
+}
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+  .unselectable {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      
+      
+        }
+        .btn-secondary:hover {
+            background-color: #ddd;
+        }
+#timer{
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    color: red;
+    text-align: center;
+}
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .results-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+              <div class="unselectable">
+ <h1 id="timer"></h1>   
+        <header>
+            <img src="duraa.png" alt="">
+            <h1>Computer Science exit exam</h1>
+            <p>Test your knowledge</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="quiz-info">
+            <div class="question-count" id="question-count">Question 1 of 50</div>
+            <div class="score-display" id="score-display">Score: 0</div>
+        </div>
+
+        <div class="quiz-content" id="quiz-content">
+            <!-- Question and options will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button class="btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn-primary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+         document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+        document.addEventListener('copy', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('cut', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('paste', function (e) {
+        e.preventDefault();
+      });
+
+    // Set the date we're counting down to  
+        var countDownDate = new Date("May 30, 2025 22:31:59").getTime();  
+
+        // Update the countdown every 1 second  
+        var x = setInterval(function() {  
+
+            // Get today's date and time  
+            var now = new Date().getTime();  
+
+            // Find the distance between now and the countdown date  
+            var distance = countDownDate - now;  
+
+            // Time calculations for days, hours, minutes, and seconds  
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+
+            // Display the result in the element with id="timer"  
+            document.getElementById("timer").innerHTML = days + "d: " + hours + "h: "  
+            + minutes + "m: " + seconds + "s ";  
+
+            // If the countdown is over, write some text   
+            if (distance < 0) {  
+                clearInterval(x);  
+                document.getElementById("timer").innerHTML = "EXPIRED";  
+                document.getElementById("timer").classList.add("expired");  
+            }  
+        }, 1000); 
+        // Quiz data from the provided file
+        const quizData = [
+   {
+    question: "Which one of the following is not an I/O command?",
+    options: [
+      "a. Status command",
+      "b. Output data command",
+      "c. Control command",
+      "d. Issue command"
+    ],
+    answer: "d. Issue command"
+  },
+  {
+    question: "Which one of the following form attribute is used to assign the server side script file that processes the form data?",
+    options: [
+      "a. Action",
+      "b. Autocomplete",
+      "c. Method",
+      "d. Target"
+    ],
+    answer: "a. Action"
+  },
+  {
+    question: "When to use the Spiral Model?",
+    options: [
+      "a. Where business modeling is clearly understood and in use.",
+      "b. When it is too risky to develop the overall system as one block.",
+      "c. When requirements are understood in the early stages but can change during the project’s life cycle.",
+      "d. When requirements are unstable and constantly changing."
+    ],
+    answer: "d. When requirements are unstable and constantly changing."
+  },
+  {
+    question: "In C++, what does the **cout** object typically represent?",
+    options: [
+      "a. Standard input stream",
+      "b. Keyboard input buffer",
+      "c. Error output stream",
+      "d. Standard output stream"
+    ],
+    answer: "d. Standard output stream"
+  },
+  {
+    question: "In a columnar database, data is stored:",
+    options: [
+      "a. Row-wise",
+      "b. In a hierarchical structure",
+      "c. Column-wise",
+      "d. In a network model"
+    ],
+    answer: "c. Column-wise"
+  },
+  {
+    question: "a → b, L state transition in a Turing Machine means,",
+    options: [
+      "a. read a, write b and move left",
+      "b. delete a, read b and move left",
+      "c. write a, read b and move left",
+      "d. replace b by a and move left"
+    ],
+    answer: "a. read a, write b and move left"
+  },
+  {
+    question: "What is a characteristic feature of round-robin scheduling in both preemptive and non-preemptive forms?",
+    options: [
+      "a. It assigns priorities to tasks based on their relative importance.",
+      "b. It always selects the task with the shortest remaining time.",
+      "c. It favors short tasks over long tasks.",
+      "d. It guarantees fairness by providing each task with an equal time slice."
+    ],
+    answer: "d. It guarantees fairness by providing each task with an equal time slice."
+  },
+  {
+    question: "Indexes in database tables speed up the ______ operations.",
+    options: [
+      "a. Read operations",
+      "b. Delete operations",
+      "c. Update operations",
+      "d. Write operations"
+    ],
+    answer: "a. Read operations"
+  },
+  {
+    question: "What is the term for a named block of code that performs a specific task?",
+    options: [
+      "a. Condition",
+      "b. Variable",
+      "c. Function",
+      "d. Loop"
+    ],
+    answer: "c. Function"
+  },
+  {
+    question: "What would be the asymptotic time complexity to add a node at the end of singly linked list, if the pointer is initially pointing to the head of the list?",
+    options: [
+      "a. O(n)",
+      "b. θ(1)",
+      "c. θ(n)",
+      "d. O(1)"
+    ],
+    answer: "a. O(n)"
+  },
+  {
+    question: "Which learning technique in AI involves the use of labeled examples to train a model to make predictions or decisions?",
+    options: [
+      "a. Semi-supervised learning",
+      "b. Unsupervised learning",
+      "c. Supervised learning",
+      "d. Reinforcement learning"
+    ],
+    answer: "c. Supervised learning"
+  },
+  {
+    question: "A PC obtains its IP address from a DHCP server. If the PC is taken off the network for repair, what happens to the IP address configuration?",
+    options: [
+      "a. The address is returned to the pool for reuse when the lease expires.",
+      "b. The address lease is automatically renewed until the PC is returned.",
+      "c. The configuration is held by the server to be reissued when the PC is returned",
+      "d. The configuration is permanent and nothing changes."
+    ],
+    answer: "a. The address is returned to the pool for reuse when the lease expires."
+  },
+  {
+    question: "The elements must be in sorted order in case of,",
+    options: [
+      "a. Quick search",
+      "b. Selection search",
+      "c. Binary search",
+      "d. Linear search"
+    ],
+    answer: "c. Binary search"
+  },
+  {
+    question: "Which analysis case calculates the upper bound on running time of an algorithm?",
+    options: [
+      "a. Optimal case",
+      "b. Best case",
+      "c. Average case",
+      "d. Worst case"
+    ],
+    answer: "d. Worst case"
+  },
+  {
+    question: "How are the objects organized in the HTML DOM?",
+    options: [
+      "a. Hierarchy",
+      "b. Queue",
+      "c. Stack",
+      "d. Class-wise"
+    ],
+    answer: "a. Hierarchy"
+  },
+  {
+    question: "Which one of the following is the output of syntax analysis phase?",
+    options: [
+      "a. Syntax tree",
+      "b. Annotated parse tree",
+      "c. Abstract syntax tree",
+      "d. Pattern"
+    ],
+    answer: "a. Syntax tree"
+  },
+  {
+    question: "What does the if-else statement allow you to do in C++?",
+    options: [
+      "a. Declare and define functions",
+      "b. Allocate memory dynamically",
+      "c. Execute a block of code only if a condition is true, otherwise execute another block of code",
+      "d. Repeat a block of code multiple times"
+    ],
+    answer: "c. Execute a block of code only if a condition is true, otherwise execute another block of code"
+  },
+  {
+    question: "One of the following is not true about the Inheritance?",
+    options: [
+      "a. The subclass can add variables, but cannot redefine them.",
+      "b. The derived class (subclass) is allowed to add methods or redefine them.",
+      "c. A feature that allow us to drive class from another class.",
+      "d. Allows programmers to customize with actually modifying the original class (the superclass)."
+    ],
+    answer: "a. The subclass can add variables, but cannot redefine them."
+  },
+  {
+    question: "Which one of the following is an efficient top-down parser?",
+    options: [
+      "a. Recursive-descent parser",
+      "b. Shift-reduce parser",
+      "c. Non-recursive predictive parser",
+      "d. LR parser"
+    ],
+    answer: "c. Non-recursive predictive parser"
+  },
+  {
+    question: "Which objective of modern operating systems involves providing a consistent and convenient environment for running applications?",
+    options: [
+      "a. Maximizing hardware utilization",
+      "b. Ensuring fault tolerance",
+      "c. Providing security and protection",
+      "d. Providing a user-friendly interface"
+    ],
+    answer: "d. Providing a user-friendly interface"
+  },
+  {
+    question: "Which one of the following is not the concern of availability?",
+    options: [
+      "a. Fault tolerance",
+      "b. Alteration of resources",
+      "c. Usefulness of resources",
+      "d. Fair allocation of resources"
+    ],
+    answer: "b. Alteration of resources"
+  },
+  {
+    question: "The simple strategy in which the root node is expanded first, then all the successors of the root node are expanded next, then their successors, and so on which is Expand the tree layer by layer, refers to,",
+    options: [
+      "a. Greedy best-first search",
+      "b. Depth-first search(DFS)",
+      "c. Depth limited Search(DLS)",
+      "d. Breadth-first search (BFS)"
+    ],
+    answer: "d. Breadth-first search (BFS)"
+  },
+  {
+    question: "Person A sends a message to person B. while the message is transmitted; person C has gained an access to the message. Which category of an attack is performed by person C?",
+    options: [
+      "a. Modification",
+      "b. Interception",
+      "c. Interruption",
+      "d. Fabrication"
+    ],
+    answer: "b. Interception"
+  },
+  {
+    question: "Which data structure is used to store information about the source program constructs?",
+    options: [
+      "a. 2d-array",
+      "b. Stack",
+      "c. Tree",
+      "d. Queue"
+    ],
+    answer: "c. Tree"
+  },
+  {
+    question: "In which network topology consists of a single line cable- called a backbone connecting all nodes on a network without intervening connected devices?",
+    options: [
+      "a. Bus",
+      "b. Ring",
+      "c. Star",
+      "d. Mesh"
+    ],
+    answer: "a. Bus"
+  },
+  {
+    question: "Which database design concept is commonly used in e-commerce platforms to efficiently store and retrieve customer order information?",
+    options: [
+      "a. Normalization",
+      "b. Denormalization",
+      "c. Partitioning",
+      "d. Indexing"
+    ],
+    answer: "a. Normalization"
+  },
+  {
+    question: "Which one of the following terms refers to the techniques used for deciphering a cipher text without any knowledge of the enciphering mechanism involved?",
+    options: [
+      "a. Cryptography",
+      "b. Cryptology",
+      "c. Cryptanalysis",
+      "d. Decryption"
+    ],
+    answer: "c. Cryptanalysis"
+  },
+  {
+    question: "All of the followings are scheduling criteria **except?",
+    options: [
+      "a. CPU utilization",
+      "b. Min Turnaround time",
+      "c. Max Throughput",
+      "d. Max Response time"
+    ],
+    answer: "d. Max Response time"
+  },
+  {
+    question: "Given a binary search tree, which traversal type would print the values in the nodes in sorted order?",
+    options: [
+      "a. Pre-order",
+      "b. Pre-order and Post-order",
+      "c. In-order",
+      "d. Post-order"
+    ],
+    answer: "c. In-order"
+  },
+  {
+    question: "The user who programs a computer in machine or assembly language must be aware of the following **except** ______.",
+    options: [
+      "a. The register set",
+      "b. The type of data supported by the instructions",
+      "c. The analysis model",
+      "d. The memory structure"
+    ],
+    answer: "c. The analysis model"
+  },
+  {
+    question: "In computer programming, what is the purpose of control structures such as loops and conditional statements?",
+    options: [
+      "a. To control the flow of program execution",
+      "b. To perform mathematical",
+      "c. To define the data types used in a program",
+      "d. To allocate memory for variables"
+    ],
+    answer: "a. To control the flow of program execution"
+  },
+  {
+    question: "Which of the following methods can be used to refresh a **webpage?",
+    options: [
+      "a. Location.relocate",
+      "b. Window.Relocate",
+      "c. Window.resefresh",
+      "d. Location.Reload"
+    ],
+    answer: "d. Location.Reload"
+  },
+  {
+    question: "In computer networking, ______ refers to how various nodes, devices, and connections on your network are physically or logically arranged in relation to each other",
+    options: [
+      "a. Network layer",
+      "b. Network installation",
+      "c. Network protocol",
+      "d. Network topology"
+    ],
+    answer: "d. Network topology"
+  },
+  {
+    question: "Which of the following is not a component of Turing Machine?",
+    options: [
+      "a. Read-write head",
+      "b. Control Unit",
+      "c. Stack",
+      "d. Tape"
+    ],
+    answer: "c. Stack"
+  },
+  {
+    question: "A module is said to have logical cohesion, if",
+    options: [
+      "a. All the functions of the module are executed within the same time span.",
+      "b. All elements of the module depend on their interface complexity.",
+      "c. It performs a set of tasks that relate to each other very loosely.",
+      "d. All elements of the module perform similar operations."
+    ],
+    answer: "d. All elements of the module perform similar operations."
+  },
+  {
+    question: "When encountering a syntax error in code, what is the first step you should take to resolve it?",
+    options: [
+      "a. Rewrite the entire",
+      "b. Ignore the error and continue execution",
+      "c. Use a debugger tool",
+      "d. Check the code for typos or incorrect syntax"
+    ],
+    answer: "d. Check the code for typos or incorrect syntax"
+  },
+  {
+    question: "Which OOP concept allows objects of different classes to be treated as objects of a common superclass?",
+    options: [
+      "a. Polymorphism",
+      "b. Inheritance",
+      "c. Abstraction",
+      "d. Encapsulation"
+    ],
+    answer: "a. Polymorphism"
+  },
+  {
+    question: "In which phase of the compilation process does the source program get broken in to its constituent parts?",
+    options: [
+      "a. Semantic analysis",
+      "b. Syntax analysis",
+      "c. Synthesis",
+      "d. Lexical analysis"
+    ],
+    answer: "d. Lexical analysis"
+  },
+  {
+    question: "Which part of the computer system is responsible for converting machine processed data to different formats that are understandable by user?",
+    options: [
+      "a. Communication components",
+      "b. Output unit",
+      "c. Storage unit",
+      "d. Input unit"
+    ],
+    answer: "b. Output unit"
+  },
+  {
+    question: "If a sequence of operations- push(1), push(2), pop, push(1),push(2),pop, pop , pop, push(2),pop are performed on a stack , the sequence of popped out values are ______.",
+    options: [
+      "a. 2,1,2,2,1",
+      "b. 2,2,1,1,2",
+      "c. 2,1,2,2,2",
+      "d. 2,2,1,2,2"
+    ],
+    answer: "a. 2,1,2,2,1"
+  },
+  {
+    question: "Which function of modern operating systems involves managing hardware resources such as CPU, memory, and I/O devices?",
+    options: [
+      "a. File management",
+      "b. Device management",
+      "c. Process management",
+      "d. Security management"
+    ],
+    answer: "c. Process management"
+  },
+  {
+    question: "Which one of the following has the fastest access time and the highest cost?",
+    options: [
+      "a. Register",
+      "b. Magnetic disc",
+      "c. Main memory",
+      "d. Cache memory"
+    ],
+    answer: "a. Register"
+  },
+  {
+    question: "What is the purpose of interfaces in **Java**?",
+    options: [
+      "a. To create multiple constructors for a class",
+      "b. To define the state and behavior of an object",
+      "c. To define a blueprint of a class",
+      "d. To achieve multiple inheritance"
+    ],
+    answer: "d. To achieve multiple inheritance"
+  },
+  {
+    question: "Which software engineering principles are used to help reduce the programming complexity?",
+    options: [
+      "a. Structured and unstructured",
+      "b. Object oriented Design",
+      "c. Abstraction and Decomposition.",
+      "d. Functional and Non-functional"
+    ],
+    answer: "c. Abstraction and Decomposition."
+  },
+  {
+    question: "Which OOP concept allows a class to implement multiple interfaces in Java?",
+    options: [
+      "a. Polymorphism",
+      "b. Encapsulation",
+      "c. Inheritance",
+      "d. Interface"
+    ],
+    answer: "d. Interface"
+  },
+  {
+    question: "In a grammar, if the production \( S \rightarrow \lambda \) where \( S \) is a non-terminal is existed, such production is called ______?",
+    options: [
+      "a. Null Production",
+      "b. Unit Production",
+      "c. Secondary Production",
+      "d. Sigma Production"
+    ],
+    answer: "b. Unit Production"
+  },
+  {
+    question: "Which database design concept is commonly used in online gaming platforms to handle real-time interactions between players?",
+    options: [
+      "a. Replication",
+      "b. NoSQL databases",
+      "c. Distributed databases",
+      "d. Partitioning"
+    ],
+    answer: "c. Distributed databases"
+  },
+  {
+    question: "Which one of the following is the correct syntax for document type declaration in HTML5?",
+    options: [
+      "a. </doctype html>",
+      "b. </doctype! html>",
+      "c. </doctype! html>",
+      "d. </doctype html>"
+    ],
+    answer: "d. </doctype html>"
+  },
+  {
+    question: "If an algorithm has a running time function of \( 3n^2 + 7n + 12 \). What will be the complexity class of the running time?",
+    options: [
+      "a. Linear",
+      "b. Polynomial",
+      "c. Constant",
+      "d. Exponential"
+    ],
+    answer: "b. Polynomial"
+  },
+  {
+    question: "Recursion is a method in which the solution of a problem depends on ______.",
+    options: [
+      "a. Larger instances of the same problem",
+      "b. Smaller instances of the same problem",
+      "c. Larger instances of different problems",
+      "d. Smaller instances of different problems"
+    ],
+    answer: "b. Smaller instances of the same problem"
+  },
+  {
+    question: "Which SQL command is used to modify existing data in a table?",
+    options: [
+      "a. ALTER",
+      "b. UPDATE",
+      "c. MODIFY",
+      "d. CHANGE"
+    ],
+    answer: "b. UPDATE"
+  },
+  {
+    question: "Which normal form ensures that there are no repeating groups in a table?",
+    options: [
+      "a. Second Normal Form (2NF)",
+      "b. Third Normal Form (3NF)",
+      "c. Boyce-Codd Normal Form (BCN)",
+      "d. First Normal Form (1NF)"
+    ],
+    answer: "d. First Normal Form (1NF)"
+  },
+  {
+    question: "Which of the following is not true about Reasoning?",
+    options: [
+      "a. Knowledge system to do something.",
+      "b. A process of thinking, logically arguing, and drawing inference.",
+      "c. Theory of blind searching.",
+      "d. The act of deriving a conclusion from certain premises using a given methodology."
+    ],
+    answer: "c. Theory of blind searching."
+  },
+  {
+    question: "What is the purpose of normalization in database design?",
+    options: [
+      "a. To reduce redundancy and improve data integrity.",
+      "b. To speed up query performance.",
+      "c. To create complex relationships between tables.",
+      "d. To encrypt sensitive data."
+    ],
+    answer: "a. To reduce redundancy and improve data integrity."
+  },
+  {
+    question: "Which one of the following is a false statement?",
+    options: [
+      "a. A web browser is software that runs on a server",
+      "b. A website is a collection of resources in various forms",
+      "c. A web page is the basic unit of information storage on the www",
+      "d. A user agent renders resources for a user to view"
+    ],
+    answer: "a. A web browser is software that runs on a server"
+  },
+  {
+    question: "Which string from the following is member of the language represented by the regular expression, a*(b+c)",
+    options: [
+      "a. aab",
+      "b. bc",
+      "c. aaa",
+      "d. aaabc"
+    ],
+    answer: "a. aab"
+  },
+  {
+    question: "If a problem can be solved by combining optimal solutions to non-overlapping problems, the strategy is called ______.",
+    options: [
+      "a. Dynamic programming",
+      "b. Divide and conquer",
+      "c. Recursion",
+      "d. Greedy"
+    ],
+    answer: "b. Divide and conquer"
+  },
+  {
+    question: "In asymmetric cryptography, the message is decrypted using ______.",
+    options: [
+      "a. Receiver’s public key",
+      "b. Receiver’s private key",
+      "c. Sender’s private key",
+      "d. Sender’s public key"
+    ],
+    answer: "b. Receiver’s private key"
+  },
+  {
+    question: "In C++, what does the **cout** object typically represent?",
+    options: [
+      "a. Standard input stream",
+      "b. Keyboard input buffer",
+      "c. Error output stream",
+      "d. Standard output stream"
+    ],
+    answer: "d. Standard output stream"
+  },
+  {
+    question: "When can we say two grammars are equivalent?",
+    options: [
+      "a. When the language derived from one of the grammars become the subset of the other",
+      "b. When the alphabets of the two grammars are the same",
+      "c. When the languages represented by both grammars are the same",
+      "d. When a single string is member of the language represented by both grammars"
+    ],
+    answer: "c. When the languages represented by both grammars are the same"
+  },
+  {
+    question: "Which reasoning technique in artificial intelligence is based on a set of rules and logical inference to derive conclusions?",
+    options: [
+      "a. Abductive reasoning",
+      "b. Analogical reasoning",
+      "c. Deductive reasoning",
+      "d. Inductive reasoning"
+    ],
+    answer: "c. Deductive reasoning"
+  },
+  {
+    question: "Which of the following **is not** a type of database management system **(DBMS)?",
+    options: [
+      "a. PostgreSQL",
+      "b. MongoDB",
+      "c. Java",
+      "d. MySQL"
+    ],
+    answer: "c. Java"
+  },
+  {
+    question: "In computers, subtraction is carried out generally by____.",
+    options: [
+      "a. 1’s complement method",
+      "b. 2’s complement method",
+      "c. signed magnitude method",
+      "d. BCD subtraction method"
+    ],
+    answer: "b. 2’s complement method"
+  },
+  {
+    question: "Which one of the following is not a component of communication?",
+    options: [
+      "a. Distance",
+      "b. Source",
+      "c. Destination",
+      "d. Medium"
+    ],
+    answer: "a. Distance"
+  },
+  {
+    question: "Which one of the following is not a static check?",
+    options: [
+      "a. Type checking for compatibility",
+      "b. Uniqueness checks like redefined variables",
+      "c. A break instruction that is not in inclosing statement",
+      "d. Memory access errors"
+    ],
+    answer: "d. Memory access errors"
+  },
+  {
+    question: "______ is a system that monitors traffic into and out of a network and automatically alerts personnel when suspicious traffic patterns occur, indicating a possible unauthorized intrusion attempt.",
+    options: [
+      "a. Anti-Virus Software",
+      "b. IDS",
+      "c. Firewall",
+      "d. Router"
+    ],
+    answer: "b. IDS"
+  },
+  {
+    question: "Which one of the following terms refers to the machine on which the requested resource is stored?",
+    options: [
+      "a. Port",
+      "b. Query",
+      "c. Host",
+      "d. Protocol"
+    ],
+    answer: "c. Host"
+  },
+  {
+    question: "Which scheduling algorithm is commonly associated with the concept of aging, where the priority of a task increases the longer it waits in the ready queue?",
+    options: [
+      "a. Round Robin (RR)",
+      "b. Shortest Job Next (SJN)",
+      "c. Priority Scheduling",
+      "d. Shortest Remaining Time First (SRTF)"
+    ],
+    answer: "c. Priority Scheduling"
+  },
+  {
+    question: "Why heuristic (A*) search method?",
+    options: [
+      "a. To speed up search and edge lengths to compute optimal paths.",
+      "b. To find the path with the maximum distance from the start node to the goal node.",
+      "c. To find the path with the Non-optimal searches from node to the goal node.",
+      "d. To find the path with the maximum cost from the start node to the goal node."
+    ],
+    answer: "a. To speed up search and edge lengths to compute optimal paths."
+  },
+  {
+    question: "When is the appropriate time to shut down a system?",
+    options: [
+      "a. Using regular schedules",
+      "b. For maintenance and upgrade",
+      "c. To check for security alerts",
+      "d. When there is a failure"
+    ],
+    answer: "b. For maintenance and upgrade"
+  },
+  {
+    question: "Out of the following life cycle models which one can be considered as the most general model, and the others as specialization of it?",
+    options: [
+      "a. Spiral Model",
+      "b. Prototyping Model",
+      "c. Classical Waterfall Model",
+      "d. Iterative Waterfall Model"
+    ],
+    answer: "a. Spiral Model"
+  },
+  {
+    question: "Which one of the following cryptography systems uses the same key for encryption and decryption?",
+    options: [
+      "a. Public key cryptography",
+      "b. Parallel cryptography",
+      "c. Asymmetric cryptography",
+      "d. Symmetric cryptography"
+    ],
+    answer: "d. Symmetric cryptography"
+  },
+  {
+    question: "The E-R data model is based on a perception of the real world that consists of a set of basic objects called __",
+    options: [
+      "a. Objects",
+      "b. Classes",
+      "c. Entities",
+      "d. Attributes"
+    ],
+    answer: "c. Entities"
+  },
+  {
+    question: "In which network topology should every computer have N-1 I/O ports when there is N number of computers in the network?",
+    options: [
+      "a. Star",
+      "b. Mesh",
+      "c. Bus",
+      "d. Ring"
+    ],
+    answer: "b. Mesh"
+  },
+  {
+    question: "What is the primary key in a relational database?",
+    options: [
+      "a. A unique identifier for each row in a table.",
+      "b. A foreign key from another table.",
+      "c. A key used for encryption.",
+      "d. An index on a non-unique column."
+    ],
+    answer: "a. A unique identifier for each row in a table."
+  },
+  {
+    question: "Which C++ statement is used to terminate a loop prematurely and transfer control to the next iteration of the loop?",
+    options: [
+      "a. break;",
+      "b. exit;",
+      "c. return;",
+      "d. continue;"
+    ],
+    answer: "d. continue;"
+  },
+  {
+    question: "Which one of the following disk interfaces is used as a standard interface for PCs?",
+    options: [
+      "a. SCSI",
+      "b. iSCSI",
+      "c. IDE",
+      "d. USB"
+    ],
+    answer: "c. IDE"
+  },
+  {
+    question: "In a system susceptible to deadlock, what does the \"no preemption\" condition imply?",
+    options: [
+      "a. Resources can be preempted and assigned to other processes.",
+      "b. Processes cannot request additional resources while holding others.",
+      "c. Resources cannot be preempted while they are in use.",
+      "d. Processes must release all resources when blocked."
+    ],
+    answer: "c. Resources cannot be preempted while they are in use."
+  },
+  {
+    question: "Which of the following is false in Data structures and Algorithms?",
+    options: [
+      "a. A tree contains a cycle.",
+      "b. Tree is a non-linear data structure.",
+      "c. A tree is a connected graph",
+      "d. A tree with n modes contains (n-1) edge"
+    ],
+    answer: "a. A tree contains a cycle."
+  },
+  {
+    question: "What is the role of a database administrator (DBA)?",
+    options: [
+      "a. Designing user interfaces for database applications.",
+      "b. Developing front-end application",
+      "c. Writing complex SQL queries.",
+      "d. Managing and maintaining databases."
+    ],
+    answer: "d. Managing and maintaining databases."
+  },
+  {
+    question: "Which attribute of <img> tag is used when we want to display a text in place of an image when, due to any reason, the image is not displayed?",
+    options: [
+      "a. rep",
+      "b. pla",
+      "c. alt",
+      "d. im"
+    ],
+    answer: "c. alt"
+  },
+  {
+    question: "If queue is implemented using arrays, what would be the worst run time complexity of queue and dequeue operations?",
+    options: [
+      "a. O(n), O(1)",
+      "b. O(1), O(n)",
+      "c. O(1), O(1)",
+      "d. O(n), O(n)"
+    ],
+    answer: "a. O(n), O(1)"
+  },
+  {
+    question: "Which of the following concepts in **OOP** allows a class to inherit attributes and methods from another class?",
+    options: [
+      "a. Inheritance",
+      "b. Abstraction",
+      "c. Encapsulation",
+      "d. Polymorphism"
+    ],
+    answer: "a. Inheritance"
+  },
+  {
+    question: "Which of the following is the top level object?",
+    options: [
+      "a. Root object",
+      "b. Document Object",
+      "c. JavaScript Object",
+      "d. Window Object"
+    ],
+    answer: "d. Window Object"
+  },
+  {
+    question: "Which tool is used to collect codes separately compiled or assembled in different object files into a file that is directly executable?",
+    options: [
+      "a. Linker",
+      "b. Loader",
+      "c. Assembler",
+      "d. Resolver"
+    ],
+    answer: "a. Linker"
+  },
+  {
+    question: "Among the following which kind of algorithm is used in the Game tree to make decisions of Win/Lose?",
+    options: [
+      "a. Heuristic Search Algorithm",
+      "b. Min/Max Algorithm",
+      "c. Depth First Search algorithm",
+      "d. Greedy Search Algorithm"
+    ],
+    answer: "b. Min/Max Algorithm"
+  },
+  {
+    question: "Which one of the following is not a reason for the need of backups?",
+    options: [
+      "a. Security incidents",
+      "b. Upgrades and migrations",
+      "c. Hardware failures",
+      "d. Authorization"
+    ],
+    answer: "d. Authorization"
+  },
+  {
+    question: "Which one of the following is not a characteristic of an algorithm?",
+    options: [
+      "a. Definiteness",
+      "b. Output",
+      "c. Finiteness",
+      "d. Efficiency"
+    ],
+    answer: "d. Efficiency"
+  },
+  {
+    question: "Which command in Microsoft Windows will allow you to verify your IP address, subnet mask, default gateway, and MAC address?",
+    options: [
+      "a. C:\\>ipconfig /all",
+      "b. C:\\>ping",
+      "c. C:\\>ipconfig",
+      "d. C:\\>ipstatus"
+    ],
+    answer: "a. C:\\>ipconfig /all"
+  },
+  {
+    question: "One of the following is not Characteristics of Java?",
+    options: [
+      "a. Java is Object-Oriented",
+      "b. Java is Platform Independent",
+      "c. Java is difficult to Learn",
+      "d. Java is architecture neutral."
+    ],
+    answer: "c. Java is difficult to Learn"
+  },
+  {
+    question: "In data communication, data rate refers how fast we can send data and is measured in bits per second. Which one of the following is not a factor for data rate?",
+    options: [
+      "a. Travel distance",
+      "b. Bandwidth available",
+      "c. Level of noise",
+      "d. Levels of the signals"
+    ],
+    answer: "a. Travel distance"
+  },
+  {
+    question: "Which layer of the OSI model ensures that the whole message (group of packets) arrives to the destination intact and in order?",
+    options: [
+      "a. Session layer",
+      "b. Transport layer",
+      "c. Data link layer",
+      "d. Network layer"
+    ],
+    answer: "b. Transport layer"
+  },
+  {
+    question: "Which System Requirement Specification includes human computer interface issues from the system?",
+    options: [
+      "a. Functional requirements of the system",
+      "b. Non-functional requirements of the system",
+      "c. Goals of implementation",
+      "d. System Testing"
+    ],
+    answer: "b. Non-functional requirements of the system"
+  },
+  {
+    question: "In a classical waterfall model, which phase precedes the design phase?",
+    options: [
+      "a. Requirements analysis and specification",
+      "b. Maintenance",
+      "c. Feasibility study",
+      "d. Coding and unit testing"
+    ],
+    answer: "a. Requirements analysis and specification"
+  },
+  {
+    question: "Which bus is bidirectional?",
+    options: [
+      "a. Control bus",
+      "b. Data bus",
+      "c. Uni-bus",
+      "d. Address bus"
+    ],
+    answer: "b. Data bus"
+  },
+  {
+    question: "Which one of the following is not an I/O command?",
+    options: [
+      "a. Status command",
+      "b. Output data command",
+      "c. Control command",
+      "d. Issue command"
+    ],
+    answer: "d. Issue command"
+  },
+  {
+    question: "Which one of the following form attribute is used to assign the server side script file that processes the form data?",
+    options: [
+      "a. Action",
+      "b. Autocomplete",
+      "c. Method",
+      "d. Target"
+    ],
+    answer: "a. Action"
+  },
+  {
+    question: "In MySQL architecture, the function of the __ is to keep copies of data for retrieval later, in case of a loss of data.",
+    options: [
+      "a. Buffer Manager",
+      "b. Transaction Manager",
+      "c. Query Engine",
+      "d. Recovery Manager"
+    ],
+    answer: "d. Recovery Manager"
+  },
+  {
+    question: "What role does machine learning play in understanding human perception?",
+    options: [
+      "a. Machine learning helps in simulating human perception through neural networks.",
+      "b. Machine learning has no relevance to understanding human perception.",
+      "c. Machine learning is not capable of analyzing perceptual data.",
+      "d. Machine learning only focuses on logical reasoning and decision-making."
+    ],
+    answer: "a. Machine learning helps in simulating human perception through neural networks."
+  },
+  {
+    question: "When to use the Spiral Model?",
+    options: [
+      "a. Where business modeling is clearly understood and in use.",
+      "b. When it is too risky to develop the overall system as one block.",
+      "c. When requirements are understood in the early stages but can change during the project’s life cycle.",
+      "d. When requirements are unstable and constantly changing."
+    ],
+    answer: "b. When it is too risky to develop the overall system as one block."
+  },
+  {
+    question: "The first step in access control is ______.",
+    options: [
+      "a. Audit",
+      "b. Authorization",
+      "c. Accreditation",
+      "d. Authentication"
+    ],
+    answer: "d. Authentication"
+  },
+  {
+    question: "The amount of memory needs to run to completion is known as ______.",
+    options: [
+      "a. Space complexity",
+      "b. Time complexity",
+      "c. Worst case",
+      "d. Best case"
+    ],
+    answer: "a. Space complexity"
+  },
+  {
+    question: "Which class of languages is most suited to be represented by pushdown automata?",
+    options: [
+      "a. Context free language",
+      "b. Regular language",
+      "c. Recursively enumerable language",
+      "d. Unrestricted language"
+    ],
+    answer: "a. Context free language"
+  },
+  {
+    question: "Which of the following is not a type of database model?",
+    options: [
+      "a. Linear",
+      "b. Object-Oriented",
+      "c. Hierarchical",
+      "d. Relational"
+    ],
+    answer: "a. Linear"
+  }
+];
+ 
+        // Quiz state variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const questionCount = document.getElementById('question-count');
+        const scoreDisplay = document.getElementById('score-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Update question count
+            questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            
+            // Create question HTML
+            let html = `
+                <div class="question-container">
+                    <div class="question">${currentQuestion.question}</div>
+                    <div class="options">
+            `;
+            
+            // Add options
+            currentQuestion.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionClass += ' selected';
+                }
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (option === currentQuestion.answer) {
+                        optionClass += ' correct';
+                    } else if (userAnswers[currentQuestionIndex] === index && option !== currentQuestion.answer) {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                html += `<div class="${optionClass}" data-index="${index}">${option}</div>`;
+            });
+            
+            html += `</div></div>`;
+            quizContent.innerHTML = html;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+            });
+        }
+
+        // Handle option selection
+        function selectOption(optionElement) {
+            // If already answered, don't allow changes
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store user's answer
+            const selectedIndex = parseInt(optionElement.getAttribute('data-index'));
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            // Check if answer is correct
+            const currentQuestion = quizData[currentQuestionIndex];
+            if (currentQuestion.options[selectedIndex] === currentQuestion.answer) {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                optionElement.classList.add('correct');
+            } else {
+                optionElement.classList.add('incorrect');
+                // Also show the correct answer
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.textContent === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === quizData.length - 1 ? 'Finish' : 'Next';
+            
+            // Disable next button if current question isn't answered (except for the last question)
+            if (currentQuestionIndex < quizData.length - 1) {
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContent.innerHTML = `
+                <div class="results-container">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score">Your Score: ${score} / ${quizData.length}</div>
+                    <p>${getResultMessage(score, quizData.length)}</p>
+                    <button class="btn-primary restart-btn" id="restart-btn">Restart Quiz</button>
+                </div>
+            `;
+            
+            document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+        }
+
+        // Get a result message based on the score
+        function getResultMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) {
+                return "Excellent! You have a deep understanding of computer science concepts.";
+            } else if (percentage >= 70) {
+                return "Great job! You have a solid grasp of these topics.";
+            } else if (percentage >= 50) {
+                return "Good effort! Consider reviewing some of the concepts you missed.";
+            } else {
+                return "Keep learning! Review the material and try again.";
+            }
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            scoreDisplay.textContent = `Score: ${score}`;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            } else {
+                showResults();
+            }
+        });
+
+        // Start the quiz
+        initQuiz();
+    </script>
+</body>
+</html>
