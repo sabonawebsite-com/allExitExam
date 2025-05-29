@@ -122,7 +122,9 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
+img{
+    border-radius: 50%; 
+}
         .btn-primary {
             background-color: var(--primary-color);
             color: white;
@@ -228,8 +230,9 @@
               <div class="unselectable">
  <h1 id="timer"></h1>   
         <header>
-            <h1>Computer Science Quiz</h1>
-            <p>Test your knowledge of networking, algorithms, and OOP concepts</p>
+            <img src="classG.png" alt="">
+            <h1>Computer Science exit exam</h1>
+            <p>Test your knowledge of networking</p>
         </header>
 
         <div class="progress-container">
@@ -237,7 +240,7 @@
         </div>
 
         <div class="quiz-info">
-            <div class="question-count" id="question-count">Question 1 of 30</div>
+            <div class="question-count" id="question-count">Question 1 of 50</div>
             <div class="score-display" id="score-display">Score: 0</div>
         </div>
 
@@ -268,7 +271,7 @@
       });
 
     // Set the date we're counting down to  
-        var countDownDate = new Date("May 29, 2025 00:31:59").getTime();  
+        var countDownDate = new Date("May 30, 2025 22:31:59").getTime();  
 
         // Update the countdown every 1 second  
         var x = setInterval(function() {  
