@@ -550,7 +550,207 @@ img{
     question: "Which technique involves storing backups in a geographically separate location to protect against localized disasters?",
     options: ["RAID", "Off-site Storage", "Clustering", "Polyinstantiation"],
     answer: "Off-site Storage"
-  }
+  },
+   {
+        question: "Which of the following is considered a core 'issue related to program security' rather than a specific vulnerability type?",
+        options: [
+            "a) SQL Injection",
+            "b) Cross-Site Scripting (XSS)",
+            "c) Insufficient Security by Design",
+            "d) Sensitive Data Exposure"
+        ],
+        answer: "c) Insufficient Security by Design"
+    },
+    {
+        question: "An attacker sends untrusted data to a web application that includes special characters, causing the application's database query to execute unintended commands. This is a classic example of what type of vulnerability?",
+        options: [
+            "a) Broken Authentication",
+            "b) Cross-Site Scripting (XSS)",
+            "c) Injection Flaw",
+            "d) Security Misconfiguration"
+        ],
+        answer: "c) Injection Flaw"
+    },
+    {
+        question: "What is the primary risk associated with 'Sensitive Data Exposure'?",
+        options: [
+            "a) Attackers gaining administrative privileges.",
+            "b) Unauthorized modification of data.",
+            "c) Unauthorized access or disclosure of confidential information.",
+            "d) Denial of service for legitimate users."
+        ],
+        answer: "c) Unauthorized access or disclosure of confidential information."
+    },
+    {
+        question: "A program error where more data is written to a memory area than it was intended to hold, potentially overwriting adjacent memory, is known as a:",
+        options: [
+            "a) Race Condition",
+            "b) Buffer Overflow",
+            "c) XML External Entity (XXE)",
+            "d) Format String Vulnerability"
+        ],
+        answer: "b) Buffer Overflow"
+    },
+    {
+        question: "Which common vulnerability arises when an application relies on third-party libraries or frameworks that have known security flaws?",
+        options: [
+            "a) Broken Access Control",
+            "b) Insecure Deserialization",
+            "c) Using Components with Known Vulnerabilities",
+            "d) Server-Side Request Forgery (SSRF)"
+        ],
+        answer: "c) Using Components with Known Vulnerabilities"
+    },
+    {
+        question: "The 'CIA Triad' is a foundational model in computer security. What does 'Confidentiality' primarily aim to ensure?",
+        options: [
+            "a) That information is always available to all users.",
+            "b) That data is accurate and free from unauthorized modification.",
+            "c) That information is accessible only to authorized individuals.",
+            "d) That system resources are never overloaded."
+        ],
+        answer: "c) That information is accessible only to authorized individuals."
+    },
+    {
+        question: "Which of the following best describes a 'Vulnerability' in computer security?",
+        options: [
+            "a) A malicious action taken by an attacker.",
+            "b) A potential danger that could exploit a weakness.",
+            "c) A weakness or flaw that could be exploited to cause harm.",
+            "d) A security mechanism implemented to reduce risk."
+        ],
+        answer: "c) A weakness or flaw that could be exploited to cause harm."
+    },
+    {
+        question: "After a user has successfully proven their identity (authentication), what security concept determines what actions they are allowed to perform within the system?",
+        options: [
+            "a) Accountability",
+            "b) Confidentiality",
+            "c) Authorization",
+            "d) Availability"
+        ],
+        answer: "c) Authorization"
+    },
+    {
+        question: "If a company implements a firewall to block unauthorized network access, what security concept is the firewall primarily acting as?",
+        options: [
+            "a) A Threat",
+            "b) A Vulnerability",
+            "c) A Risk",
+            "d) A Countermeasure (Control)"
+        ],
+        answer: "d) A Countermeasure (Control)"
+    },
+    {
+        question: "Maintaining detailed logs of all security-relevant events, such as user logins and file access, primarily contributes to which security concept?",
+        options: [
+            "a) Integrity",
+            "b) Availability",
+            "c) Confidentiality",
+            "d) Accountability"
+        ],
+        answer: "d) Accountability"
+    },
+    {
+        question: "What is the primary purpose of a Trusted Operating System (TOS)?",
+        options: [
+            "a) To manage network traffic efficiently.",
+            "b) To provide a high level of confidence that it enforces its security policy correctly.",
+            "c) To run applications faster.",
+            "d) To store data securely without any risk."
+        ],
+        answer: "b) To provide a high level of confidence that it enforces its security policy correctly."
+    },
+    {
+        question: "Which of the following is a cornerstone security mechanism for Trusted Operating Systems, where the system, not the user, enforces access rules based on security labels?",
+        options: [
+            "a) Discretionary Access Control (DAC)",
+            "b) Role-Based Access Control (RBAC)",
+            "c) Mandatory Access Control (MAC)",
+            "d) Attribute-Based Access Control (ABAC)"
+        ],
+        answer: "c) Mandatory Access Control (MAC)"
+    },
+    {
+        question: "The 'Principle of Least Privilege' in a TOS dictates that:",
+        options: [
+            "a) Users should have full administrative access.",
+            "b) All system resources should be shared equally.",
+            "c) Users and processes are granted only the minimum privileges necessary.",
+            "d) The OS kernel should have no privileges."
+        ],
+        answer: "c) Users and processes are granted only the minimum privileges necessary."
+    },
+    {
+        question: "What does 'Object Reuse Protection' aim to prevent in a Trusted Operating System?",
+        options: [
+            "a) Unauthorized copying of software.",
+            "b) Information leakage when memory or storage objects are reallocated.",
+            "c) Users from accessing the same file simultaneously.",
+            "d) Overwriting of system files."
+        ],
+        answer: "b) Information leakage when memory or storage objects are reallocated."
+    },
+    {
+        question: "Which mechanism provides a highly assured way for users to communicate directly with the security-enforcing components of the OS, preventing interference from untrusted software?",
+        options: [
+            "a) Secure Boot",
+            "b) Audit Trails",
+            "c) Trusted Path",
+            "d) Process Isolation"
+        ],
+        answer: "c) Trusted Path"
+    },
+    {
+        question: "What is the current internationally recognized standard for evaluating IT product security, including Trusted Operating Systems?",
+        options: [
+            "a) TCSEC (Orange Book)",
+            "b) ISO 27001",
+            "c) Common Criteria (CC)",
+            "d) PCI DSS"
+        ],
+        answer: "c) Common Criteria (CC)"
+    },
+    {
+        question: "In the Common Criteria framework, what do 'Security Functional Requirements (SFRs)' describe?",
+        options: [
+            "a) The measures taken during development and evaluation.",
+            "b) The security functions an IT product should perform.",
+            "c) The overall assurance level of a product.",
+            "d) The vulnerabilities found in a system."
+        ],
+        answer: "b) The security functions an IT product should perform."
+    },
+    {
+        question: "Which of the following is an example of a 'Security Assurance Requirement (SAR)' in the Common Criteria?",
+        options: [
+            "a) Cryptographic Support (FCS)",
+            "b) Identification and Authentication (FIA)",
+            "c) Vulnerability Assessment (AVA)",
+            "d) User Data Protection (FDP)"
+        ],
+        answer: "c) Vulnerability Assessment (AVA)"
+    },
+    {
+        question: "What does a higher 'Evaluation Assurance Level (EAL)' in Common Criteria signify?",
+        options: [
+            "a) The product is less secure.",
+            "b) The product has more functional features.",
+            "c) Greater confidence in the product's security due to more rigorous evaluation.",
+            "d) The product is easier to install."
+        ],
+        answer: "c) Greater confidence in the product's security due to more rigorous evaluation."
+    },
+    {
+        question: "What is the role of a 'Common Criteria Testing Laboratory (CCTL)' in the evaluation process?",
+        options: [
+            "a) To define the security policy for the operating system.",
+            "b) To develop the Security Target document.",
+            "c) To perform independent, rigorous examination of the vendor's product and evidence.",
+            "d) To issue the final Common Criteria Certificate."
+        ],
+        answer: "c) To perform independent, rigorous examination of the vendor's product and evidence."
+    }
 ];
  
         // Quiz state variables
