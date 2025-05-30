@@ -301,6 +301,306 @@ img{
         }, 1000); 
         // Quiz data from the provided file
         const quizData = [
+           {
+        question: "Which of the following best describes 'data' in the context of data communications?",
+        options: [
+            "The physical cables used for transmission.",
+            "The information being transmitted.",
+            "The rules governing communication.",
+            "The devices connected to a network."
+        ],
+        answer: "The information being transmitted."
+    },
+    {
+        question: "What is the primary purpose of a 'protocol' in a data communications network?",
+        options: [
+            "To physically connect devices.",
+            "To generate electrical signals.",
+            "To define rules for data transmission and reception.",
+            "To store network data."
+        ],
+        answer: "To define rules for data transmission and reception."
+    },
+    {
+        question: "Which of the following is NOT a common component of a data communications network?",
+        options: [
+            "Sender",
+            "Receiver",
+            "Atmosphere",
+            "Medium"
+        ],
+        answer: "Atmosphere"
+    },
+    {
+        question: "The OSI (Open Systems Interconnection) model has how many layers?",
+        options: [
+            "4",
+            "5",
+            "7",
+            "10"
+        ],
+        answer: "7"
+    },
+    {
+        question: "Which layer of the OSI model is responsible for logical addressing (IP addresses) and routing?",
+        options: [
+            "Physical Layer",
+            "Data Link Layer",
+            "Network Layer",
+            "Transport Layer"
+        ],
+        answer: "Network Layer"
+    },
+    {
+        question: "What is the main function of the Transport Layer in the OSI model?",
+        options: [
+            "Establishing physical connections.",
+            "Providing end-to-end reliable data transfer.",
+            "Formatting data for display.",
+            "Controlling access to the network medium."
+        ],
+        answer: "Providing end-to-end reliable data transfer."
+    },
+    {
+        question: "Which protocol is primarily used for reliable, connection-oriented communication at the Transport Layer?",
+        options: [
+            "UDP",
+            "IP",
+            "HTTP",
+            "TCP"
+        ],
+        answer: "TCP"
+    },
+    {
+        question: "What does 'HTTP' stand for, and what is its primary use?",
+        options: [
+            "High Transfer Protocol; file sharing.",
+            "Hypertext Transfer Protocol; web Browse.",
+            "Host-to-Host Protocol; network diagnostics.",
+            "Handshake Transmission Protocol; secure connections."
+        ],
+        answer: "Hypertext Transfer Protocol; web Browse."
+    },
+    {
+        question: "In the TCP/IP model, which layer combines the functions of the Physical and Data Link layers of the OSI model?",
+        options: [
+            "Internet Layer",
+            "Network Interface Layer",
+            "Transport Layer",
+            "Application Layer"
+        ],
+        answer: "Network Interface Layer"
+    },
+    {
+        question: "What is a key characteristic that defines a Local Area Network (LAN)?",
+        options: [
+            "It covers a wide geographic area like a country.",
+            "It connects devices within a limited geographic area.",
+            "It is always owned by a telecommunications company.",
+            "It primarily uses satellite communication."
+        ],
+        answer: "It connects devices within a limited geographic area."
+    },
+    {
+        question: "Which of the following is a common resource shared within a LAN?",
+        options: [
+            "Global positioning systems",
+            "Satellite dishes",
+            "Printers",
+            "Public telephone networks"
+        ],
+        answer: "Printers"
+    },
+    {
+        question: "Which networking device is typically used to connect different networks and route traffic between them based on IP addresses?",
+        options: [
+            "Switch",
+            "Hub",
+            "Router",
+            "Repeater"
+        ],
+        answer: "Router"
+    },
+    {
+        question: "In a Star topology LAN, where do all devices connect?",
+        options: [
+            "To a single shared cable.",
+            "In a circular fashion.",
+            "To a central hub or switch.",
+            "Directly to every other device."
+        ],
+        answer: "To a central hub or switch."
+    },
+    {
+        question: "What is the unique hardware identifier assigned to each network interface card (NIC), used at the Data Link Layer?",
+        options: [
+            "IP Address",
+            "Port Number",
+            "MAC Address",
+            "URL"
+        ],
+        answer: "MAC Address"
+    },
+    {
+        question: "Which media access control method is primarily used in Wi-Fi (wireless LANs) to avoid collisions?",
+        options: [
+            "CSMA/CD",
+            "Token Ring",
+            "CSMA/CA",
+            "Polling"
+        ],
+        answer: "CSMA/CA"
+    },
+    {
+        question: "The Physical Layer of the OSI model is concerned with:",
+        options: [
+            "Data encryption.",
+            "Error detection in frames.",
+            "Electrical signals and physical medium characteristics.",
+            "End-to-end message delivery."
+        ],
+        answer: "Electrical signals and physical medium characteristics."
+    },
+    {
+        question: "If a device on a LAN needs to send data outside its local network, which device is responsible for forwarding that data?",
+        options: [
+            "Switch",
+            "Hub",
+            "Router",
+            "Modem"
+        ],
+        answer: "Router"
+    },
+    {
+        question: "What is a 'medium' in the context of data communications?",
+        options: [
+            "A software application.",
+            "The physical path through which data travels.",
+            "A set of communication rules.",
+            "A device that processes data."
+        ],
+        answer: "The physical path through which data travels."
+    },
+    {
+        question: "Which OSI layer is responsible for translating data formats, encryption, and compression?",
+        options: [
+            "Session Layer",
+            "Presentation Layer",
+            "Application Layer",
+            "Transport Layer"
+        ],
+        answer: "Presentation Layer"
+    },
+    {
+        question: "What is the primary difference between a switch and a hub in a LAN?",
+        options: [
+            "Hubs are faster than switches.",
+            "Switches forward data only to the intended recipient; hubs broadcast to all ports.",
+            "Switches operate at the Physical Layer; hubs operate at the Data Link Layer.",
+            "Hubs are used for wireless networks; switches are for wired."
+        ],
+        answer: "Switches forward data only to the intended recipient; hubs broadcast to all ports."
+    },
+    {
+        question: "Which protocol provides connectionless, unreliable datagram service at the Transport Layer?",
+        options: [
+            "TCP",
+            "FTP",
+            "UDP",
+            "SMTP"
+        ],
+        answer: "UDP"
+    },
+    {
+        question: "What does 'IP' stand for in the context of networking?",
+        options: [
+            "Internet Port",
+            "Internal Protocol",
+            "Internet Packet",
+            "Internet Protocol"
+        ],
+        answer: "Internet Protocol"
+    },
+    {
+        question: "The process of dividing complex networking tasks into smaller, manageable layers is known as:",
+        options: [
+            "Decentralization",
+            "Layered architecture",
+            "Network segmentation",
+            "Protocol encapsulation"
+        ],
+        answer: "Layered architecture"
+    },
+    {
+        question: "In the OSI model, which layer defines how applications interact with the network?",
+        options: [
+            "Network Layer",
+            "Session Layer",
+            "Presentation Layer",
+            "Application Layer"
+        ],
+        answer: "Application Layer"
+    },
+    {
+        question: "A LAN typically offers __________ data transfer rates compared to a WAN.",
+        options: [
+            "Lower",
+            "Similar",
+            "Significantly higher",
+            "Unpredictable"
+        ],
+        answer: "Significantly higher"
+    },
+    {
+        question: "Which of the following is an example of a physical layer component?",
+        options: [
+            "HTTP request",
+            "IP address",
+            "Ethernet cable",
+            "TCP segment"
+        ],
+        answer: "Ethernet cable"
+    },
+    {
+        question: "What is the main responsibility of the Data Link Layer in the OSI model?",
+        options: [
+            "End-to-end encryption.",
+            "Routing packets across networks.",
+            "Reliable transfer of data frames across a physical link.",
+            "Managing user authentication."
+        ],
+        answer: "Reliable transfer of data frames across a physical link."
+    },
+    {
+        question: "What does 'WLAN' primarily refer to?",
+        options: [
+            "Wired Local Area Network",
+            "Wide Area Logical Network",
+            "Wireless Local Area Network",
+            "World Link Access Network"
+        ],
+        answer: "Wireless Local Area Network"
+    },
+    {
+        question: "The term 'syntax' in the context of protocols refers to:",
+        options: [
+            "The meaning of the data.",
+            "The timing of data transmission.",
+            "The structure or format of the data.",
+            "The speed of the network."
+        ],
+        answer: "The structure or format of the data."
+    },
+    {
+        question: "Which device acts as a central connection point in a Star topology LAN for wireless devices?",
+        options: [
+            "Router",
+            "Switch",
+            "Access Point",
+            "Modem"
+        ],
+        answer: "Access Point"
+    },
     {
         question: "Which of the following protocols operates at the Transport Layer of the TCP/IP model and provides reliable, connection-oriented communication?",
         options: ["HTTP", "UDP", "IP", "TCP"],
