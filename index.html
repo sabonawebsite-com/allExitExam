@@ -119,74 +119,87 @@
             background-color: #9ca3af;
             cursor: not-allowed;
         }
-.relax-guys {
-    margin-bottom: 2rem;
-}
 
-.relax-guys a {
-    display: inline-block;
-    margin: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #3b82f6;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
+        .relax-guys {
+            margin-bottom: 2rem;
+        }
 
-.relax-guys a:hover {
-    background-color: #2563eb;
-    transform: translateY(-2px);
-}
-      img {
-    display: block; /* Important: images are inline by default */
-    margin-left: auto;
-    margin-right: auto;
-    /* Optional: Set a max-width for responsiveness */
-    max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
-}
-/* ...existing code... */
+        .relax-guys a {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
 
-/* Responsive styles */
-@media (max-width: 640px) {
-    .quiz-container {
-        padding: 1rem;
-        max-width: 100%;
-        border-radius: 0.5rem;
-    }
-    h1, h2 {
-        font-size: 1.5rem !important;
-    }
-    #question-display {
-        font-size: 1.125rem !important;
-    }
-    .option-button {
-        font-size: 1rem;
-        padding: 0.5rem 0.75rem;
-    }
-    .action-button {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
+        .relax-guys a:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
 
-@media (max-width: 400px) {
-    .quiz-container {
-        padding: 0.5rem;
-    }
-    .option-button, .action-button {
-        font-size: 0.95rem;
-        padding: 0.4rem 0.5rem;
-    }
-}
+        img {
+            display: block;
+            /* Important: images are inline by default */
+            margin-left: auto;
+            margin-right: auto;
+            /* Optional: Set a max-width for responsiveness */
+            max-width: 100%;
+            height: auto;
+            /* Maintain aspect ratio */
+        }
 
-/* ...existing code... */
+        /* ...existing code... */
+
+        /* Responsive styles */
+        @media (max-width: 640px) {
+            .quiz-container {
+                padding: 1rem;
+                max-width: 100%;
+                border-radius: 0.5rem;
+            }
+
+            h1,
+            h2 {
+                font-size: 1.5rem !important;
+            }
+
+            #question-display {
+                font-size: 1.125rem !important;
+            }
+
+            .option-button {
+                font-size: 1rem;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .action-button {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .quiz-container {
+                padding: 0.5rem;
+            }
+
+            .option-button,
+            .action-button {
+                font-size: 0.95rem;
+                padding: 0.4rem 0.5rem;
+            }
+        }
+
+        /* ...existing code... */
     </style>
 </head>
 
@@ -195,14 +208,25 @@
         <h1 class="text-3xl font-bold mb-6 text-gray-800">All Exit Exam</h1>
         <img src="moe.jpg" alt="">
         <div class="relax-guys">
-            <a href="fast.html" class="">Relax Guys</a><br>
-            <a href="admas.html">best model</a>
-            <a href="network.html">Network</a>
-<a href="duresaa.html">Exit-Exam-duraa</a>
-<a href="mubee.html">Exit-Exam-muba</a>
-<a href="comptuersecu.html">Computer Security</a>
+         <select id="pageDropdown" class="p-2 rounded border border-gray-300">
+    <option value="">-- Select Course --</option>
+    <option value="fast.html">Relax Guys</option>
+    <option value="admas.html">Best Model</option>
+    <option value="network.html">Network</option>
+    <option value="duresaa.html">Exit-Exam-duraa</option>
+    <option value="mubee.html">Exit-Exam-muba</option>
+    <option value="comptuersecu.html">Computer Security</option>
+</select>
+            <script>
+                document.getElementById('pageDropdown').addEventListener('change', function () {
+                    const selectedPage = this.value;
+                    if (selectedPage) {
+                        window.location.href = selectedPage;
+                    }
+                });
+            </script>
         </div>
-        
+
         <div id="quiz-screen">
             <div id="question-display" class="text-2xl font-semibold mb-6 text-gray-700"></div>
             <div id="options-container" class="grid grid-cols-1 gap-4">
@@ -223,7 +247,7 @@
     <script>
 
         const quizQuestions = [
-          
+
             {
                 question: "Which of the following is a primary key in a relational database?",
                 options: ["A unique identifier for a row in a table", "A foreign key from another table", "A non-unique attribute in a table", "A combination of attributes in a table"],
@@ -3719,7 +3743,7 @@
                 options: ["Assigning a floating-point value to an integer variable.", "Assigning a value to an uninitialized variable.", "Declaring a variable without specifying its type.", "Using an undeclared variable in the program."],
                 answer: 0
             },
-              {
+            {
                 question: "Which phase of the software development life cycle is responsible for gathering and analyzing user requirements?",
                 options: ["Analysis", "Design", "Development", "Testing"],
                 answer: 0
