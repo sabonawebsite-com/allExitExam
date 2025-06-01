@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Quiz</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+            border-color: var(--primary-color);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option.correct {
+            background-color: var(--correct-color);
+            color: white;
+            border-color: var(--correct-color);
+        }
+
+        .option.incorrect {
+            background-color: var(--incorrect-color);
+            color: white;
+            border-color: var(--incorrect-color);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+img{
+    border-radius: 50%; 
+}
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+  .unselectable {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      
+      
+        }
+        .btn-secondary:hover {
+            background-color: #ddd;
+        }
+#timer{
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    color: red;
+    text-align: center;
+}
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .results-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+              <div class="unselectable">
+ <h1 id="timer"></h1>   
+        <header>
+            <img src="moe.jpg" alt="">
+            <h1>Computer Science exit exam</h1>
+            <p>Test your knowledge of networking</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="quiz-info">
+            <div class="question-count" id="question-count">Question 1 of 50</div>
+            <div class="score-display" id="score-display">Score: 0</div>
+        </div>
+
+        <div class="quiz-content" id="quiz-content">
+            <!-- Question and options will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button class="btn-secondary" id="prev-btn" disabled>Previous</button>
+            <button class="btn-primary" id="next-btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+         document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+        document.addEventListener('copy', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('cut', function (e) {
+        e.preventDefault();
+      });
+  
+      document.addEventListener('paste', function (e) {
+        e.preventDefault();
+      });
+
+    // Set the date we're counting down to  
+        var countDownDate = new Date("June 07, 2025 20:50:59").getTime();  
+
+        // Update the countdown every 1 second  
+        var x = setInterval(function() {  
+
+            // Get today's date and time  
+            var now = new Date().getTime();  
+
+            // Find the distance between now and the countdown date  
+            var distance = countDownDate - now;  
+
+            // Time calculations for days, hours, minutes, and seconds  
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+
+            // Display the result in the element with id="timer"  
+            document.getElementById("timer").innerHTML = days + "d: " + hours + "h: "  
+            + minutes + "m: " + seconds + "s ";  
+
+            // If the countdown is over, write some text   
+            if (distance < 0) {  
+                clearInterval(x);  
+                document.getElementById("timer").innerHTML = "EXPIRED";  
+                document.getElementById("timer").classList.add("expired");  
+            }  
+        }, 1000); 
+        // Quiz data from the provided file
+       const quizData = [
+            {
+        question: "Which component of the operating system acts as an intermediary between the user and the computer hardware?",
+        options: [
+            "A) Application software",
+            "B) Device driver",
+            "C) The operating system itself",
+            "D) The user interface"
+        ],
+        answer: "C) The operating system itself"
+    },
+    {
+        question: "What is one of the common services provided by operating systems for computer programs?",
+        options: [
+            "A) Financial management",
+            "B) Hardware resource management",
+            "C) Game development",
+            "D) Cloud storage only"
+        ],
+        answer: "B) Hardware resource management"
+    },
+    {
+        question: "What does the term 'throughput' refer to in the context of OS efficiency?",
+        options: [
+            "A) The speed at which a single program executes.",
+            "B) The amount of work completed per unit of time.",
+            "C) The total memory used by the system.",
+            "D) The frequency of system crashes."
+        ],
+        answer: "B) The amount of work completed per unit of time."
+    },
+    {
+        question: "Which type of user interface uses windows, icons, menus, and pointers for user interaction?",
+        options: [
+            "A) Command Line Interface (CLI)",
+            "B) Text-based interface",
+            "C) Graphical User Interface (GUI)",
+            "D) System Call Interface"
+        ],
+        answer: "C) Graphical User Interface (GUI)"
+    },
+    {
+        question: "What is the purpose of 'aging' in CPU scheduling?",
+        options: [
+            "A) To decrease the priority of long-running processes.",
+            "B) To gradually increase the priority of processes that wait for a long time.",
+            "C) To reduce the number of context switches.",
+            "D) To prevent high-priority tasks from running too often."
+        ],
+        answer: "B) To gradually increase the priority of processes that wait for a long time."
+    },
+    {
+        question: "In the context of CPU scheduling, what is 'context switching'?",
+        options: [
+            "A) The process of saving the state of one process and loading the state of another.",
+            "B) The time a process spends waiting for I/O.",
+            "C) The allocation of memory to a process.",
+            "D) The creation of a new process."
+        ],
+        answer: "A) The process of saving the state of one process and loading the state of another."
+    },
+    {
+        question: "Which scheduling algorithm is known for being 'provably optimal for minimizing the average waiting time'?",
+        options: [
+            "A) FCFS",
+            "B) Round Robin",
+            "C) Priority Scheduling",
+            "D) Shortest Job First (SJF)"
+        ],
+        answer: "D) Shortest Job First (SJF)"
+    },
+    {
+        question: "What is the 'convoy effect' often associated with?",
+        options: [
+            "A) Round Robin scheduling",
+            "B) Shortest Job First scheduling",
+            "C) First-Come, First-Served (FCFS) scheduling",
+            "D) Preemptive Priority scheduling"
+        ],
+        answer: "C) First-Come, First-Served (FCFS) scheduling"
+    },
+    {
+        question: "What is a major challenge in implementing the Shortest Job First (SJF) algorithm?",
+        options: [
+            "A) It leads to excessive context switching.",
+            "B) It is difficult to implement preemption.",
+            "C) It requires knowing the future CPU burst time.",
+            "D) It causes low-priority processes to starve."
+        ],
+        answer: "C) It requires knowing the future CPU burst time."
+    },
+    {
+        question: "How do modern operating systems allow for adaptation to new hardware technologies and software requirements?",
+        options: [
+            "A) By being rigidly designed.",
+            "B) By having adaptability and modularity.",
+            "C) By limiting the number of supported devices.",
+            "D) By requiring a complete overhaul for every change."
+        ],
+        answer: "B) By having adaptability and modularity."
+    },
+  {
+    question: "What is the primary goal of modern operating systems?",
+    options: [
+      "A) To manage financial transactions.",
+      "B) To create an environment for convenient and efficient program execution.",
+      "C) To design new hardware components.",
+      "D) To exclusively support command-line interfaces."
+    ],
+    answer: "B) To create an environment for convenient and efficient program execution."
+  },
+  {
+    question: "Which of the following is NOT an objective of modern operating systems?",
+    options: [
+      "A) Convenience",
+      "B) Efficiency",
+      "C) Data Duplication",
+      "D) Security and Protection"
+    ],
+    answer: "C) Data Duplication"
+  },
+  {
+    question: "What does a user-friendly interface (GUI or CLI) contribute to in an OS?",
+    options: [
+      "A) Hardware complexity",
+      "B) User convenience",
+      "C) Program compilation",
+      "D) Network security breaches"
+    ],
+    answer: "B) User convenience"
+  },
+  {
+    question: "How do modern OS abstract hardware details from application developers?",
+    options: [
+      "A) By providing direct hardware access to all programs.",
+      "B) By offering a consistent program execution environment.",
+      "C) By requiring manual hardware configuration for each application.",
+      "D) By limiting the number of applications that can run simultaneously."
+    ],
+    answer: "B) By offering a consistent program execution environment."
+  },
+  {
+    question: "Optimal resource utilization in an OS aims to maximize what?",
+    options: [
+      "A) User idle time",
+      "B) Throughput and minimize response time",
+      "C) Hardware failures",
+      "D) Software installation time"
+    ],
+    answer: "B) Throughput and minimize response time"
+  },
+  {
+    question: "What does 'Fair Resource Sharing' in an OS prevent?",
+    options: [
+      "A) Equal distribution of tasks.",
+      "B) Any single process from monopolizing the system.",
+      "C) Collaboration between processes.",
+      "D) Efficient CPU usage."
+    ],
+    answer: "B) Any single process from monopolizing the system."
+  },
+  {
+    question: "Access Control in operating systems primarily protects against what?",
+    options: [
+      "A) System updates",
+      "B) Unauthorized access to system resources",
+      "C) Program uninstallation",
+      "D) Printer malfunctions"
+    ],
+    answer: "B) Unauthorized access to system resources"
+  },
+  {
+    question: "What is the purpose of process isolation in an OS?",
+    options: [
+      "A) To speed up process execution.",
+      "B) To prevent one program from interfering with or corrupting another.",
+      "C) To allow direct memory access between all processes.",
+      "D) To enable shared resource modification without control."
+    ],
+    answer: "B) To prevent one program from interfering with or corrupting another."
+  },
+  {
+    question: "Which objective ensures the consistency and correctness of data stored and processed by the system?",
+    options: [
+      "A) Scalability",
+      "B) Modularity",
+      "C) Data Integrity",
+      "D) Device Management"
+    ],
+    answer: "C) Data Integrity"
+  },
+  {
+    question: "What does error handling in an OS aim to minimize?",
+    options: [
+      "A) User interaction",
+      "B) The impact of hardware or software failures",
+      "C) System reboots",
+      "D) Software development costs"
+    ],
+    answer: "B) The impact of hardware or software failures"
+  },
+  {
+    question: "What is a key aspect of system stability in an OS?",
+    options: [
+      "A) Allowing frequent crashes for debugging.",
+      "B) Preventing crashes and ensuring continuous operation.",
+      "C) Encouraging inconsistent data storage.",
+      "D) Requiring constant manual intervention."
+    ],
+    answer: "B) Preventing crashes and ensuring continuous operation."
+  },
+  {
+    question: "How does modularity aid the scalability and extensibility of an OS?",
+    options: [
+      "A) By making the system monolithic and rigid.",
+      "B) By allowing for easy updates, additions, and removal of components.",
+      "C) By restricting the OS to specific hardware.",
+      "D) By making it difficult to adapt to new technologies."
+    ],
+    answer: "B) By allowing for easy updates, additions, and removal of components."
+  },
+  {
+    question: "Which function determines which process gets access to the CPU and for how long?",
+    options: [
+      "A) Memory Allocation",
+      "B) File Organization",
+      "C) Process Scheduling",
+      "D) Device Drivers"
+    ],
+    answer: "C) Process Scheduling"
+  },
+  {
+    question: "What do semaphores and mutexes facilitate in process management?",
+    options: [
+      "A) Process termination",
+      "B) Process synchronization and communication",
+      "C) Process creation",
+      "D) Process preemption"
+    ],
+    answer: "B) Process synchronization and communication"
+  },
+  {
+    question: "What is the main purpose of Virtual Memory?",
+    options: [
+      "A) To limit programs to physically available RAM.",
+      "B) To allow programs to use more memory than physically available by swapping data.",
+      "C) To directly allocate all memory to a single process.",
+      "D) To remove the need for memory protection."
+    ],
+    answer: "B) To allow programs to use more memory than physically available by swapping data."
+  },
+  {
+    question: "What does Memory Protection ensure?",
+    options: [
+      "A) That all processes can access any memory region.",
+      "B) That processes do not access memory regions belonging to other processes or the OS itself.",
+      "C) That memory is never deallocated.",
+      "D) That virtual memory is always disabled."
+    ],
+    answer: "B) That processes do not access memory regions belonging to other processes or the OS itself."
+  },
+  {
+    question: "Which function manages the organization, storage, retrieval, and deletion of files?",
+    options: [
+      "A) Process Management",
+      "B) Device Management",
+      "C) File System Management",
+      "D) Networking"
+    ],
+    answer: "C) File System Management"
+  },
+  {
+    question: "What do device drivers provide for applications?",
+    options: [
+      "A) Direct access to hardware registers.",
+      "B) A standardized interface to interact with various hardware devices.",
+      "C) A way to bypass the operating system.",
+      "D) Enhanced CPU processing power."
+    ],
+    answer: "B) A standardized interface to interact with various hardware devices."
+  },
+  {
+    question: "Authentication and Authorization are part of which OS function?",
+    options: [
+      "A) File System Management",
+      "B) Security and Protection",
+      "C) Memory Management",
+      "D) User Interface"
+    ],
+    answer: "B) Security and Protection"
+  },
+  {
+    question: "What is a primary role of the Networking function in an OS?",
+    options: [
+      "A) To manage local storage only.",
+      "B) To manage network connections, protocols, and data transmission/reception.",
+      "C) To exclusively manage printer queues.",
+      "D) To prevent all external communication."
+    ],
+    answer: "B) To manage network connections, protocols, and data transmission/reception."
+  },
+  {
+    question: "What is the role of System Calls?",
+    options: [
+      "A) To directly modify hardware settings.",
+      "B) To provide an interface between user applications and the OS kernel, allowing programs to request OS services.",
+      "C) To execute programs without OS intervention.",
+      "D) To manage only GUI elements."
+    ],
+    answer: "B) To provide an interface between user applications and the OS kernel, allowing programs to request OS services."
+  },
+  {
+    question: "How does the OS facilitate convenience for program execution?",
+    options: [
+      "A) By exposing all hardware complexities.",
+      "B) By offering a consistent and convenient environment that abstracts hardware specifics.",
+      "C) By requiring extensive user configuration for each program.",
+      "D) By limiting programs to specific hardware models."
+    ],
+    answer: "B) By offering a consistent and convenient environment that abstracts hardware specifics."
+  },
+  {
+    question: "Which function of the OS related to efficiency manages the lifecycle of running programs?",
+    options: [
+      "A) Device Drivers",
+      "B) Process Creation and Termination",
+      "C) Directory Management",
+      "D) Network Communication"
+    ],
+    answer: "B) Process Creation and Termination"
+  },
+  {
+    question: "What does I/O Scheduling aim to improve?",
+    options: [
+      "A) CPU clock speed",
+      "B) Overall system performance by optimizing input/output requests.",
+      "C) Graphics rendering quality",
+      "D) Memory module capacity"
+    ],
+    answer: "B) Overall system performance by optimizing input/output requests."
+  },
+  {
+    question: "How does modularity enable the evolution of an OS?",
+    options: [
+      "A) By making it resistant to any changes.",
+      "B) By allowing for easy updates, additions, and removal of components without affecting the entire system.",
+      "C) By requiring a complete system redesign for every new feature.",
+      "D) By limiting the number of supported hardware devices."
+    ],
+    answer: "B) By allowing for easy updates, additions, and removal of components without affecting the entire system."
+  },
+  {
+    question: "What is a deadlock in an operating system?",
+    options: [
+      "A) A process that has completed its execution.",
+      "B) A situation where processes are blocked, each waiting for a resource held by another process in the set, creating a cycle.",
+      "C) A state where all resources are freely available.",
+      "D) A rapid execution of all pending processes."
+    ],
+    answer: "B) A situation where processes are blocked, each waiting for a resource held by another process in the set, creating a cycle."
+  },
+  {
+    question: "Which condition for deadlock states that at least one resource must be held in a non-sharable mode?",
+    options: [
+      "A) Hold and Wait",
+      "B) No Preemption",
+      "C) Mutual Exclusion",
+      "D) Circular Wait"
+    ],
+    answer: "C) Mutual Exclusion"
+  },
+  {
+    question: "What does the 'Hold and Wait' condition imply about processes?",
+    options: [
+      "A) A process releases all resources before requesting new ones.",
+      "B) A process holds resources and simultaneously waits for additional resources held by other processes.",
+      "C) Processes never wait for resources.",
+      "D) Resources are always immediately available upon request."
+    ],
+    answer: "B) A process holds resources and simultaneously waits for additional resources held by other processes."
+  },
+  {
+    question: "What does the 'No Preemption' condition mean regarding resources?",
+    options: [
+      "A) Resources can be forcibly taken away from a process.",
+      "B) A resource can only be released voluntarily by the process holding it.",
+      "C) Resources are always preemptable.",
+      "D) The operating system can always break a deadlock by taking resources."
+    ],
+    answer: "B) A resource can only be released voluntarily by the process holding it."
+  },
+  {
+    question: "What characterizes the 'Circular Wait' condition for deadlock?",
+    options: [
+      "A) All processes are waiting for the same resource.",
+      "B) A linear chain of processes, each waiting for a resource held by the next, forming a closed cycle.",
+      "C) Processes release resources freely.",
+      "D) No process waits for another."
+    ],
+    answer: "B) A linear chain of processes, each waiting for a resource held by the next, forming a closed cycle."
+  },
+  {
+    question: "How many conditions must simultaneously be met for a deadlock to occur?",
+    options: [
+      "A) One",
+      "B) Two",
+      "C) Three",
+      "D) Four"
+    ],
+    answer: "D) Four"
+  },
+  {
+    question: "In non-preemptive scheduling, what happens to a process once it's assigned the CPU?",
+    options: [
+      "A) It can be interrupted by a higher-priority process immediately.",
+      "B) It runs to completion or voluntarily releases the CPU.",
+      "C) It is automatically moved to the waiting queue.",
+      "D) It is preempted after a fixed time quantum."
+    ],
+    answer: "B) It runs to completion or voluntarily releases the CPU."
+  },
+  {
+    question: "What is an advantage of non-preemptive scheduling?",
+    options: [
+      "A) Excellent response time for interactive systems.",
+      "B) Low overhead due to fewer context switches.",
+      "C) Prevents starvation for short processes.",
+      "D) Allows critical tasks to be executed quickly."
+    ],
+    answer: "B) Low overhead due to fewer context switches."
+  },
+  {
+    question: "Which of the following is an example of a non-preemptive scheduling algorithm?",
+    options: [
+      "A) Round Robin (RR)",
+      "B) Shortest Remaining Time First (SRTF)",
+      "C) First-Come, First-Served (FCFS)",
+      "D) Preemptive Priority Scheduling"
+    ],
+    answer: "C) First-Come, First-Served (FCFS)"
+  },
+  {
+    question: "What is the key characteristic of preemptive scheduling?",
+    options: [
+      "A) The CPU cannot be taken away from a running process.",
+      "B) The CPU can be taken away from a running process.",
+      "C) Processes always run to completion.",
+      "D) It is simpler to implement than non-preemptive scheduling."
+    ],
+    answer: "B) The CPU can be taken away from a running process."
+  },
+  {
+    question: "What is an advantage of preemptive scheduling?",
+    options: [
+      "A) Lower overhead due to fewer context switches.",
+      "B) Can lead to long waiting times for high-priority processes.",
+      "C) Better response time for interactive systems.",
+      "D) Requires careful handling of shared data to avoid integrity issues."
+    ],
+    answer: "C) Better response time for interactive systems."
+  },
+  {
+    question: "Which algorithm assigns each process a priority and allocates the CPU to the highest priority process?",
+    options: [
+      "A) FCFS",
+      "B) SJF",
+      "C) Priority Scheduling",
+      "D) Round Robin"
+    ],
+    answer: "C) Priority Scheduling"
+  },
+  {
+    question: "What is a drawback of Priority Scheduling, especially if not mitigated?",
+    options: [
+      "A) It ensures perfect fairness to all tasks.",
+      "B) Can lead to starvation for low-priority processes.",
+      "C) It performs poorly for real-time systems.",
+      "D) It has very high context switching overhead."
+    ],
+    answer: "B) Can lead to starvation for low-priority processes."
+  },
+  {
+    question: "What technique is used to prevent starvation in Priority Scheduling?",
+    options: [
+      "A) Deadlock prevention",
+      "B) Aging",
+      "C) Resource allocation",
+      "D) Process isolation"
+    ],
+    answer: "B) Aging"
+  },
+  {
+    question: "In FCFS, how are processes executed?",
+    options: [
+      "A) Based on their priority.",
+      "B) In the order they arrive in the ready queue.",
+      "C) Based on their CPU burst time.",
+      "D) Randomly."
+    ],
+    answer: "B) In the order they arrive in the ready queue."
+  },
+  {
+    question: "What is the main disadvantage of FCFS regarding performance?",
+    options: [
+      "A) It is complex to implement.",
+      "B) Can lead to high average waiting and turnaround times if a long process arrives before short ones ('convoy effect').",
+      "C) It causes frequent context switches.",
+      "D) It is not suitable for batch systems."
+    ],
+    answer: "B) Can lead to high average waiting and turnaround times if a long process arrives before short ones ('convoy effect')."
+  },
+  {
+    question: "Which algorithm is provably optimal for minimizing the average waiting time?",
+    options: [
+      "A) Round Robin",
+      "B) Priority Scheduling",
+      "C) Shortest Job First (SJF)",
+      "D) First-Come, First-Served"
+    ],
+    answer: "C) Shortest Job First (SJF)"
+  },
+  {
+    question: "What is the primary drawback of SJF (both preemptive and non-preemptive) in practice?",
+    options: [
+      "A) It is not efficient.",
+      "B) It requires knowing the future CPU burst time.",
+      "C) It leads to very few context switches.",
+      "D) It is unfair to short processes."
+    ],
+    answer: "B) It requires knowing the future CPU burst time."
+  },
+  {
+    question: "What is Shortest Remaining Time First (SRTF)?",
+    options: [
+      "A) A non-preemptive version of SJF.",
+      "B) A preemptive version of SJF.",
+      "C) A type of Round Robin scheduling.",
+      "D) An algorithm focused on fair-share."
+    ],
+    answer: "B) A preemptive version of SJF."
+  },
+  {
+    question: "In Round Robin, what is a 'time quantum'?",
+    options: [
+      "A) The total execution time of a process.",
+      "B) A small unit of CPU time assigned to each process.",
+      "C) The time a process spends waiting in the queue.",
+      "D) The time taken for a context switch."
+    ],
+    answer: "B) A small unit of CPU time assigned to each process."
+  },
+  {
+    question: "How does Round Robin generally perform for interactive systems?",
+    options: [
+      "A) Poorly, due to long response times.",
+      "B) Well, by providing quick response times.",
+      "C) It causes starvation for all processes.",
+      "D) It behaves identically to FCFS."
+    ],
+    answer: "B) Well, by providing quick response times."
+  },
+  {
+    question: "What happens if the time quantum in Round Robin is very large?",
+    options: [
+      "A) It leads to excessive context switching.",
+      "B) It makes the algorithm behave like FCFS.",
+      "C) It guarantees faster execution for all processes.",
+      "D) It improves responsiveness in interactive systems."
+    ],
+    answer: "B) It makes the algorithm behave like FCFS."
+  },
+  {
+    question: "What is the primary goal of Fair-Share Scheduling?",
+    options: [
+      "A) To maximize the throughput of individual processes.",
+      "B) To ensure CPU usage is equitably distributed among users or groups of processes.",
+      "C) To prioritize the highest-priority process at all times.",
+      "D) To minimize context switching overhead."
+    ],
+    answer: "B) To ensure CPU usage is equitably distributed among users or groups of processes."
+  },
+  {
+    question: "How is Fair-Share Scheduling typically implemented in terms of preemption?",
+    options: [
+      "A) Non-preemptive, to simplify implementation.",
+      "B) Preemptive, to enforce fairness dynamically.",
+      "C) It doesn't use preemption.",
+      "D) Only in batch systems."
+    ],
+    answer: "B) Preemptive, to enforce fairness dynamically."
+  },
+  {
+    question: "What is a benefit of Fair-Share Scheduling regarding user satisfaction?",
+    options: [
+      "A) It always prioritizes system throughput over fairness.",
+      "B) It can lead to 'resource hogging' by some users.",
+      "C) It significantly improves user satisfaction and predictability.",
+      "D) It makes the system less adaptable."
+    ],
+    answer: "C) It significantly improves user satisfaction and predictability."
+  }
+];
+ 
+        // Quiz state variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+
+        // DOM elements
+        const quizContent = document.getElementById('quiz-content');
+        const questionCount = document.getElementById('question-count');
+        const scoreDisplay = document.getElementById('score-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Initialize the quiz
+        function initQuiz() {
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Update question count
+            questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            
+            // Create question HTML
+            let html = `
+                <div class="question-container">
+                    <div class="question">${currentQuestion.question}</div>
+                    <div class="options">
+            `;
+            
+            // Add options
+            currentQuestion.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionClass += ' selected';
+                }
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (option === currentQuestion.answer) {
+                        optionClass += ' correct';
+                    } else if (userAnswers[currentQuestionIndex] === index && option !== currentQuestion.answer) {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                html += `<div class="${optionClass}" data-index="${index}">${option}</div>`;
+            });
+            
+            html += `</div></div>`;
+            quizContent.innerHTML = html;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+            });
+        }
+
+        // Handle option selection
+        function selectOption(optionElement) {
+            // If already answered, don't allow changes
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store user's answer
+            const selectedIndex = parseInt(optionElement.getAttribute('data-index'));
+            userAnswers[currentQuestionIndex] = selectedIndex;
+            
+            // Check if answer is correct
+            const currentQuestion = quizData[currentQuestionIndex];
+            if (currentQuestion.options[selectedIndex] === currentQuestion.answer) {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                optionElement.classList.add('correct');
+            } else {
+                optionElement.classList.add('incorrect');
+                // Also show the correct answer
+                document.querySelectorAll('.option').forEach(opt => {
+                    if (opt.textContent === currentQuestion.answer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === quizData.length - 1 ? 'Finish' : 'Next';
+            
+            // Disable next button if current question isn't answered (except for the last question)
+            if (currentQuestionIndex < quizData.length - 1) {
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContent.innerHTML = `
+                <div class="results-container">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score">Your Score: ${score} / ${quizData.length}</div>
+                    <p>${getResultMessage(score, quizData.length)}</p>
+                    <button class="btn-primary restart-btn" id="restart-btn">Restart Quiz</button>
+                </div>
+            `;
+            
+            document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+        }
+
+        // Get a result message based on the score
+        function getResultMessage(score, total) {
+            const percentage = (score / total) * 100;
+            
+            if (percentage >= 90) {
+                return "Excellent! You have a deep understanding of computer science concepts.";
+            } else if (percentage >= 70) {
+                return "Great job! You have a solid grasp of these topics.";
+            } else if (percentage >= 50) {
+                return "Good effort! Consider reviewing some of the concepts you missed.";
+            } else {
+                return "Keep learning! Review the material and try again.";
+            }
+        }
+
+        // Restart the quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            scoreDisplay.textContent = `Score: ${score}`;
+            showQuestion();
+            updateProgressBar();
+            updateNavigationButtons();
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+                updateProgressBar();
+                updateNavigationButtons();
+            } else {
+                showResults();
+            }
+        });
+
+        // Start the quiz
+        initQuiz();
+    </script>
+</body>
+</html>
