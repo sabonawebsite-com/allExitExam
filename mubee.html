@@ -271,7 +271,7 @@ img{
       });
 
     // Set the date we're counting down to  
-        var countDownDate = new Date("May 30, 2025 22:31:59").getTime();  
+        var countDownDate = new Date("June 07, 2025 20:50:59").getTime();  
 
         // Update the countdown every 1 second  
         var x = setInterval(function() {  
@@ -300,968 +300,1090 @@ img{
             }  
         }, 1000); 
         // Quiz data from the provided file
-        const quizData = [
-     {
-    question: "What is the primary key in a relational database?",
-    options: [
-      "A. A unique identifier for each row in a table.",
-      "B. A foreign key from another table.",
-      "C. A key used for encryption.",
-      "D. An index on a non-unique column."
-    ],
-    answer: "A. A unique identifier for each row in a table."
-  },
+    const quizData = [
+    {
+        question: "Depth first search always expands the ______ node in the problem representation of a search tree.",
+        options: ["Minimum cost", "Shallowest", "Child node", "Deepest"],
+        answer: "Deepest"
+    },
+    {
+        question: "What kind of transmission medium is most appropriate to carry data in a computer network that is exposed to electrical interferences?",
+        options: ["Microwave", "Optical fiber", "Unshielded twisted pair", "Coaxial cable"],
+        answer: "Coaxial cable"
+    },
+    {
+        question: "Which of the following is a correct syntax to create an object of interface named Animal?",
+        options: [
+            "Animal animal = new Animal ();",
+            "new Animal ();",
+            "It is not supported to create an object of Animal",
+            "Interface Animal animal = new Animal ();"
+        ],
+        answer: "It is not supported to create an object of Animal"
+    },
+    {
+        question: "Identify one which is preemption based algorithm when scheduling CPU:",
+        options: ["RR", "SJF", "Priority", "FCFS"],
+        answer: "RR"
+    },
+    {
+        question: "What is the output of the following java program? (Code provided in the PDF)",
+        options: [
+            "Hi there! Rose flower I am.",
+            "I am Rose Flower. Hi there!",
+            "I am Flower. Rose! Hi there!",
+            "Hi there! I am Rose Flower."
+        ],
+        answer: "I am Rose Flower. Hi there!"
+    },
+    {
+        question: "Which of the following is true about MAC address?",
+        options: [
+            "It is also known as logical address",
+            "It is used for subnetting purpose",
+            "It is represented by 128 bits",
+            "It is commonly assigned by the manufacturer of the NIC"
+        ],
+        answer: "It is commonly assigned by the manufacturer of the NIC"
+    },
+    {
+        question: "One of the following is true about lexical and syntax analyzers",
+        options: [
+            "Scanner is a co-routine of parser",
+            "Lexical analyzer works on simple recursive constructs a language",
+            "Syntax analyzer works on simple none recursive constructs a language",
+            "Syntax analyzer is a co-routine of lexical analyzer"
+        ],
+        answer: "Scanner is a co-routine of parser"
+    },
+    {
+        question: "Which of the following is the least strong security encryption standard?",
+        options: ["WPA", "WEP", "WPA3", "WPA2"],
+        answer: "WEP"
+    },
+    {
+        question: "Which component of Active Directory provides a searchable catalog of objects across multiple domains in a forest?",
+        options: ["Domain", "Domain controller", "Global Catalog", "Sites"],
+        answer: "Global Catalog"
+    },
+    {
+        question: "Consider a banking application that needs to store customer information such as name, address, and account balance. Which object-oriented concept well fit with this application?",
+        options: ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"],
+        answer: "Encapsulation"
+    },
+    {
+        question: "Type checking is one of the tasks performed by a compiler during",
+        options: [
+            "Semantic analysis",
+            "Intermediate code generation",
+            "Lexical analysis",
+            "Syntax analysis"
+        ],
+        answer: "Semantic analysis"
+    },
+    {
+        question: "Precedence of regular expression in decreasing order is",
+        options: ["+ , a , *", ". , * , +", "* , . , +", ". , + , *"],
+        answer: "* , . , +"
+    },
+    {
+        question: "The first step of machine learning is ______.",
+        options: ["Testing", "Modeling", "Data acquisition", "Data representation"],
+        answer: "Data acquisition"
+    },
+    {
+        question: "Assume that production T A T*F, provided that T, *, and F are grammar symbols, is a final item of a given LR(0) item. How many grammar symbols will be popped from the parser stack?",
+        options: [
+            "6 grammar symbols",
+            "2 grammar symbols",
+            "1 grammar symbols",
+            "3 grammar symbols"
+        ],
+        answer: "6 grammar symbols"
+    },
+    {
+        question: "All of the following are examples of integral data types EXCEPT ______.",
+        options: ["int", "short", "char", "double"],
+        answer: "double"
+    },
+    {
+        question: "A process stack does not contain one of the following, which one?",
+        options: [
+            "PID of child process",
+            "Local variables",
+            "Return addresses",
+            "Function parameters"
+        ],
+        answer: "PID of child process"
+    },
+    {
+        question: "A web based application model that used to add, modify and access objects hierarchically.",
+        options: ["RMI", "DOM", "MVC", "RPC"],
+        answer: "DOM"
+    },
+    {
+        question: "One of the operating system securities that identify each user of the system and associate the executing programs with those users. Which one?",
+        options: ["Separation", "Confidentiality", "Authentication", "Integrity"],
+        answer: "Authentication"
+    },
+    {
+        question: "Which one of the following applications of network is used to assign IP address to hosts automatically?",
+        options: ["Mailing system", "DHCP", "File transfer protocol", "DNS"],
+        answer: "DHCP"
+    },
+    {
+        question: "A Javascript popup box used to alert dialog displaying the text 'Welcome JS' is created by calling ______.",
+        options: [
+            'alert.window( "Welcome JS");',
+            'window( "<alert> Welcome JS </alert>");',
+            'window( "alert = \\"Welcome JS\\"";)',
+            'window.alert( "Welcome JS");'
+        ],
+        answer: 'window.alert( "Welcome JS");'
+    },
   {
-    question: "The E-R data model is based on a perception of the real world that consists of a set of basic objects called ______",
-    options: [
-      "A. Objects",
-      "B. Classes",
-      "C. Entities",
-      "D. Attributes"
-    ],
-    answer: "C. Entities"
+    question: "Identify which character is used to indicate an end HTML tag?",
+    options: ["<", "*", "^", "/"],
+    answer: "/"
   },
   {
-    question: "Which scheduling algorithm is commonly associated with the concept of aging, where the priority of a task increases the longer it waits in the ready queue?",
-    options: [
-      "A. Round Robin (RR)",
-      "B. Shortest Job Next (SJN)",
-      "C. Priority Scheduling",
-      "D. Shortest Remaining Time First (SRTF)"
-    ],
-    answer: "C. Priority Scheduling"
+    question: "Which HTML element is correct for the largest heading?",
+    options: ["<h1>", "<h3>", "<head>", "<h6>"],
+    answer: "<h1>"
   },
   {
-    question: "In computers, subtraction is carried out generally by ______",
-    options: [
-      "A. 1’s complement method",
-      "B. 2’s complement method",
-      "C. Signed magnitude method",
-      "D. BCD subtraction method"
-    ],
-    answer: "B. 2's complement method"
+    question: "What is the correct HTML element for inserting a line break?",
+    options: ["<break?", "<br>", "<rb>", "<brk>"],
+    answer: "<br>"
   },
   {
-    question: "Which reasoning technique in artificial intelligence is based on a set of rules and logical inference to derive conclusions?",
-    options: [
-      "A. Abductive reasoning",
-      "B. Analogical reasoning",
-      "C. Deductive reasoning",
-      "D. Inductive reasoning"
-    ],
-    answer: "C. Deductive reasoning"
+    question: "In which of HTML element do we put the JavaScript?",
+    options: ["<js>", "<script>", "<javascript>", "<scripting>"],
+    answer: "<script>"
   },
   {
-    question: "What is the purpose of normalization in database design?",
+    question: 'How do you write "Hello World" in an alert box?',
     options: [
-      "A. To reduce redundancy and improve data integrity",
-      "B. To speed up query performance",
-      "C. To create complex relationships between tables",
-      "D. To encrypt sensitive data"
+      'msg("Hello World");',
+      'alertBox("Hello World");',
+      'alert("Hello World");',
+      'msgBox("Hello World");'
     ],
-    answer: "A. To reduce redundancy and improve data integrity"
+    answer: 'alert("Hello World");'
   },
   {
-    question: "If a problem can be solved by combining optimal solutions to non-overlapping problems, the strategy is called ______.",
+    question: "How do you create a function in JavaScript?",
     options: [
-      "A. Dynamic programming",
-      "B. Divide and Conquer",
-      "C. Recursion",
-      "D. Greedy"
+      "function = myFunction",
+      "function = myFunction()",
+      "function myFunction()",
+      "function:myFunction()"
     ],
-    answer: "B. Divide and Conquer"
+    answer: "function myFunction()"
   },
   {
-    question: "Which attribute of <img> tag is used when we want to display a text in place of an image when, due to any reason, the image is not displayed?",
+    question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
     options: [
-      "A. rep",
-      "B. pla",
-      "C. alt",
-      "D. im"
+      "if i =! 5 then",
+      "if (i <> 5)",
+      "if i <> 5",
+      "if (i != 5)"
     ],
-    answer: "C. alt"
+    answer: "if (i != 5)"
   },
   {
-    question: "Which of the following concepts in OOP allows a class to inherit attributes and methods from another class?",
+    question: "How does a WHILE loop start?",
     options: [
-      "A. Inheritance",
-      "B. Abstraction",
-      "C. Encapsulation",
-      "D. Polymorphism"
+      "while (i <= 10; i++)",
+      "while {i <= 10}",
+      "while (i <= 10)",
+      "while( i = 1 to 10)"
     ],
-    answer: "A. Inheritance"
+    answer: "while (i <= 10)"
   },
   {
-    question: "Which of the following is the top-level object?",
+    question: "How does a FOR loop start?",
     options: [
-      "A. Root object",
-      "B. Document object",
-      "C. JavaScript object",
-      "D. Window object"
+      "for (i = 0; i <= 5; i++)",
+      "for (i = 0; i <= 5)",
+      "for (i <= 5; i++)",
+      "for i = 1 to 5"
     ],
-    answer: "D. Window object"
+    answer: "for (i = 0; i <= 5; i++)"
   },
   {
-    question: "Which function of modern operating systems involves managing hardware resources such as CPU, memory, and I/O devices?",
+    question: "What do you mean 'one-to-many' relationships between Teacher and Class table?",
     options: [
-      "A. File Management",
-      "B. Device Management",
-      "C. Process Management",
-      "D. Security Management"
+      "One class may have many teachers",
+      "Many classes may have many teachers",
+      "Many teachers may have many classes",
+      "One teacher can have many classes"
     ],
-    answer: "C. Process Management"
+    answer: "One teacher can have many classes"
   },
   {
-    question: "In which phase of the compilation process does the source program get broken into its constituent parts?",
-    options: [
-      "A. Semantic Analysis",
-      "B. Syntax Analysis",
-      "C. Synthesis",
-      "D. Lexical Analysis"
-    ],
-    answer: "D. Lexical Analysis"
+    question: "In order to undo the work of transaction after last commit which one should be used?",
+    options: ["Rollback", "View", "Commit", "Flashback"],
+    answer: "Rollback"
   },
   {
-    question: "Which part of the computer system is responsible for converting machine processed data to different formats that are understandable by user?",
-    options: [
-      "A. Communication components",
-      "B. Output unit",
-      "C. Storage unit",
-      "D. Input unit"
-    ],
-    answer: "B. Output unit"
+    question: "Which Property refers to the uniformity of the data, which implies that the database is reliable before and after the transaction?",
+    options: ["Isolation", "Durability", "atomicity", "consistency"],
+    answer: "consistency"
   },
   {
-    question: "What is the purpose of interfaces in Java?",
-    options: [
-      "A. To create multiple constructors for a class",
-      "B. To define the state and behavior of an object",
-      "C. To define a blueprint of a class",
-      "D. To achieve multiple inheritance"
-    ],
-    answer: "D. To achieve multiple inheritance"
+    question: "A collection of fields in one table, that refers to the primary key in another table and which acts as a cross-reference between tables is known as ______",
+    options: ["Super Key", "Foreign Key", "primary key", "Candidate key"],
+    answer: "Foreign Key"
   },
   {
-    question: "Which one of the following has the fastest access time and the highest cost?",
+    question: "Which of the following is true about Cartesian Products?",
     options: [
-      "A. Register",
-      "B. Magnetic disc",
-      "C. Main memory",
-      "D. Cache memory"
+      "A Cartesian product is formed when a join condition is created.",
+      "All rows in the first table are joined to some rows in the second table.",
+      "A Cartesian product is formed when a join condition is omitted.",
+      "A Cartesian product is formed when a join condition is valid."
     ],
-    answer: "A. Register"
+    answer: "A Cartesian product is formed when a join condition is omitted."
   },
   {
-    question: "Which OOP concept allows a class to implement multiple interfaces in Java?",
-    options: [
-      "A. Polymorphism",
-      "B. Encapsulation",
-      "C. Inheritance",
-      "D. Interface"
-    ],
-    answer: "A. Polymorphism"
+    question: "Which one refers to a property of computer to run several operations simultaneously and possible as computers await response of each other?",
+    options: ["Recovery", "Concurrency", "Backup", "Deadlock"],
+    answer: "Concurrency"
   },
   {
-    question: "Which database design concept is commonly used in online gaming platforms to handle real-time interactions between players?",
-    options: [
-      "A. Replication",
-      "B. NoSQL databases",
-      "C. Distributed databases",
-      "D. Partitioning"
-    ],
-    answer: "C. Distributed databases"
+    question: "Suppose we want to list all loans and amount of loans, but do not care about the bank's branch name. Which one of the following allows us to produce this relation?",
+    options: ["Union", "set difference", "Project", "Cartesian product"],
+    answer: "Project"
   },
   {
-    question: "Which one of the following is the correct syntax for document type declaration in HTML5?",
+    question: "Which one of the following is not true about serializable schedules?",
     options: [
-      "A. </doctype html>",
-      "B. <!doctype! Html>",
-      "C. <doctype! Html>",
-      "D. <!doctype html>"
+      "Serializable schedules improve both resource utilization and CPU throughput.",
+      "Serial schedules lead to high resource utilization and CPU throughput.",
+      "Concurrency is allowed, thus, multiple transactions can execute concurrently.",
+      "Serializable Schedules are always better than serial schedules."
     ],
-    answer: "D. <!doctype html>"
+    answer: "Serial schedules lead to high resource utilization and CPU throughput."
   },
   {
-    question: "Which SQL command is used to modify existing data in a table?",
+    question: "Consider the following schema - STUDENTS(student_code, first_name, last_name, email, phone_no, date_of_birth, honours_subject, percentage_of_marks); Which of the following query would display all the students whose first name starts with the character 'A'?",
     options: [
-      "A. ALTER",
-      "B. UPDATE",
-      "C. MODIFY",
-      "D. CHANGE"
+      "select first_name from students where first_name like '%A%';",
+      "select first_name from students where first_name like 'A%';",
+      "select first_name from students where first_name like '%A';",
+      "select first_name from students where first_name like 'A';"
     ],
-    answer: "B. UPDATE"
+    answer: "select first_name from students where first_name like 'A%';"
   },
   {
-    question: "What is the term for a named block of code that performs a specific task?",
+    question: "Which one of the following given statements possibly contains the error?",
     options: [
-      "A. Condition",
-      "B. Variable",
-      "C. Function",
-      "D. Loop"
+      "select * from emp where empid = 10003;",
+      "select empid where empid = 1009 and Lastname = 'GELLER';",
+      "select empid from emp;",
+      "select empid from emp where empid = 10006;"
     ],
-    answer: "C. Function"
+    answer: "select empid where empid = 1009 and Lastname = 'GELLER';"
   },
   {
-    question: "Which of the following is FALSE in Data Structures and Algorithms?",
-    options: [
-      "A. A tree contains a cycle",
-      "B. Tree is a non-linear data structure",
-      "C. A tree is a connected graph",
-      "D. A tree with n nodes contains (n-1) edges"
-    ],
-    answer: "A. A tree contains a cycle"
+    question: "Which one of the following commands is used for removing (or deleting) a relation forms an SQL database?",
+    options: ["Drop", "Update", "Delete", "Remove"],
+    answer: "Drop"
   },
   {
-    question: "What is the role of a database administrator (DBA)?",
-    options: [
-      "A. Designing user interfaces for database applications",
-      "B. Developing front-end application",
-      "C. Writing complex SQL queries",
-      "D. Managing and maintaining databases"
-    ],
-    answer: "D. Managing and maintaining databases"
+    question: "Which of the following makes the transaction permanent in the database?",
+    options: ["Rollback", "Flashback", "Commit", "View"],
+    answer: "Commit"
   },
   {
-    question: "Among the following which kind of algorithm is used in the Game tree to make decisions of Win/Lose?",
+    question: "The function strlen() is defined under_______________",
     options: [
-      "A. Heuristic Search Algorithm",
-      "B. Min/Max Algorithm",
-      "C. Depth First Search Algorithm",
-      "D. Greedy Search Algorithm"
+      "#include<conio.h>",
+      "#include<string.h>",
+      "#include<iostream.h>",
+      "#include<ctype.h>"
     ],
-    answer: "B. Min/Max Algorithm"
+    answer: "#include<string.h>"
   },
   {
-    question: "Which one of the following is not a reason for the need of backups?",
+    question: "The associativity of which of the following operators is Left to Right, in C++ ?",
     options: [
-      "A. Security incidents",
-      "B. Upgrades and migrations",
-      "C. Hardware failures",
-      "D. Authorization"
+      "Array element access",
+      "Addressof",
+      "Logical not",
+      "Unary Operator"
     ],
-    answer: "D. Authorization"
+    answer: "Array element access"
   },
   {
-    question: "Which command in Microsoft Windows will allow you to verify your IP address, subnet mask, default gateway, and MAC address?",
+    question: "Predict the output of following C++ program\n#include<iostream>\nusing namespace std;\nunion A {\n  int a;\n  unsigned int b;\n  A() { a = 10; }\n  unsigned int getb() {return b;}\n};\nint main()\n{\n    A obj;\n    cout << obj.getb();\n    return 0;\n}",
     options: [
-      "A. C:\\>ipconfig/all",
-      "B. C:\\>ping",
-      "C. C:\\>ipconfig",
-      "D. C:\\>ipstatus"
+      "Compiler Error: union can't have functions",
+      "10",
+      "garbage value",
+      "Compiler Error: can't access private members of A"
     ],
-    answer: "A. C:\\>ipconfig/all"
+    answer: "10"
   },
   {
-    question: "Which bus is bidirectional?",
-    options: [
-      "A. Control bus",
-      "B. Data bus",
-      "C. Uni-bus",
-      "D. Address bus"
-    ],
-    answer: "B. Data bus"
+    question: "If we stored five elements or data items in an array, what will be the index address or the index number of the array's last data item?",
+    options: ["4", "88", "5", "3"],
+    answer: "4"
   },
   {
-    question: "Which one of the following is not an I/O command?",
+    question: "Which of the following can be considered as the correct syntax for declaring an array of pointers of integers that has a size of 10 in C++?",
     options: [
-      "A. Status command",
-      "B. Output data command",
-      "C. Control command",
-      "D. Issue command"
+      "int *arr = new int[10];",
+      "int **arr = new int*[10];",
+      "int *arr = new int*[10]",
+      "int arr = new int[10];"
     ],
-    answer: "D. Issue command"
+    answer: "int **arr = new int*[10];"
   },
   {
-    question: "Which one of the following form attribute is used to assign the server side script file that processes the form data?",
-    options: [
-      "A. Action",
-      "B. Autocomplete",
-      "C. Method",
-      "D. Target"
-    ],
-    answer: "A. Action"
+    question: "Which of the following offers a programmer the facility of using a specific class object into other classes?",
+    options: ["Composition", "Inheritance", "Polymorphism", "Abstraction"],
+    answer: "Composition"
   },
   {
-    question: "The first step in access control is ______",
-    options: [
-      "A. Audit",
-      "B. Authorization",
-      "C. Accreditation",
-      "D. Authentication"
-    ],
-    answer: "D. Authentication"
+    question: "Consider the following Java Program and then how many times it executes the output statement?\nfor (int x=1; x <= 2; x++)\n{\n   for (int y=1; y <= 2; y++)\n{\n      system.out.println ('Welcome');\n  }\n}",
+    options: ["4", "2", "1", "6"],
+    answer: "4"
   },
   {
-    question: "Which class of languages is most suited to be represented by pushdown automata?",
+    question: "In java program how do we read integer value from a keyboard?\nScanner input = new Scanner(System.in);",
     options: [
-      "A. Context-free language",
-      "B. Regular language",
-      "C. Recursively enumerable language",
-      "D. Unrestricted language"
+      "double value = input.nextDouble();",
+      "double value = input.nextInt();",
+      "int value = input.nextInt();",
+      "int value = input.nextDouble();"
     ],
-    answer: "A. Context-free language"
+    answer: "int value = input.nextInt();"
   },
   {
-    question: "How are the objects organized in the HTML DOM?",
+    question: "System.out.print('To the screen') is",
     options: [
-      "A. Hierarchy",
-      "B. Queue",
-      "C. Stack",
-      "D. Class-wise"
+      "Console Reading statement",
+      "Console display statement",
+      "GUI display statement",
+      "GUI reading statement"
     ],
-    answer: "A. Hierarchy"
+    answer: "Console display statement"
   },
   {
-    question: "Which one of the following is the output of syntax analysis phase?",
-    options: [
-      "A. Syntax tree",
-      "B. Annotated parse tree",
-      "C. Abstract syntax tree",
-      "D. Pattern"
-    ],
-    answer: "C. Abstract syntax tree"
+    question: "In Object oriented programming, new class can be defined by extending existing classes. This is an example of :",
+    options: ["Interface", "Inheritance", "Composition", "Encapsulation"],
+    answer: "Inheritance"
   },
   {
-    question: "What does the if-else statement allow you to do in C++?",
+    question: "Which one of the following is Not correct declaration/ initialization of array data structure?",
     options: [
-      "A. Declare and define functions",
-      "B. Allocate memory dynamically",
-      "C. Execute a block of code only if a condition is true, otherwise execute another block of code",
-      "D. Repeat a block of code multiple times"
+      "Datatype variable-name[] = {ele1, ele2, ele3, ele4};",
+      "Datatype variable-name[] = new Datatype[size];",
+      "Datatype[] variable-name = new Datatype[size];",
+      "Datatype variable-name[] = new variable-name[size];"
     ],
-    answer: "C. Execute a block of code only if a condition is true, otherwise execute another block of code"
+    answer: "Datatype variable-name[] = new variable-name[size];"
   },
   {
-    question: "One of the following is NOT TRUE about the inheritance?",
+    question: "Which one of the following is true about constructors ……………….?",
     options: [
-      "A. The subclass can add variables, but cannot redefine them.",
-      "B. The derived class (subclass) is allowed to add methods or redefine them.",
-      "C. A feature that allow us to derive class from another class.",
-      "D. Allows programmers to customize with actually modifying the original class (the superclass)."
+      "Constructors have the same function with methods.",
+      "Constructors have the same name with the class name.",
+      "Constructors have a return type.",
+      "Constructors needs to invoke explicitly for execution."
     ],
-    answer: "A. The subclass can add variables, but cannot redefine them."
+    answer: "Constructors have the same name with the class name."
   },
   {
-    question: "Which one of the following is an efficient top-down parser?",
+    question: "Which operator is used to access a data field or invoke a method from an object?",
     options: [
-      "A. Recursive-descent parser",
-      "B. Shift-reduce parser",
-      "C. Non-recursive predictive parser",
-      "D. LR parser"
+      "The plus (+) operator",
+      "The new operator",
+      "The dot (.) operator",
+      "The asterix (*) operator"
     ],
-    answer: "C. Non-recursive predictive parser"
+    answer: "The dot (.) operator"
   },
   {
-    question: "Which objective of modern operating systems involves providing a consistent and convenient environment for running applications?",
+    question: "Which of these alternatives is correct way of inheriting class shape by class square?",
     options: [
-      "A. Maximizing hardware utilization",
-      "B. Ensuring fault tolerance",
-      "C. Providing security and protection",
-      "D. Providing a user-friendly interface"
+      "class square extends class shape {}",
+      "class square extends shape {}",
+      "class square inherits class shape {}",
+      "class square + class shape {}"
     ],
-    answer: "D. Providing a user-friendly interface"
+    answer: "class square extends shape {}"
   },
   {
-    question: "Which one of the following IS NOT the concern of availability?",
-    options: [
-      "A. Fault Tolerance",
-      "B. Alteration of resources",
-      "C. Usefulness of resources",
-      "D. Fair allocation of resources"
-    ],
-    answer: "B. Alteration of resources"
+    question: "Which one of the following is a valid identifier?",
+    options: ["_12score", "First#", "My-Name", "$12amount"],
+    answer: "_12score"
   },
   {
-    question: "The simple strategy in which the root node is expanded first, then all the successors of the root node are expanded next, then their successors, and so on which is Expand the tree layer by layer, refers to:",
+    question: "Which one of the following is an incorrect statement about algorithms?",
     options: [
-      "A. Greedy best-first search",
-      "B. Depth-first search (DFS)",
-      "C. Depth limited search (DLS)",
-      "D. Breadth-first search (BFS)"
+      "each steps of algorithm may require one or more operations",
+      "algorithm is composed of a finite set of steps",
+      "Algorithm has its own impact on data structure",
+      "each operation has to be effective but not necessarily definite"
     ],
-    answer: "D. Breadth-first search (BFS)"
+    answer: "each operation has to be effective but not necessarily definite"
   },
   {
-    question: "Person A sends a message to person B, while the message is transmitted; person C has gained an access to the message. Which category of an attack is performed by person C?",
-    options: [
-      "A. Modification",
-      "B. Interception",
-      "C. Interruption",
-      "D. Fabrication"
-    ],
-    answer: "B. Interception"
+    question: "Algorithms must terminate after a finite number of steps; This characteristics is called________",
+    options: ["Feasibility", "Unambiguous", "Independent", "Finiteness"],
+    answer: "Finiteness"
   },
   {
-    question: "Which data structure is used to store information about the source program constructs?",
+    question: "Optimal merge pattern is an example of which algorithm design Approach.",
     options: [
-      "A. 2D-array",
-      "B. Stack",
-      "C. Tree",
-      "D. Queue"
+      "Dynamic Programming",
+      "Divide and Conquered",
+      "Greedy",
+      "Back tracking"
     ],
-    answer: "C. Tree"
+    answer: "Greedy"
   },
   {
-    question: "In which network topology consists of a single line cable called a backbone connecting all nodes on a network without intervening connected devices?",
+    question: "Which algorithm is traverses a graph in a Breadth-ward motion and uses a queue to remember to get the next vertex to start a search, when a dead end occurs in any iteration?",
     options: [
-      "A. Bus",
-      "B. Ring",
-      "C. Star",
-      "D. Mesh"
+      "Beam Search",
+      "Breadth first search",
+      "Depth first search",
+      "Binary search"
     ],
-    answer: "A. Bus"
+    answer: "Breadth first search"
   },
   {
-    question: "Which database design concept is commonly used in e-commerce platforms to efficiently store and retrieve customer order information?",
+    question: "Considering the following array choose the correct max-heap representation.\n4     1          3          2          16        9          10        14        8          7",
     options: [
-      "A. Normalization",
-      "B. Denormalization",
-      "C. Partitioning",
-      "D. Indexing"
+      "1, 2, 3, 4, 7, 8, 9, 10, 14, 16",
+      "16, 14, 10, 9, 8, 7, 4, 3, 2, 1",
+      "16, 14, 10, 8, 7, 9, 3, 2, 4, 1",
+      "16, 10, 14, 7, 9, 8, 3, 2, 4, 1"
     ],
-    answer: "B. Denormalization"
+    answer: "16, 14, 10, 8, 7, 9, 3, 2, 4, 1"
   },
   {
-    question: "Which one of the following terms refers to the techniques used for deciphering a cipher text without any knowledge of the enciphering mechanism involved?",
+    question: "In order to get the information stored in a binary search tree in the descending order, one should traverse in which order?",
     options: [
-      "A. Cryptography",
-      "B. Cryptology",
-      "C. Cryptoanalysis",
-      "D. Decryption"
+      "Left, parent, right",
+      "Right, left, parent",
+      "Parent, left, right",
+      "Right, parent, left"
     ],
-    answer: "C. Cryptoanalysis"
+    answer: "Right, parent, left"
   },
   {
-    question: "All of the followings are scheduling criteria EXCEPT?",
-    options: [
-      "A. CPU utilization",
-      "B. Min Turnaround Time",
-      "C. Max Throughput",
-      "D. Max Response Time"
-    ],
-    answer: "D. Max Response Time"
+    question: "Using a binary search, what is the maximum number of comparisons required to find a search key in a 31-element sorted array?",
+    options: ["32", "1", "5", "4"],
+    answer: "5"
   },
   {
-    question: "Given a binary search tree, which traversal type would print the values in the nodes in sorted order?",
+    question: "What is the purpose of each iteration in insertion sort algorithm?",
     options: [
-      "A. Pre-order",
-      "B. Pre-order and Post-order",
-      "C. In-order",
-      "D. Post-order"
+      "In each iteration Sorted sub arrays are inserted into the larger array",
+      "Each iteration takes the next element in the unsorted portion of the array and inserts it into the sorted portion",
+      "Each iteration takes the next smallest element and inserts it at the beginning of the array",
+      "Each iteration determines the location of a pivot and inserts it into place"
     ],
-    answer: "C. In-order"
+    answer: "Each iteration takes the next element in the unsorted portion of the array and inserts it into the sorted portion"
   },
   {
-    question: "The user who programs a computer in machine or assembly language must be aware of the following EXCEPT:",
+    question: "Which of the following statement is true about binary search algorithm?",
     options: [
-      "A. The register set",
-      "B. The type of data supported by the instructions",
-      "C. The analysis model",
-      "D. The memory structure"
+      "The binary search algorithm is less efficient than the linear search , but it requires that the array be sorted",
+      "The binary search algorithm is more efficient than the linear search , but it requires that the array be unsorted",
+      "The binary search algorithm is less efficient than the linear search , but it requires that the array be unsorted",
+      "The binary search algorithm is more efficient than the linear search , but it requires that the array be sorted"
     ],
-    answer: "C. The analysis model"
+    answer: "The binary search algorithm is more efficient than the linear search , but it requires that the array be sorted"
   },
   {
-    question: "In computer programming, what is the purpose of control structures such as loops and conditional statements?",
+    question: "What are the correct intermediate steps of the following data set when it is being sorted with the bubble sort ? Given Data: 15,20,10,18",
     options: [
-      "A. To control the flow of program execution",
-      "B. To perform mathematical operations",
-      "C. To define the data types used in a program",
-      "D. To allocate memory for variables"
+      "15,18,10,20- - -10,18,15,20- - -10,15,18,20- - - 10,15,18,20",
+      "15,10,18,20- - -10,15,18,20- - -10,15,18,20",
+      "10,20,15,18- - -10,15,20,18- - -10,15,18,20",
+      "15,20,10,18- - -15,10,20,18- - -10,15,20,18- - -10,15,18,20"
     ],
-    answer: "A. To control the flow of program execution"
+    answer: "15,20,10,18- - -15,10,20,18- - -10,15,20,18- - -10,15,18,20"
   },
   {
-    question: "Which of the following IS NOT a component of Turing machine?",
-    options: [
-      "A. Read-write head",
-      "B. Control Unit",
-      "C. Stack",
-      "D. Tape"
-    ],
-    answer: "C. Stack"
+    question: "If Admas University main Campus wants to develop a network for main branch that linked with Bishoftu Campus, what network type is applicable for this situation in order to share information between the two Campuses?",
+    options: ["WAN", "LAN", "WLAN", "MAN"],
+    answer: "WAN"
   },
   {
-    question: "When encountering a syntax error in code, what is the final step you should take to resolve it?",
+    question: "Which layers of the OSI model are network supporting layers?",
     options: [
-      "A. Rewrite the entire",
-      "B. Ignore the error and continue execution",
-      "C. Use a debugger tool",
-      "D. Check the code for types or incorrect syntax"
+      "Physical, Datalink, Network",
+      "Network, Session, Presentation",
+      "Session, Presentation, Application",
+      "Physical, Network, Transport"
     ],
-    answer: "D. Check the code for types or incorrect syntax"
+    answer: "Physical, Datalink, Network"
   },
   {
-    question: "Which string from the following is member of the language represented by the regular expression a*(b+c)?",
+    question: "For one computer to send a message to another computer, the source computer must perform the following steps except",
     options: [
-      "A. aab",
-      "B. bc",
-      "C. aaa",
-      "D. aaabc"
+      "Accept the data from the NIC",
+      "Deliver the data to the network interface card for transmission over the network",
+      "Break the data into small sections",
+      "Add addressing information to the packets identifying the source and destination computers"
     ],
-    answer: "A. aab"
+    answer: "Accept the data from the NIC"
   },
   {
-    question: "When to use the Spiral model?",
+    question: "Which of the following is not function of subnetting?",
     options: [
-      "A. Where business modeling is clearly understood and in use.",
-      "B. When it is too risky to develop the overall system as one block.",
-      "C. When requirements are understood in the early stages but can change during the project’s life cycle.",
-      "D. When requirements are unstable and constantly changing."
+      "facilitates spanning of large geographical distances",
+      "reduces network performance",
+      "reduces network traffic",
+      "simplifies management"
     ],
-    answer: "B. When it is too risky to develop the overall system as one block."
+    answer: "reduces network performance"
   },
   {
-    question: "In C++, what does the cout object typically represent?",
-    options: [
-      "A. Standard input stream",
-      "B. Keyboard input buffer",
-      "C. Error output stream",
-      "D. Standard output stream"
-    ],
-    answer: "D. Standard output stream"
+    question: "Which Class of an IPv4 address is Multicast?",
+    options: ["Class E", "Class B", "Class D", "Class A"],
+    answer: "Class D"
   },
   {
-    question: "a → b, L state transition in a Turing Machine means,",
+    question: "Transport layer is concerned with_____________",
     options: [
-      "A. read a, write b and move left",
-      "B. delete a, read b and move left",
-      "C. write a, read b and move left",
-      "D. replace b by a and move left"
+      "Host to Host Delivery",
+      "Router to router Delivery",
+      "Process to process Delivery",
+      "Node to Node delivery"
     ],
-    answer: "A. read a, write b and move left"
+    answer: "Process to process Delivery"
   },
   {
-    question: "What is a characteristic feature of round-robin scheduling in both preemptive and non-preemptive forms?",
+    question: "Which type of hacker represents the highest risk to your network?",
     options: [
-      "A. It assigns priorities to tasks based on their relative importance.",
-      "B. It always selects the task with the shortest remaining time.",
-      "C. It favors short tasks over long tasks.",
-      "D. It guarantees fairness by providing each task with an equal time slice."
+      "Disgruntled employees",
+      "Grey-hat hackers",
+      "Script kiddies",
+      "Black-hat hackers"
     ],
-    answer: "D. It guarantees fairness by providing each task with an equal time slice."
+    answer: "Disgruntled employees"
   },
   {
-    question: "Indexes in database tables speed up the ______ operations.",
+    question: "Which one is true about breach of confidentiality?",
     options: [
-      "A. Read operations",
-      "B. Delete operations",
-      "C. Update operations",
-      "D. Write operations"
+      "This violation involves unauthorized destruction of data",
+      "This violation involves unauthorized use of resources",
+      "This violation involves unauthorized modification of data",
+      "This type of violation involves unauthorized reading of data"
     ],
-    answer: "A. Read operations"
+    answer: "This type of violation involves unauthorized reading of data"
   },
   {
-    question: "What would be the asymptotic time complexity to add a node at the end of singly linked list, if the pointer is initially pointing to the head of the list?",
+    question: "If the mouse on your computer screen starts to move around on its own and clicks on things on your desktop, what will you do to fix?",
     options: [
-      "A. O(n)",
-      "B. O(1)",
-      "C. O(n)",
-      "D. O(1)"
+      "Run anti-virus",
+      "Call your co-workers over so they can see",
+      "Disconnect your computer from the network",
+      "Unplug your mouse"
     ],
-    answer: "A. O(n)"
+    answer: "Disconnect your computer from the network"
   },
   {
-    question: "Which learning technique in AI involves the use of labeled examples to train a model to make predictions or decisions?",
-    options: [
-      "A. Semi-supervised learning",
-      "B. Unsupervised learning",
-      "C. Supervised learning",
-      "D. Reinforcement learning"
-    ],
-    answer: "C. Supervised learning"
+    question: "The software called that is designed to exploit a computer user and is a broad term covering computer viruses, worms, Trojan, adware, etc. is …………….",
+    options: ["Worm", "Spyware", "Malware", "Virus"],
+    answer: "Malware"
   },
   {
-    question: "A PC obtains its IP address from a DHCP server. If the PC is taken off the network for repair, what happens to the IP address configuration?",
-    options: [
-      "A. The address is returned to the pool for reuse when the lease expires.",
-      "B. The address lease is automatically renewed until the PC is returned.",
-      "C. The configuration is held by the server to be reissued when the PC is returned.",
-      "D. The configuration is permanent and nothing changes."
-    ],
-    answer: "A. The address is returned to the pool for reuse when the lease expires."
+    question: "A type of program that either pretends to have, or is described as having, a set of useful or desirable features but actually contains damaging code is ………………...",
+    options: ["Trojan horse", "Spyware", "Worm", "Virus"],
+    answer: "Trojan horse"
   },
   {
-    question: "The elements must be in sorted order in case of:",
-    options: [
-      "A. Quick search",
-      "B. Selection search",
-      "C. Binary search",
-      "D. Linear search"
-    ],
-    answer: "C. Binary search"
+    question: "The software which when get downloaded on computer scans the hard drive for personal information and your internet browsing habits is ……………..",
+    options: ["Worm", "Spyware", "Denial of service", "Virus"],
+    answer: "Spyware"
   },
   {
-    question: "Which analysis case calculates the upper bound on running time of an algorithm?",
+    question: "One of the following is not a user account that can be configured in Windows Server?",
     options: [
-      "A. Optimal case",
-      "B. Best case",
-      "C. Average case",
-      "D. Worst case"
+      "Local accounts",
+      "Domain accounts",
+      "Network accounts",
+      "Built-in accounts"
     ],
-    answer: "D. Worst case"
+    answer: "Network accounts"
   },
   {
-    question: "Which of the following methods can be used to refresh a webpage?",
+    question: "IP assigned for a client by DHCP server is ______________",
     options: [
-      "A. location.relocate",
-      "B. window.relocate",
-      "C. window.refresh",
-      "D. location.reload"
+      "for a limited period",
+      "no time constraint",
+      "decided by the client machine",
+      "for unlimited period"
     ],
-    answer: "D. location.reload"
+    answer: "for a limited period"
   },
   {
-    question: "If a sequence of operations: push(1), push(2), pop, push(1), push(2), pop, pop, pop, push(2), pop are performed on a stack, the sequence of popped out values are:",
-    options: [
-      "A. 2,1,2,2,1",
-      "B. 2,2,1,1,2",
-      "C. 2,1,2,2,2",
-      "D. 2,2,1,2,2"
-    ],
-    answer: "B. 2,2,1,1,2"
+    question: "DHCP (dynamic host configuration protocol) provides one of the following to the client.",
+    options: ["Url", "DHCP address", "MAC address", "IP address"],
+    answer: "IP address"
   },
   {
-    question: "Which software engineering principles are used to help reduce the programming complexity?",
-    options: [
-      "A. Structured and unstructured",
-      "B. Object Oriented Design",
-      "C. Abstraction and Decomposition",
-      "D. Functional and Non-functional"
-    ],
-    answer: "C. Abstraction and Decomposition"
+    question: "What type of DNS record is the record that points out the location of the mail server?",
+    options: ["PTR", "SOA", "MX", "SVR"],
+    answer: "MX"
   },
   {
-    question: "In a grammar, if the production S → λ where S is a non-terminal is existed, such production is called:",
+    question: "DNS database does not contains",
     options: [
-      "A. Null production",
-      "B. Unit production",
-      "C. Secondary production",
-      "D. Sigma production"
+      "hostname-to-address records",
+      "name server records",
+      "MAC-to-IP address records",
+      "hostname aliases"
     ],
-    answer: "A. Null production"
+    answer: "MAC-to-IP address records"
   },
   {
-    question: "Recursion is a method in which the solution of a problem depends on:",
-    options: [
-      "A. Larger instances of the same problem",
-      "B. Smaller instances of the same problem",
-      "C. Larger instances of different problems",
-      "D. Smaller instances of different problems"
-    ],
-    answer: "B. Smaller instances of the same problem"
+    question: "A network of Windows machine utilizing the same name to share resources is ………",
+    options: ["Forest", "Active Directory", "Workgroup", "Domain"],
+    answer: "Workgroup"
   },
   {
-    question: "Which of the following is NOT TRUE about reasoning?",
+    question: "Face Recognition system is based on which type of approach?",
     options: [
-      "A. Knowledge system to do something.",
-      "B. A process of thinking, logically arguing, and drawing inference.",
-      "C. Theory of blind searching.",
-      "D. The act of deriving a conclusion from certain premises using a given methodology"
+      "Weak AI approach",
+      "Applied AI approach",
+      "Cognitive AI approach",
+      "Strong AI approach"
     ],
-    answer: "C. Theory of blind searching."
+    answer: "Applied AI approach"
   },
   {
-    question: "In asymmetric cryptography, the message is decrypted using ______",
-    options: [
-      "A. Receiver's public key",
-      "B. Receiver's private key",
-      "C. Sender's private key",
-      "D. Sender's public key"
-    ],
-    answer: "B. Receiver's private key"
+    question: "Data, information, and past experience combined together are termed as __________.",
+    options: ["knowledge", "Vision", "Inference", "BAcquisition"],
+    answer: "knowledge"
   },
   {
-    question: "When can we say two grammars are equivalent?",
-    options: [
-      "A. When the language derived from one of the grammars become the subset of the other",
-      "B. When the alphabets of the two grammars are the same",
-      "C. When the languages represented by both grammars are the same",
-      "D. When a single string is member of the language represented by both grammars"
-    ],
-    answer: "C. When the languages represented by both grammars are the same"
+    question: "Which of the following logical equivalent is proved by law of contraposition?",
+    options: ["A.", "B.", "C.", "D."],
+    answer: "A."
   },
   {
-    question: "Which one of the following IS NOT a component of communication?",
+    question: "Which one of the following is not the component of an Expert system?",
     options: [
-      "A. Distance",
-      "B. Source",
-      "C. Destination",
-      "D. Medium"
+      "Knowledge Base",
+      "User Interface",
+      "Artificial Neural network",
+      "Inference engine"
     ],
-    answer: "A. Distance"
+    answer: "Artificial Neural network"
   },
   {
-    question: "Which one of the following IS NOT a static check?",
-    options: [
-      "A. Type checking for compatibility",
-      "B. Uniqueness checks like redefined variables",
-      "C. A break instruction that is not in inclosing statement",
-      "D. Memory access errors"
-    ],
-    answer: "D. Memory access errors"
+    question: "In a given situation/scenario an agent makes a decision based on its_______________?",
+    options: ["Built in knowledge", "Precept sequence", "Agent needs", "A and B"],
+    answer: "A and B"
   },
   {
-    question: "______ is a system that monitors traffic into and out of a network and automatically alerts personnel when suspicious traffic patterns occur, indicating a possible unauthorized intrusion attempt.",
-    options: [
-      "A. Anti-virus Software",
-      "B. IDS",
-      "C. Firewall",
-      "D. Router"
-    ],
-    answer: "B. IDS"
+    question: "A technique that was developed to determine whether a machine could or could not demonstrate the artificial intelligence is known as the___",
+    options: ["Algorithm", "Boolean Algebra", "Turing Test", "Logarithm"],
+    answer: "Turing Test"
   },
   {
-    question: "Which one of the following terms refers to the machine on which the requested resource is stored?",
+    question: "What is the mean of the Booting in the operating system?",
     options: [
-      "A. Port",
-      "B. Query",
-      "C. Host",
-      "D. Protocol"
+      "Restarting computer",
+      "To turn off",
+      "To scan",
+      "Install the program"
     ],
-    answer: "C. Host"
+    answer: "Restarting computer"
   },
   {
-    question: "Why heuristic (A*) search method?",
+    question: "Which one of the following provides the interface to access the services of the operating system?",
     options: [
-      "A. To speed up search and edge lengths to compute optimal paths.",
-      "B. To find the path with the maximum distance from the start node to the goal node.",
-      "C. To find the path with the non-optimal searches from node to the goal node.",
-      "D. To find the path with the maximum cost from the start node to the goal node."
+      "Library",
+      "System call",
+      "Assembly instruction",
+      "API"
     ],
-    answer: "A. To speed up search and edge lengths to compute optimal paths."
+    answer: "System call"
   },
   {
-    question: "When is the appropriate time to shut down a system?",
+    question: "Which of the following operating system runs on the server?",
     options: [
-      "A. Using regular schedules",
-      "B. For maintenance and upgrade",
-      "C. To check for security alerts",
-      "D. When there is a failure"
+      "Batch OS",
+      "Distributed OS",
+      "Network OS",
+      "Real-time OS"
     ],
-    answer: "B. For maintenance and upgrade"
+    answer: "Network OS"
   },
   {
-    question: "Out of the following life cycle models which one can be considered as the most general model, and the others as specialization of it?",
-    options: [
-      "A. Spiral model",
-      "B. Prototyping model",
-      "C. Classical Waterfall model",
-      "D. Iterative Waterfall model"
-    ],
-    answer: "A. Spiral model"
+    question: "Which system call can be used by a parent process to determine the termination of child process?",
+    options: ["exit", "get", "fork", "wait"],
+    answer: "wait"
   },
   {
-    question: "Which one of the following cryptography systems uses the same key for encryption and decryption?",
+    question: "What is an operating system?",
     options: [
-      "A. Public key cryptography",
-      "B. Parallel cryptography",
-      "C. Asymmetric cryptography",
-      "D. Symmetric cryptography"
+      "collection of programs that manages hardware resources",
+      "system service provider to the application programs",
+      "interface between the hardware and application programs",
+      "all of the mentioned"
     ],
-    answer: "D. Symmetric cryptography"
+    answer: "all of the mentioned"
   },
   {
-    question: "In which network topology should every computer have N-1 I/O ports when there is N number of computers in the network?",
+    question: "Which one of the following is not true about Kernel?",
     options: [
-      "A. Star",
-      "B. Mesh",
-      "C. Bus",
-      "D. Ring"
+      "It is made of various modules which cannot be loaded in running operating system",
+      "It is the program that constitutes the central core of the operating system",
+      "It remains in the memory during the entire computer session",
+      "It is the first part of operating system to load into memory during booting"
     ],
-    answer: "B. Mesh"
+    answer: "It is made of various modules which cannot be loaded in running operating system"
   },
   {
-    question: "Which C++ statement is used to terminate a loop prematurely and transfer control to the next iteration of the loop?",
+    question: "Which of the following is single complex instruction computer architecture?",
     options: [
-      "A. break",
-      "B. exit",
-      "C. return",
-      "D. continue"
+      "Von-Neumann Architecture",
+      "Harvard Architecture",
+      "Micro architecture",
+      "CSIC"
     ],
-    answer: "D. continue"
+    answer: "CSIC"
   },
   {
-    question: "Which one of the following disk interfaces is used as a standard interface for PCs?",
-    options: [
-      "A. SCSI",
-      "B. iSCSI",
-      "C. IDE",
-      "D. USB"
-    ],
-    answer: "C. IDE"
+    question: "A job is to translate virtual addresses into physical addresses is ____________.",
+    options: ["MMU's", "Segmentation", "Paging", "Virtualization"],
+    answer: "MMU's"
   },
   {
-    question: "In a system susceptible to deadlock, what does the “no preemption” condition imply?",
+    question: "A data transfer mode that allows peripherals to directly communicate with each other using the memory buses is in _________.",
     options: [
-      "A. Resources can be preempted and assigned to other processes.",
-      "B. Processes cannot request additional resources while holding others.",
-      "C. Resources cannot be preempted while they are in use.",
-      "D. Processes must release all resources when blocked."
+      "Interrupt- initiated I/O",
+      "DMA",
+      "IOP",
+      "Programmed I/O"
     ],
-    answer: "C. Resources cannot be preempted while they are in use."
+    answer: "DMA"
   },
   {
-    question: "In a columnar database, data is stored:",
-    options: [
-      "A. Row-wise",
-      "B. In a hierarchical structure",
-      "C. Column-wise",
-      "D. In a network model"
-    ],
-    answer: "C. Column-wise"
+    question: "Which one of the following is a micro-operations carry information from one register to another?",
+    options: ["Arithmetic", "Branch", "Register transfer", "Logical"],
+    answer: "Register transfer"
   },
   {
-    question: "In computer networking, ______ refers to how various nodes, devices, and connections on your network are physically or logically arranged in relation to each other.",
+    question: "The hardware interrupts which can be delayed when a much high priority interrupt has occurred at the same time is __________.",
     options: [
-      "A. Network layer",
-      "B. Network installation",
-      "C. Network protocol",
-      "D. Network topology"
+      "Non Maskable Interrupt",
+      "Maskable Interrupt",
+      "Normal Interrupt",
+      "Exceptional Interrupt"
     ],
-    answer: "D. Network topology"
+    answer: "Maskable Interrupt"
   },
   {
-    question: "A module is said to have logical cohesion, if:",
-    options: [
-      "A. All the functions of the module are executed within the same time span.",
-      "B. All elements of the module depend on their interface complexity.",
-      "C. It performs a set of tasks that relate to each other very loosely.",
-      "D. All elements of the module perform similar operations."
-    ],
-    answer: "D. All elements of the module perform similar operations."
+    question: "In the cache organization method that permits data to be stored in any cache block instead of forcing each memory address into one particular block is ________________.",
+    options: ["LRU", "Fully Associative", "Set Associative", "Direct Mapped"],
+    answer: "Fully Associative"
   },
   {
-    question: "Which of the following IS NOT a type of database management system (DBMS)?",
-    options: [
-      "A. PostgreSQL",
-      "B. MongoDB",
-      "C. Java",
-      "D. MySQL"
-    ],
-    answer: "C. Java"
+    question: "A substring which is append at the left side of a string is called __________",
+    options: ["Sentence", "No special Name", "Suffix", "Prefix"],
+    answer: "Prefix"
   },
   {
-    question: "If queue is implemented using arrays, what would be the worst run time complexity of queue and dequeue operations?",
+    question: "Which of the following statements is incorrect?",
     options: [
-      "A. O(n), O(1)",
-      "B. O(1), O(n)",
-      "C. O(1), O(1)",
-      "D. O(n), O(n)"
+      "Context free grammar is subset of Regular grammar",
+      "Regular grammar's help to generate regular sets",
+      "Turing machine is type of automata",
+      "A language is regular if there is an automaton that accepts it"
     ],
-    answer: "B. O(1), O(n)"
+    answer: "Context free grammar is subset of Regular grammar"
   },
   {
-    question: "Which tool is used to collect codes separately compiled or assembled in different object files into a file that directly executable?",
-    options: [
-      "A. Linker",
-      "B. Loader",
-      "C. Assembler",
-      "D. Resolver"
-    ],
-    answer: "A. Linker"
+    question: "The set of all strings over {a,b} having exactly 3b's is represented by the regular expression",
+    options: ["a*ba*ba*ba*", "ba*ba*b", "a*ba*ba*b", "a*bbb"],
+    answer: "a*ba*ba*ba*"
   },
   {
-    question: "Which one of the following IS NOT a characteristic of an algorithm?",
+    question: "Which of the following is false about context-free Grammar?",
     options: [
-      "A. Definiteness",
-      "B. Output",
-      "C. Finiteness",
-      "D. Efficiency"
+      "Left and right linear grammar are context-free grammars",
+      "Regular grammar is not context-free grammar",
+      "Simple grammar is context-free grammar",
+      "Linear grammar is context-free grammar"
     ],
-    answer: "D. Efficiency"
+    answer: "Regular grammar is not context-free grammar"
   },
   {
-    question: "One of the following IS NOT characteristics of Java?",
-    options: [
-      "A. Java is Object-Oriented",
-      "B. Java is Platform Independent",
-      "C. Java is difficult to learn",
-      "D. Java is architecture neutral"
-    ],
-    answer: "C. Java is difficult to learn"
+    question: "Which one of the following is not part of Turing machine?",
+    options: ["Head", "Finite control", "Input", "Tape"],
+    answer: "Input"
   },
   {
-    question: "In data communication, data rate refers how fast we can send data and is measured in bits per second. Which one of the following is not a factor for data rate?",
-    options: [
-      "A. Travel distance",
-      "B. Bandwidth available",
-      "C. Level of noise",
-      "D. Levels of the signals"
-    ],
-    answer: "A. Travel distance"
+    question: "The function nil(abab) is equal to",
+    options: ["abba", "abab", "λ", "nilabab"],
+    answer: "λ"
   },
   {
-    question: "Which layer of the OSI MODEL ensures that the whole message (group of packets) arrives to the destination intact and in order?",
+    question: "From the following, which one is not the role of lexical analyzer?",
     options: [
-      "A. Session layer",
-      "B. Transport layer",
-      "C. Data link layer",
-      "D. Network layer"
+      "produce as output a sequence of tokens",
+      "stripping out blanks, tabs, new lines",
+      "group them into syntax tree",
+      "to read a stream of tokens from the source program"
     ],
-    answer: "B. Transport layer"
+    answer: "group them into syntax tree"
   },
   {
-    question: "Which system requirement specification includes human computer interface issues from the system?",
+    question: "Syntactical structure of a programming language is checked at ………. phase of a compiler.",
     options: [
-      "A. Functional requirements of the system",
-      "B. Non-functional requirements of the system",
-      "C. Goals of implementation",
-      "D. System Testing"
+      "Syntax analysis",
+      "Lexical analysis",
+      "Semantic analysis",
+      "Code generation"
     ],
-    answer: "B. Non-functional requirements of the system"
+    answer: "Syntax analysis"
   },
   {
-    question: "In a classical waterfall model, which phase precedes the design phase?",
+    question: "The process of converting non-deterministic grammar into deterministic grammar is called___",
     options: [
-      "A. Requirements analysis and specification",
-      "B. Maintenance",
-      "C. Feasibility study",
-      "D. Coding and unit testing"
+      "left recursion",
+      "Precedence",
+      "left factoring",
+      "Association"
     ],
-    answer: "A. Requirements analysis and specification"
+    answer: "left factoring"
   },
   {
-    question: "In MySQL architecture, the function of the ______ is to keep copies of data for retrieval later, in case of a loss of data.",
-    options: [
-      "A. Buffer Manager",
-      "B. Transaction Manager",
-      "C. Query Engine",
-      "D. Recovery Manager"
-    ],
-    answer: "D. Recovery Manager"
+    question: "A sequence of steps that replacement of structure names by choices on the right-hand side of grammar rules is ____",
+    options: ["association", "Derivation", "precedence", "Parsing"],
+    answer: "Derivation"
   },
   {
-    question: "What role does machine learning play in understanding human perception?",
+    question: "Which of the following is not primary tasks of code generator?",
     options: [
-      "A. Machine learning helps in simulating human perception through neural networks.",
-      "B. Machine learning has no relevance to understanding human perception.",
-      "C. Machine learning is not capable of analyzing perceptual data.",
-      "D. Machine learning only focuses on logical reasoning and decision-making."
+      "Declaration of variables",
+      "instruction ordering",
+      "Register allocation",
+      "instruction selection"
     ],
-    answer: "A. Machine learning helps in simulating human perception through neural networks."
+    answer: "Declaration of variables"
   },
   {
-    question: "The amount of memory needs to run to completion is known as:",
-    options: [
-      "A. Space complexity",
-      "B. Time complexity",
-      "C. Worst case",
-      "D. Best case"
-    ],
-    answer: "A. Space complexity"
+    question: "Which one of the following is different from the others?",
+    options: ["tree", "indirect triples", "quadruples", "triples"],
+    answer: "tree"
   },
-  {
-    question: "Which of the following IS NOT a type of database model?",
-    options: [
-      "A. Linear",
-      "B. Object-Oriented",
-      "C. Hierarchical",
-      "D. Relational"
-    ],
-    answer: "A. Linear"
-  }
+ {
+        question: "Which statement is true about dynamic websites?",
+        options: [
+            "A and C",
+            "The content can't be changed anything in the site as it is predefined.",
+            "The content is regenerated every time a user visits or reloads",
+            "The content of script can be changed at the run time"
+        ],
+        answer: "A and C"
+    },
+    {
+        question: "If every non-key attribute is functionally dependent on primary key, then the relation will be in which normal form?",
+        options: [
+            "Fourth Normal Form(4NF)",
+            "Third Normal Form(3NF)",
+            "Second Normal Form (2NF)",
+            "First Normal Form (1NF)"
+        ],
+        answer: "Third Normal Form(3NF)"
+    },
+    {
+        question: "Which one of the following TCP/IP network configuration and troubleshooting command that used to ensure that a computer can communicate to a specified device over the network?",
+        options: [
+            "ping",
+            "ifconfig",
+            "ipconfig",
+            "Traceroute"
+        ],
+        answer: "ping"
+    },
+    {
+        question: "Which of the following is the correct sequence of HTML tags to design a webpage?",
+        options: [
+            "HTML, Head, Title, Body",
+            "HTML, Head, Body, Title",
+            "HTML, Body, Title, Head",
+            "Head, Title, HTML, body"
+        ],
+        answer: "HTML, Head, Title, Body"
+    },
+    {
+        question: "Which of the following is an application of stack?",
+        options: [
+            "Finding factorial",
+            "Infix to postfix conversion",
+            "Tower of Hanoi",
+            "All of the above"
+        ],
+        answer: "All of the above"
+    },
+    {
+        question: "Which of the following data structure is linear type?",
+        options: [
+            "Array",
+            "Tree",
+            "Graphs",
+            "Hierarchy"
+        ],
+        answer: "Array"
+    },
+    {
+        question: "In object-oriented programming, inheritance is one of the pillar for object oriented programming paradigm. So, which keyword is used to achieve the concept of 'is a' on interface class?",
+        options: [
+            "Interfaces",
+            "Implements",
+            "Inherits",
+            "Extends"
+        ],
+        answer: "Extends"
+    },
+    {
+        question: "Which of the following is more advantage of POST method than GET?",
+        options: [
+            "Can be used to send ASCII as well as binary data.",
+            "Does not have any restriction on data size to be sent",
+            "All",
+            "Since data is sent through HTTP header, security depends on HTTP protocol"
+        ],
+        answer: "All"
+    },
+    {
+        question: "Which of the following is odd about constructor and method?",
+        options: [
+            "Constructor is a special type of method in the class",
+            "In OOP using java, Method over loading is possible, but constructor overloading is not",
+            "Like method, constructor have access or visibility modifier",
+            "Constructor have no return type, where as a method have"
+        ],
+        answer: "In OOP using java, Method over loading is possible, but constructor overloading is not"
+    },
+    {
+        question: "Which one of the following is a Linux system scripting syntax that used to create directory inside other specific directory?",
+        options: [
+            "$mkdir dir_name",
+            "$mkdir{ dir_name1, dir_name2, dir_name3}",
+            "$mkdir -p dir_name1/dir_name2",
+            "$mkdir dir_name1/dir_name2"
+        ],
+        answer: "$mkdir -p dir_name1/dir_name2"
+    },
+    {
+        question: "Which part of memory can a computers' microprocessor access more quickly?",
+        options: [
+            "Virtual memory",
+            "Cache memory",
+            "Physical Memory",
+            "None"
+        ],
+        answer: "Cache memory"
+    },
+    {
+        question: "Which of these is not applicable for IP protocol?",
+        options: [
+            "Offer reliable service",
+            "Connectionless",
+            "Does not offer error reporting",
+            "Offer unreliable service"
+        ],
+        answer: "Offer reliable service"
+    },
+    {
+        question: "A bottom up parser generates",
+        options: [
+            "Leftmost derivation in reverse",
+            "Right most derivation",
+            "Rightmost derivation in reverse",
+            "Leftmost derivation"
+        ],
+        answer: "Rightmost derivation in reverse"
+    },
+    {
+        question: "In OOP approach to solve a problem, all computations are carried out using carried out on ______?",
+        options: [
+            "Attribute",
+            "Object",
+            "Class",
+            "Method"
+        ],
+        answer: "Object"
+    },
+    {
+        question: "Which of the following is basic principle of computer programming?",
+        options: [
+            "Minimize coupling",
+            "Document your code",
+            "All of the above",
+            "Keep it simple"
+        ],
+        answer: "All of the above"
+    },
+    {
+        question: "In a relational database the rule which can be described as 'A Gender field can hold only the values M or F'. This is an example of __?",
+        options: [
+            "Entity integrity constraint",
+            "Not Null integrity constraint",
+            "Referential integrity constraint",
+            "Domain integrity constraint"
+        ],
+        answer: "Domain integrity constraint"
+    },
+    {
+        question: "Consider the following requirement for software: 'The operator must be able to add new games without modifications to the existing system.' Which one of the following types of requirements is this?",
+        options: [
+            "Reliability Requirement",
+            "Performance Requirement",
+            "Usability Requirement",
+            "Supportability Requirement"
+        ],
+        answer: "Supportability Requirement"
+    },
+    {
+        question: "______ Algorithm operates using a single current node and generally move only to neighbors of that node rather than systematically exploring paths from an initial state to find solution for search problem?",
+        options: [
+            "MinMax",
+            "None",
+            "Recursive best first search",
+            "Simulated annealing"
+        ],
+        answer: "Simulated annealing"
+    },
+    {
+        question: "The time complexity of quick sort is ______?",
+        options: [
+            "o(n log n)",
+            "o(log n)",
+            "o(n2)",
+            "o(n)"
+        ],
+        answer: "o(n log n)"
+    },
+    {
+        question: "Syntax-directed translation rules use ______?",
+        options: [
+            "None of the mentioned",
+            "Constants & attributes associated with the non-terminals in their definitions.",
+            "Lexical values of nodes",
+            "A & B"
+        ],
+        answer: "A & B"
+    }
 ];
+
+
  
         // Quiz state variables
         let currentQuestionIndex = 0;
